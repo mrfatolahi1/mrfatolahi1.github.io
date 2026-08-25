@@ -3,553 +3,726 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Mohammad Reza Fatolahi — Software Engineer</title>
-<meta name="description" content="Backend engineer who owns financially critical systems end to end. Technical owner of the four services behind a crypto exchange's futures market-making platform: ~50 markets, millions of orders a day, ~100% uptime.">
+<title>FATOL/USDT — Mohammad Reza Fatolahi</title>
+<meta name="description" content="Backend engineer on the futures market-making desk at Tabdeal. Technical owner of all four services behind the platform — zero to ~50 markets, millions of orders a day, effectively 100% uptime.">
 <meta name="author" content="Mohammad Reza Fatolahi">
-<meta name="theme-color" content="#EDE7DD">
+<meta name="theme-color" content="#0B0E11">
 <link rel="canonical" href="https://fatol.ir/">
 <meta property="og:type" content="profile">
 <meta property="og:url" content="https://fatol.ir/">
-<meta property="og:title" content="Mohammad Reza Fatolahi — Software Engineer">
-<meta property="og:description" content="The line never broke. ~50 futures markets, millions of orders a day, ~100% uptime.">
+<meta property="og:title" content="FATOL/USDT is now listed — Mohammad Reza Fatolahi">
+<meta property="og:description" content="Backend engineer, futures market-making desk at Tabdeal. ~50 markets from zero, millions of orders a day, 100.00% uptime.">
 <meta name="twitter:card" content="summary">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23EDE7DD'/%3E%3Cpath d='M3 21 L9 21 L13 11 L17 25 L21 15 L24 18 L29 18' fill='none' stroke='%238C2F26' stroke-width='2.4' stroke-linecap='square' stroke-linejoin='miter'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230B0E11'/%3E%3Crect x='7' y='12' width='5' height='12' fill='%230ECB81'/%3E%3Crect x='9' y='7' width='1.4' height='20' fill='%230ECB81'/%3E%3Crect x='19' y='9' width='5' height='9' fill='%23F6465D'/%3E%3Crect x='21' y='5' width='1.4' height='18' fill='%23F6465D'/%3E%3C/svg%3E">
 <style>
-/* ══════════════════════════ tokens ══════════════════════════ */
+/* ═══════════════════════ tokens ═══════════════════════ */
 :root{
-  --bone:#EDE7DD; --bone-2:#F7F3EC; --ink:#16120F; --ink-2:#4B433B;
-  --faint:#8B8175; --rule:#CDC3B4; --ox:#8C2F26; --ox-2:#B0483B; --gold:#9A7A24;
-  --grotesk:"Helvetica Neue",Helvetica,Arial,"Liberation Sans","Nimbus Sans",sans-serif;
-  --serif:"Palatino Linotype",Palatino,"Book Antiqua","URW Palladio L","TeX Gyre Pagella",Georgia,serif;
-  --mono:ui-monospace,"SF Mono","DejaVu Sans Mono",Menlo,Consolas,monospace;
+  --bg:#0B0E11; --bg2:#080A0D; --panel:#12171D; --panel2:#171E26; --panel3:#1B242E;
+  --line:#232C36; --line2:#2C3742; --txt:#E6EDF3; --dim:#8B97A5; --faint:#5B6672;
+  --up:#0ECB81; --up2:#12F09A; --down:#F6465D; --gold:#F0B90B; --blue:#3D8BFF;
+  --sans:"Helvetica Neue",Helvetica,Arial,"Liberation Sans",sans-serif;
+  --mono:ui-monospace,"SF Mono","DejaVu Sans Mono","Liberation Mono",Menlo,Consolas,monospace;
   --ease:cubic-bezier(.22,.61,.36,1);
 }
 *,*::before,*::after{box-sizing:border-box}
 html,body{margin:0;padding:0}
-html{-webkit-text-size-adjust:100%;background:var(--bone)}
-body{
-  background:var(--bone);color:var(--ink);font-family:var(--grotesk);
-  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
-  overflow-x:hidden;
-}
-h1,h2,h3,h4,p,ul,ol,figure,blockquote,dl,dd{margin:0}
+html{-webkit-text-size-adjust:100%;background:var(--bg)}
+body{background:var(--bg);color:var(--txt);font-family:var(--sans);font-size:15px;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,h4,p,ul,ol,dl,dd,figure{margin:0}
 ul,ol{padding:0;list-style:none}
 a{color:inherit;text-decoration:none}
-::selection{background:var(--ox);color:var(--bone-2)}
-:focus-visible{outline:2px solid var(--ox);outline-offset:4px}
+::selection{background:var(--up);color:#04150D}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 .sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.up{color:var(--up)} .down{color:var(--down)} .mono{font-family:var(--mono)}
 
-/* paper grain + a faint baseline grid, fixed behind everything */
-.grain{
-  position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.34'/%3E%3C/svg%3E");
-  mix-blend-mode:multiply;
-}
-.vignette{
-  position:fixed;inset:0;z-index:0;pointer-events:none;
-  background:radial-gradient(120% 90% at 50% 45%,transparent 42%,rgba(22,18,15,.10) 100%);
-}
+/* ═══════════════════════ ambient ═══════════════════════ */
+.glow{position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(70vw 60vh at 18% 12%,rgba(14,203,129,.05),transparent 64%),
+             radial-gradient(62vw 54vh at 86% 88%,rgba(240,185,11,.055),transparent 64%)}
+.mesh{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;
+  background-image:linear-gradient(rgba(35,44,54,.55) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(35,44,54,.55) 1px,transparent 1px);background-size:110px 66px;
+  mask-image:radial-gradient(ellipse 92% 76% at 50% 48%,#000 22%,transparent 80%)}
 
-/* ══════════════════════════ stage ══════════════════════════ */
+/* ═══════════════════════ chrome ═══════════════════════ */
+.topnav{position:fixed;top:0;left:0;right:0;z-index:60;height:46px;display:flex;align-items:center;
+  gap:22px;padding:0 clamp(14px,2.4vw,28px);background:rgba(8,10,13,.94);
+  border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}
+.topnav .brand{display:flex;align-items:center;gap:9px;font-weight:700;font-size:14.5px;letter-spacing:-.01em}
+.topnav .brand i{font-style:normal;width:17px;height:17px;border-radius:4px;
+  background:linear-gradient(135deg,var(--gold),var(--up));display:inline-block}
+.topnav .links{display:none;gap:20px;font-size:12.5px;color:var(--dim)}
+@media(min-width:1080px){.topnav .links{display:flex}}
+.topnav .links a:hover{color:var(--txt)}
+.topnav .grow{flex:1}
+.topnav .px{font-family:var(--mono);font-size:13px;font-weight:600;display:none}
+@media(min-width:760px){.topnav .px{display:block}}
+.topnav .cta{background:var(--up);color:#04150D;font-weight:700;font-size:12.5px;
+  padding:9px 15px;border-radius:4px;white-space:nowrap}
+.topnav .cta:hover{filter:brightness(1.12)}
+.topnav .ghost{border:1px solid var(--line2);color:var(--dim);font-size:12.5px;padding:8px 13px;
+  border-radius:4px;white-space:nowrap}
+.topnav .ghost:hover{color:var(--txt);border-color:var(--dim)}
+
+/* scrolling market ticker under the nav */
+.tickerbar{position:fixed;top:46px;left:0;right:0;z-index:55;height:30px;overflow:hidden;
+  background:rgba(11,14,17,.9);border-bottom:1px solid var(--line);display:flex;align-items:center}
+.tickerbar .run{display:flex;gap:34px;white-space:nowrap;padding-left:100%;
+  animation:marq 46s linear infinite;animation-delay:-7s;font-family:var(--mono);font-size:11.5px;color:var(--dim)}
+.tickerbar b{color:var(--txt);font-weight:600}
+@keyframes marq{to{transform:translateX(-100%)}}
+html[data-mode="flat"] .tickerbar{position:sticky;top:46px}
+
+.sidedock{position:fixed;right:clamp(10px,1.6vw,20px);top:50%;transform:translateY(-50%);z-index:50;
+  display:none;flex-direction:column;gap:2px;padding:10px;border-radius:8px;
+  background:rgba(11,14,17,.72);border:1px solid var(--line);backdrop-filter:blur(8px)}
+@media(min-width:1160px){.sidedock{display:flex}}
+.sidedock button{background:none;border:0;cursor:pointer;padding:7px 12px 7px 10px;border-radius:5px;
+  display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:10px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--faint);transition:.24s var(--ease);white-space:nowrap}
+.sidedock button i{width:5px;height:5px;border-radius:50%;background:currentColor;flex:none}
+.sidedock button:hover{color:var(--dim);background:var(--panel)}
+.sidedock button[aria-current="true"]{color:var(--up);background:rgba(14,203,129,.09)}
+.progress{position:fixed;left:0;top:0;height:2px;width:0;background:var(--up);z-index:70;
+  box-shadow:0 0 12px rgba(14,203,129,.7)}
+.cue{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:50;font-family:var(--mono);
+  font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--faint);
+  display:flex;align-items:center;gap:11px;transition:opacity .45s}
+.cue i{width:1px;height:20px;background:var(--line2);position:relative;overflow:hidden}
+.cue i::after{content:"";position:absolute;inset:0;background:var(--up);animation:drop 2.1s var(--ease) infinite}
+@keyframes drop{0%{transform:translateY(-100%)}55%,100%{transform:translateY(100%)}}
+.cue.gone{opacity:0}
+
+/* ═══════════════════════ stage ═══════════════════════ */
 .stage{position:fixed;inset:0;z-index:1;overflow:hidden}
 .world{position:absolute;top:0;left:0;width:0;height:0;transform-origin:0 0;will-change:transform}
 .thread{position:fixed;inset:0;z-index:2;pointer-events:none;width:100%;height:100%}
 .driver{height:100vh}
-
-.scene{
-  position:absolute;transform:translate(-50%,-50%);
-  width:var(--sw,86vw);max-width:min(1080px,calc(100vw - 250px));
-  opacity:0;transition:opacity .5s var(--ease);
-}
-.scene.live{opacity:1}
+.scene{position:absolute;transform:translate(-50%,-50%);width:94vw;
+  max-width:min(1400px,calc(100vw - 360px));opacity:0}
 html[data-mode="camera"] .scene{transition:none;will-change:opacity,transform}
-.scene.wide{max-width:min(1320px,calc(100vw - 250px))}
 .scene > *{position:relative;z-index:3}
+.anchor{display:block;width:100%;height:1px}
+html[data-mode="camera"] .anchor{height:clamp(30px,5vh,64px)}
 
-/* ══════════════════════════ shared type ══════════════════════════ */
-.sec{
-  font-family:var(--mono);font-size:11px;letter-spacing:.24em;text-transform:uppercase;
-  color:var(--ox);display:flex;align-items:baseline;gap:14px;margin-bottom:26px;
-}
-.sec::after{content:"";height:1px;flex:1;background:var(--rule);align-self:center}
-.sec b{font-weight:400;color:var(--faint)}
-.display{
-  font-family:var(--grotesk);font-weight:700;letter-spacing:-.045em;line-height:.86;
-  text-transform:uppercase;
-}
-.h-xl{font-size:clamp(52px,10.5vw,170px)}
-.h-lg{font-size:clamp(38px,6.4vw,104px)}
-.h-md{font-size:clamp(30px,4.2vw,66px)}
-.prose{font-family:var(--serif);font-size:clamp(17px,1.5vw,23px);line-height:1.62;color:var(--ink-2)}
-.prose em{font-style:normal;color:var(--ink);box-shadow:inset 0 -.42em 0 rgba(140,47,38,.14)}
-.meta{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint)}
-.rulefull{height:1px;background:var(--rule);border:0;margin:0}
-.figure{font-family:var(--grotesk);font-weight:700;letter-spacing:-.05em;font-variant-numeric:tabular-nums;line-height:.84}
+/* ═══════════════════════ shared UI furniture ═══════════════════════ */
+.eyebrow{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--line2);border-radius:99px;
+  padding:7px 14px;font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--up);background:rgba(14,203,129,.07)}
+.eyebrow i{width:6px;height:6px;border-radius:50%;background:var(--up);
+  box-shadow:0 0 0 0 rgba(14,203,129,.6);animation:pulse 2.4s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 7px transparent}100%{box-shadow:0 0 0 0 transparent}}
+.pairhead{display:flex;align-items:center;gap:clamp(14px,2vw,30px);flex-wrap:wrap;
+  border-bottom:1px solid var(--line);padding-bottom:13px;margin-bottom:14px}
+.pairhead .sym{font-size:17px;font-weight:700;display:flex;align-items:center;gap:9px}
+.pairhead .sym i{font-style:normal;background:var(--gold);color:#1A1403;font-size:9.5px;font-weight:700;
+  padding:3px 7px;border-radius:3px;letter-spacing:.07em}
+.pairhead .last{font-family:var(--mono);font-size:21px;font-weight:700}
+.st{display:flex;flex-direction:column;gap:3px}
+.st b{font-family:var(--mono);font-size:12.5px;font-weight:600}
+.st span{font-size:8.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--faint)}
+.pnl{background:var(--panel);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.pnl > h4{margin:0;font-size:9.5px;letter-spacing:.17em;text-transform:uppercase;color:var(--dim);
+  padding:10px 13px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:10px}
+.pnl > h4 em{font-style:normal;color:var(--faint)}
+.pnl .in{padding:12px 14px 14px}
+.act{display:inline-flex;align-items:center;justify-content:center;gap:8px;text-align:center;
+  padding:13px 20px;border-radius:5px;font-weight:700;font-size:13.5px;transition:.2s var(--ease)}
+.act.buy{background:var(--up);color:#04150D;box-shadow:0 0 30px rgba(14,203,129,.24)}
+.act.buy:hover{filter:brightness(1.13);box-shadow:0 0 44px rgba(14,203,129,.4)}
+.act.sell{border:1px solid var(--down);color:var(--down)}
+.act.sell:hover{background:var(--down);color:#180207}
+.act.ghost{border:1px solid var(--line2);color:var(--dim)}
+.act.ghost:hover{color:var(--txt);border-color:var(--dim)}
+.acts{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.fine{font-size:10px;color:var(--faint);line-height:1.95;letter-spacing:.03em;margin-top:14px}
+.fine b{color:var(--dim);font-weight:500}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th{text-align:left;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);
+  font-weight:500;padding:9px 14px 9px 0;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:11px 14px 11px 0;border-bottom:1px solid var(--line);font-family:var(--mono);color:var(--dim);
+  vertical-align:top}
+td.nm{font-family:var(--sans);color:var(--txt);font-weight:600}
+td small{display:block;font-family:var(--sans);color:var(--faint);font-size:11px;margin-top:4px;line-height:1.5}
+.tag{display:inline-block;font-family:var(--mono);font-size:9.5px;letter-spacing:.09em;padding:3px 8px;
+  border-radius:3px;background:var(--panel2);border:1px solid var(--line);color:var(--dim)}
+.tag.g{color:var(--up);border-color:rgba(14,203,129,.4);background:rgba(14,203,129,.08)}
+.tag.r{color:var(--down);border-color:rgba(246,70,93,.4);background:rgba(246,70,93,.08)}
+.tag.y{color:var(--gold);border-color:rgba(240,185,11,.4);background:rgba(240,185,11,.08)}
 
-/* ══════════════════════════ chrome ══════════════════════════ */
-.topbar{
-  position:fixed;top:0;left:0;right:0;z-index:40;display:flex;align-items:center;gap:18px;
-  padding:22px clamp(18px,3.4vw,44px);font-family:var(--mono);font-size:10.5px;
-  letter-spacing:.2em;text-transform:uppercase;color:var(--faint);pointer-events:none;
-}
-.topbar .brand{color:var(--ink);letter-spacing:.34em;font-weight:600}
-.topbar .grow{flex:1}
-.topbar a{pointer-events:auto;color:var(--faint);border-bottom:1px solid transparent;transition:.3s}
-.topbar a:hover{color:var(--ox);border-color:var(--ox)}
-.hide-s{display:none}
-@media(min-width:780px){.hide-s{display:inline}}
+/* ═══════ scene 0 — listing ═══════ */
+.hero{font-size:clamp(36px,7.4vw,124px);font-weight:700;letter-spacing:-.05em;line-height:.9;
+  margin:22px 0 0;max-width:15ch}
+.hero em{font-style:normal;background:linear-gradient(94deg,var(--up),var(--up2) 45%,var(--gold));
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero .who{display:block;font-size:.21em;font-weight:500;letter-spacing:.02em;color:var(--dim);
+  margin-bottom:.7em;-webkit-text-fill-color:var(--dim)}
+.lede{margin-top:22px;font-size:clamp(14.5px,1.4vw,19px);color:var(--dim);max-width:56ch;line-height:1.6}
+.statbar{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);
+  border:1px solid var(--line);border-radius:7px;overflow:hidden;margin-top:4px}
+@media(min-width:860px){.statbar{grid-template-columns:repeat(5,1fr)}}
+.statbar > div{background:var(--bg);padding:15px 16px 13px;display:flex;flex-direction:column;gap:9px}
+@media(max-width:859px){.statbar > div:last-child{grid-column:1/-1}}
+.statbar b{font-family:var(--mono);font-size:clamp(17px,2.1vw,27px);font-weight:700;letter-spacing:-.02em}
+.statbar span{font-size:8.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--faint);line-height:1.65}
 
-.index{
-  position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:40;
-  display:none;flex-direction:column;gap:11px;align-items:flex-end;
-  padding:18px clamp(14px,2.6vw,34px) 18px 54px;
-  background:linear-gradient(90deg,rgba(237,231,221,0),rgba(237,231,221,.94) 46%);
-  -webkit-mask-image:linear-gradient(180deg,transparent,#000 16%,#000 84%,transparent);
-  mask-image:linear-gradient(180deg,transparent,#000 16%,#000 84%,transparent);
-}
-@media(min-width:1080px){.index{display:flex}}
-.index button{
-  background:none;border:0;padding:2px 0;cursor:pointer;display:flex;align-items:center;gap:10px;
-  font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--faint);transition:color .35s var(--ease);
-}
-.index button i{display:block;width:14px;height:1px;background:currentColor;transition:.35s var(--ease)}
-.index button:hover{color:var(--ink-2)}
-.index button[aria-current="true"]{color:var(--ox)}
-.index button[aria-current="true"] i{width:34px;background:var(--ox)}
+/* ═══════ scene 1 — trading screen ═══════ */
+.trade{display:grid;gap:11px;grid-template-columns:236px minmax(0,1fr) 262px;align-items:stretch}
+.book .cols{display:grid;grid-template-columns:1fr .78fr .78fr;font-size:8.5px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--faint);padding-bottom:6px}
+.book .cols span:not(:first-child){text-align:right}
+.lvl{position:relative;display:grid;grid-template-columns:1fr .78fr .78fr;font-family:var(--mono);
+  font-size:11px;padding:2.5px 0;isolation:isolate}
+.lvl span{position:relative;z-index:1;text-align:right;color:var(--dim)}
+.lvl span:first-child{text-align:left}
+.lvl i{position:absolute;right:0;top:1px;bottom:1px;z-index:0;opacity:.13;border-radius:2px;
+  transition:width .5s var(--ease)}
+.lvl.ask span:first-child{color:var(--down)} .lvl.ask i{background:var(--down)}
+.lvl.bid span:first-child{color:var(--up)}  .lvl.bid i{background:var(--up)}
+.spread{display:flex;align-items:baseline;justify-content:space-between;padding:8px 0;margin:5px 0;
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-family:var(--mono)}
+.spread b{font-size:15.5px;color:var(--up)}
+.spread span{font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
+.chartpanel{display:flex;flex-direction:column;min-height:412px}
+.tf{display:flex;gap:2px;padding:8px 11px;border-bottom:1px solid var(--line);font-family:var(--mono);
+  font-size:10.5px;color:var(--faint);align-items:center}
+.tf a{padding:4px 9px;border-radius:3px;cursor:pointer}
+.tf a.on{background:var(--panel2);color:var(--txt)}
+.tf .r{margin-left:auto;color:var(--dim)}
+.chartwrap{flex:1;position:relative;min-height:0}
+#candles{position:absolute;inset:0;width:100%;height:100%}
+.chartlabel{position:absolute;left:16px;top:14px;z-index:2;pointer-events:none}
+.chartlabel b{display:block;font-size:clamp(20px,2.4vw,34px);font-weight:700;letter-spacing:-.03em}
+.chartlabel span{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--faint);margin-top:6px}
+.ticket .tabs{display:flex;border-bottom:1px solid var(--line);font-size:11.5px;font-weight:600}
+.ticket .tabs a{flex:1;text-align:center;padding:11px 0;color:var(--faint);cursor:pointer}
+.ticket .tabs a.on{color:var(--txt);box-shadow:inset 0 -2px 0 var(--gold)}
+.fld{padding:9px 11px;border:1px solid var(--line);border-radius:4px;background:var(--bg2);
+  display:flex;justify-content:space-between;align-items:baseline;margin-bottom:7px;
+  font-family:var(--mono);font-size:12px}
+.fld small{font-family:var(--sans);font-size:8.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--faint)}
+.slider{margin:13px 0 15px}
+.slider .track{height:3px;background:var(--line);border-radius:2px;position:relative}
+.slider .track i{position:absolute;left:0;top:0;bottom:0;width:100%;background:var(--gold);border-radius:2px}
+.slider .track b{position:absolute;left:100%;top:50%;transform:translate(-50%,-50%);width:11px;height:11px;
+  border-radius:50%;background:var(--gold);box-shadow:0 0 0 3px rgba(240,185,11,.18)}
+.slider .sc{display:flex;justify-content:space-between;font-family:var(--mono);font-size:8.5px;
+  color:var(--faint);margin-top:10px;letter-spacing:.08em}
+.ticket .act{width:100%;margin-top:8px;font-size:11.5px;padding:12px 10px;line-height:1.35}
+.feed{margin-top:11px}
+.feed .row{display:grid;grid-template-columns:1fr auto;gap:9px;font-size:10.5px;padding:5px 0;
+  border-bottom:1px dotted var(--line);color:var(--dim);align-items:baseline}
+.feed .row b{font-family:var(--mono);font-weight:600;color:var(--up);font-size:10px}
+.feed .row.s b{color:var(--down)}
 
-.progress{position:fixed;left:0;top:0;height:2px;width:0;background:var(--ox);z-index:50}
-.cue{
-  position:fixed;left:50%;bottom:26px;transform:translateX(-50%);z-index:40;
-  font-family:var(--mono);font-size:10px;letter-spacing:.26em;text-transform:uppercase;
-  color:var(--faint);display:flex;align-items:center;gap:12px;transition:opacity .5s;
-}
-.cue i{display:block;width:1px;height:22px;background:var(--rule);position:relative;overflow:hidden}
-.cue i::after{content:"";position:absolute;inset:0;background:var(--ox);animation:drop 2.1s var(--ease) infinite}
-@keyframes drop{0%{transform:translateY(-100%)}55%,100%{transform:translateY(100%)}}
-.cue.gone{opacity:0}
+/* ═══════ scene 2 — positions ═══════ */
+.owns{display:grid;gap:9px;margin-top:12px}
+@media(min-width:900px){.owns{grid-template-columns:repeat(4,1fr)}}
+.owns > div{background:var(--panel2);border:1px solid var(--line);border-radius:5px;padding:13px 14px;
+  display:flex;flex-direction:column;gap:8px}
+.owns b{font-size:12.5px;font-weight:700}
+.owns span{font-size:11px;color:var(--faint);line-height:1.55}
 
-/* ══════════════════════════ scene: open ══════════════════════════ */
-.s-open .kicker{display:flex;justify-content:space-between;gap:20px;margin-bottom:clamp(18px,2.4vw,36px)}
-.s-open h1{margin:0}
-.s-open .l1{display:block;font-size:clamp(20px,2.9vw,46px);letter-spacing:-.02em;color:var(--ink-2);
-  font-weight:600;margin-bottom:.06em}
-.s-open .l2{display:block;font-size:clamp(58px,13.2vw,220px);line-height:.8}
-.anchor{display:block;height:1px;width:100%}
-html[data-mode="camera"] .anchor{height:clamp(54px,8vh,104px)}
-.s-open .foot{display:flex;flex-wrap:wrap;gap:14px 30px;justify-content:space-between;
-  margin-top:clamp(20px,2.6vw,38px);align-items:baseline}
-.s-open .foot .role{font-family:var(--serif);font-size:clamp(16px,1.5vw,22px);color:var(--ink-2);font-style:italic}
-.links{display:flex;flex-wrap:wrap;gap:8px 22px;font-family:var(--mono);font-size:11.5px;letter-spacing:.06em}
-.links a{color:var(--ink-2);border-bottom:1px solid var(--rule);padding-bottom:2px;transition:.3s var(--ease)}
-.links a:hover{color:var(--ox);border-color:var(--ox)}
-.links a.strong{color:var(--bone-2);background:var(--ox);border:0;padding:8px 14px;letter-spacing:.14em;
-  text-transform:uppercase;font-size:10.5px}
-.links a.strong:hover{background:var(--ink)}
+/* ═══════ scene 3 — depth ═══════ */
+.depthgrid{display:grid;gap:11px;grid-template-columns:minmax(0,1fr);align-items:start}
+@media(min-width:1000px){.depthgrid{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr)}}
+.depthwrap{position:relative;height:270px}
+#depthchart{position:absolute;inset:0;width:100%;height:100%}
+.dlegend{display:flex;gap:20px;flex-wrap:wrap;font-size:10.5px;color:var(--faint);padding:10px 14px 0}
+.dlegend i{display:inline-block;width:11px;height:3px;vertical-align:3px;margin-right:7px;border-radius:2px}
+.skills{display:grid;gap:0}
+.skills > div{display:grid;grid-template-columns:104px minmax(0,1fr);gap:12px;padding:9px 0;
+  border-bottom:1px solid var(--line);align-items:baseline}
+.skills dt{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--up)}
+.skills dd{margin:0;font-size:12.5px;color:var(--dim);line-height:1.55}
 
-/* ══════════════════════════ scene: thesis ══════════════════════════ */
-.cols2{display:grid;gap:clamp(20px,3vw,52px)}
-@media(min-width:900px){.cols2{grid-template-columns:repeat(2,minmax(0,1fr))}}
-.dropcap::first-letter{
-  float:left;font-size:3.35em;line-height:.82;padding:.06em .1em 0 0;color:var(--ox);font-weight:400;
-}
-.figures{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--rule);
-  border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);margin-top:clamp(20px,2.6vw,40px)}
-@media(min-width:820px){.figures{grid-template-columns:repeat(4,minmax(0,1fr))}}
-.figures > div{background:var(--bone);padding:clamp(15px,1.7vw,24px) clamp(12px,1.4vw,20px) clamp(16px,1.8vw,26px);
-  display:flex;flex-direction:column;justify-content:space-between;gap:18px;
-  min-height:clamp(118px,15vh,168px)}
-.figures .n{font-size:clamp(30px,4.2vw,62px)}
-.figures .n small{font-size:.42em;letter-spacing:-.01em}
-.figures .k{margin-top:0;font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;
-  text-transform:uppercase;color:var(--faint);line-height:1.6}
+/* ═══════ scene 4 — incident ═══════ */
+.alert{border:1px solid rgba(246,70,93,.55);border-radius:8px;overflow:hidden;
+  box-shadow:0 30px 80px -28px rgba(246,70,93,.35);background:var(--panel)}
+.alert > h3{margin:0;background:rgba(246,70,93,.12);color:var(--down);font-family:var(--mono);
+  font-size:10px;letter-spacing:.18em;text-transform:uppercase;padding:11px 18px;
+  display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid rgba(246,70,93,.3)}
+.alert .in{padding:clamp(20px,2.4vw,34px)}
+.alert .big{font-size:clamp(24px,3.7vw,60px);font-weight:700;line-height:1.02;letter-spacing:-.035em;max-width:19ch}
+.alert .big em{font-style:normal;color:var(--down)}
+.steps{display:grid;gap:9px;margin-top:22px}
+@media(min-width:820px){.steps{grid-template-columns:repeat(2,1fr);column-gap:26px}}
+.steps li{display:grid;grid-template-columns:22px 1fr;gap:11px;font-size:13px;color:var(--dim);
+  line-height:1.5;padding:7px 0;border-top:1px solid var(--line)}
+.steps li b{font-family:var(--mono);font-size:10px;color:var(--up);padding-top:2px}
+.resolve{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:24px;padding-top:20px;
+  border-top:1px solid var(--line)}
+.resolve b{font-size:clamp(19px,2.5vw,36px);color:var(--up);font-weight:700;letter-spacing:-.025em}
+.resolve span{font-family:var(--mono);font-size:9.5px;letter-spacing:.17em;text-transform:uppercase;color:var(--faint)}
 
-/* ══════════════════════════ scene: role headers ══════════════════════════ */
-.rolehead{display:grid;gap:8px}
-.rolehead .top{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:12px 24px}
-.rolehead .org{font-size:clamp(40px,7.6vw,124px)}
-.rolehead .when{font-family:var(--mono);font-size:clamp(11px,1vw,14px);letter-spacing:.18em;
-  text-transform:uppercase;color:var(--ox);white-space:nowrap}
-.rolehead .what{font-family:var(--serif);font-size:clamp(17px,1.7vw,26px);color:var(--ink-2);font-style:italic}
-.rolehead .who{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint)}
+/* ═══════ scene 5 — contracts ═══════ */
+.contracts{display:grid;gap:10px}
+@media(min-width:1000px){.contracts{grid-template-columns:repeat(2,1fr)}}
+.contract{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:15px 17px;
+  display:flex;flex-direction:column;gap:9px;transition:.24s var(--ease)}
+.contract:hover{border-color:rgba(14,203,129,.5);transform:translateY(-3px)}
+.contract .top{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.contract b{font-size:15px;font-weight:700}
+.contract .addr{font-family:var(--mono);font-size:9.5px;color:var(--faint)}
+.contract:hover .addr{color:var(--up)}
+.contract p{font-size:12.5px;color:var(--dim);line-height:1.55}
+.contract .stk{display:flex;flex-wrap:wrap;gap:5px}
 
-/* ══════════════════════════ scene: numbered index ══════════════════════════ */
-.idx{display:grid;gap:0}
-@media(min-width:1000px){.idx{grid-template-columns:repeat(2,minmax(0,1fr));
-  grid-template-rows:repeat(5,auto);grid-auto-flow:column;column-gap:clamp(28px,3.6vw,68px)}}
-.idx li{display:grid;grid-template-columns:2.3em minmax(0,1fr);gap:0 14px;align-items:start;
-  padding:13px 0;border-top:1px solid var(--rule)}
-.idx li .n{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--ox);padding-top:.35em}
-.idx li h3{font-family:var(--grotesk);font-size:12px;font-weight:700;letter-spacing:.15em;
-  text-transform:uppercase;color:var(--ink);margin-bottom:5px}
-.idx li p{font-family:var(--serif);font-size:14.6px;line-height:1.52;color:var(--ink-2)}
-@media(min-width:1000px){
-  .idx li:nth-child(1),.idx li:nth-child(6){border-top:1px solid var(--ink)}
-}
+/* ═══════ scene 7 — swap / contact ═══════ */
+.swapgrid{display:grid;gap:clamp(14px,2vw,30px);align-items:center}
+@media(min-width:960px){.swapgrid{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)}}
+.swapbox{background:var(--panel);border:1px solid var(--line2);border-radius:14px;padding:16px;
+  box-shadow:0 30px 70px -30px rgba(14,203,129,.3)}
+.swapbox > h4{margin:0 0 12px;font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--dim);display:flex;justify-content:space-between}
+.leg{background:var(--bg2);border:1px solid var(--line);border-radius:11px;padding:14px 16px;
+  display:flex;justify-content:space-between;align-items:center;gap:12px}
+.leg .l{display:flex;flex-direction:column;gap:6px}
+.leg small{font-size:8.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--faint)}
+.leg b{font-family:var(--mono);font-size:22px;font-weight:700;letter-spacing:-.02em}
+.leg .tok{background:var(--panel3);border:1px solid var(--line2);border-radius:99px;padding:7px 13px;
+  font-size:12px;font-weight:600;white-space:nowrap;display:flex;align-items:center;gap:7px}
+.leg .tok i{width:15px;height:15px;border-radius:50%;font-style:normal;flex:none}
+.leg .tok i.a{background:linear-gradient(135deg,var(--blue),#7C5CFF)}
+.leg .tok i.b{background:linear-gradient(135deg,var(--gold),var(--up))}
+.swaparrow{display:grid;place-items:center;height:30px;margin:-7px 0;position:relative;z-index:2}
+.swaparrow i{width:30px;height:30px;border-radius:9px;background:var(--panel3);border:1px solid var(--line2);
+  display:grid;place-items:center;font-style:normal;color:var(--up);font-size:15px}
+.swaprows{margin-top:13px;display:grid;gap:7px;font-size:11.5px;color:var(--faint)}
+.swaprows div{display:flex;justify-content:space-between;gap:14px}
+.swaprows b{color:var(--dim);font-weight:500;font-family:var(--mono);text-align:right}
+.contacts{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:7px;
+  overflow:hidden}
+@media(min-width:620px){.contacts{grid-template-columns:repeat(2,1fr)}}
+.contacts a{background:var(--panel);padding:15px 17px;display:grid;gap:7px;transition:.24s var(--ease)}
+.contacts a:hover{background:var(--panel2)}
+.contacts .k{font-family:var(--mono);font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint)}
+.contacts .v{font-family:var(--mono);font-size:13px;color:var(--txt);word-break:break-word}
+.contacts a:hover .v{color:var(--up)}
 
-/* ══════════════════════════ scene: incident ══════════════════════════ */
-.s-incident .shout{max-width:19ch}
-.s-incident .shout em{font-style:normal;color:var(--ox)}
-.s-incident .after{display:grid;gap:clamp(16px,2vw,30px);margin-top:clamp(22px,3vw,48px)}
-@media(min-width:900px){.s-incident .after{grid-template-columns:minmax(0,1fr) minmax(0,1fr);
-  gap:clamp(30px,6vw,110px);align-items:end}}
-.verdict{font-family:var(--grotesk);font-weight:700;letter-spacing:-.03em;text-transform:uppercase;
-  font-size:clamp(24px,3.4vw,54px);line-height:.94;color:var(--ox)}
-.verdict span{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.24em;
-  color:var(--faint);margin-bottom:12px;font-weight:400}
-
-/* ══════════════════════════ scene: entries (prior / projects / edu) ══════════════════════════ */
-.entry{display:grid;gap:10px;padding:clamp(16px,2vw,28px) 0;border-top:1px solid var(--rule)}
-.entry:last-child{border-bottom:1px solid var(--rule)}
-.entry .top{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 22px}
-.entry .name{font-family:var(--grotesk);font-weight:700;font-size:clamp(20px,2.3vw,34px);letter-spacing:-.025em}
-.entry .repo{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--faint);transition:color .3s}
-a.entry:hover .repo{color:var(--ox)}
-a.entry:hover .name{color:var(--ox)}
-.entry .sub{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ox)}
-.entry p{font-family:var(--serif);font-size:15px;line-height:1.56;color:var(--ink-2);max-width:82ch}
-.entries2{display:grid}
-@media(min-width:1000px){.entries2{grid-template-columns:repeat(2,minmax(0,1fr));
-  column-gap:clamp(28px,3.6vw,64px)}
-  .entries2 .entry:nth-child(-n+2){border-top:1px solid var(--ink)}}
-.entries2 .entry{padding:clamp(13px,1.5vw,20px) 0}
-.entries2 .entry p{font-size:14px;line-height:1.5}
-.entries2 .entry .name{font-size:clamp(19px,1.9vw,26px)}
-.entry .stack{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
-.entry ul li{font-family:var(--serif);font-size:15px;line-height:1.56;color:var(--ink-2);
-  padding-left:16px;position:relative;margin-top:6px}
-.entry ul li::before{content:"";position:absolute;left:0;top:.66em;width:8px;height:1px;background:var(--ox)}
-
-/* ══════════════════════════ scene: skills colophon ══════════════════════════ */
-.colophon{display:grid;gap:0}
-.colophon > div{display:grid;gap:4px 26px;padding:12px 0;border-top:1px solid var(--rule)}
-@media(min-width:760px){.colophon > div{grid-template-columns:200px minmax(0,1fr);align-items:baseline}}
-.colophon > div:last-child{border-bottom:1px solid var(--rule)}
-.colophon dt{font-family:var(--grotesk);font-size:11px;font-weight:700;letter-spacing:.19em;
-  text-transform:uppercase;color:var(--ox)}
-.colophon dd{margin:0;font-family:var(--serif);font-size:15.5px;line-height:1.5;color:var(--ink-2)}
-
-/* ══════════════════════════ scene: close ══════════════════════════ */
-.s-close .contacts{display:grid;gap:1px;background:var(--rule);border-top:1px solid var(--rule);
-  border-bottom:1px solid var(--rule);margin-top:clamp(22px,3vw,44px)}
-@media(min-width:820px){.s-close .contacts{grid-template-columns:repeat(4,minmax(0,1fr))}}
-.s-close .contacts a{background:var(--bone);padding:clamp(16px,1.8vw,24px);display:grid;gap:7px;
-  transition:background .34s var(--ease)}
-.s-close .contacts a:hover{background:var(--bone-2)}
-.s-close .contacts .k{font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--faint)}
-.s-close .contacts .v{font-family:var(--mono);font-size:13px;color:var(--ink);word-break:break-word}
-.s-close .contacts a:hover .v{color:var(--ox)}
-
-/* ══════════════════════════ flat mode (narrow / reduced motion) ══════════════════════════ */
+/* ═══════════════════════ flat fallback ═══════════════════════ */
 html[data-mode="flat"] .stage{position:static;overflow:visible;height:auto}
 html[data-mode="flat"] .world{position:static;width:auto;height:auto;transform:none!important}
-html[data-mode="flat"] .scene{
-  position:static;transform:none;opacity:1;width:auto;max-width:none;
-  padding:clamp(52px,9vw,86px) clamp(20px,6vw,44px);border-top:1px solid var(--rule);
-}
-html[data-mode="flat"] .scene:first-child{border-top:0;padding-top:clamp(88px,18vw,120px)}
-html[data-mode="flat"] .scene::after{
-  content:"";display:block;width:46px;height:2px;background:var(--ox);margin-top:clamp(34px,5vw,48px);
-}
-html[data-mode="flat"] .scene:last-child::after{display:none}
-html[data-mode="flat"] .thread,html[data-mode="flat"] .driver,
-html[data-mode="flat"] .index,html[data-mode="flat"] .cue,
-html[data-mode="flat"] .vignette{display:none}
-html[data-mode="flat"] .anchor{display:none}
-html[data-mode="flat"] .s-open .l2{font-size:clamp(46px,15vw,120px)}
+html[data-mode="flat"] .scene{position:static;transform:none!important;opacity:1;width:auto;max-width:none;
+  padding:clamp(38px,7vw,62px) clamp(16px,4vw,32px);border-top:1px solid var(--line)}
+html[data-mode="flat"] .scene:first-child{border-top:0;padding-top:clamp(96px,20vw,130px)}
+html[data-mode="flat"] .thread,html[data-mode="flat"] .driver,html[data-mode="flat"] .sidedock,
+html[data-mode="flat"] .cue,html[data-mode="flat"] .anchor,html[data-mode="flat"] .mesh{display:none}
+html[data-mode="flat"] .trade,html[data-mode="flat"] .depthgrid{grid-template-columns:minmax(0,1fr)}
+html[data-mode="flat"] .chartpanel{min-height:300px}
+html[data-mode="flat"] .depthwrap{height:220px}
+html[data-mode="flat"] .chartlabel{position:static;padding:14px 14px 0}
+html[data-mode="flat"] .chartwrap{display:flex;flex-direction:column;min-height:280px}
+html[data-mode="flat"] #candles{position:relative;flex:1;min-height:200px}
 
-/* ══════════════════════════ the document ══════════════════════════ */
-.doc{
-  position:fixed;inset:0;z-index:80;background:var(--bone);overflow-y:auto;overscroll-behavior:contain;
-  opacity:0;visibility:hidden;transition:opacity .4s var(--ease),visibility .4s;
-  -webkit-overflow-scrolling:touch;
-}
+/* ═══════════════════════ prospectus (document) ═══════════════════════ */
+.doc{position:fixed;inset:0;z-index:90;background:#EFE9DE;overflow-y:auto;overscroll-behavior:contain;
+  opacity:0;visibility:hidden;transition:opacity .35s var(--ease),visibility .35s;-webkit-overflow-scrolling:touch}
 html[data-doc="open"] .doc{opacity:1;visibility:visible}
 html[data-doc="open"]{overflow:hidden}
-html[data-doc="open"] .topbar,html[data-doc="open"] .index,html[data-doc="open"] .cue{opacity:0;pointer-events:none}
-.docclose{
-  position:fixed;top:18px;right:clamp(16px,3vw,40px);z-index:90;background:var(--ink);color:var(--bone);
-  border:0;border-radius:999px;padding:11px 18px;cursor:pointer;font-family:var(--mono);font-size:10px;
-  letter-spacing:.2em;text-transform:uppercase;opacity:0;visibility:hidden;transition:.4s var(--ease);
-}
+html[data-doc="open"] .topnav,html[data-doc="open"] .tickerbar,html[data-doc="open"] .sidedock,
+html[data-doc="open"] .cue{opacity:0;pointer-events:none}
+.docclose{position:fixed;top:16px;right:clamp(14px,3vw,34px);z-index:95;background:#16130F;color:#EFE9DE;
+  border:0;border-radius:99px;padding:11px 18px;cursor:pointer;font-family:var(--mono);font-size:10px;
+  letter-spacing:.18em;text-transform:uppercase;opacity:0;visibility:hidden;transition:.35s var(--ease)}
 html[data-doc="open"] .docclose{opacity:1;visibility:visible}
-.docclose:hover{background:var(--ox)}
-.sheet{
-  max-width:50rem;margin:clamp(24px,5vw,64px) auto;background:#FFFCF7;
-  border:1px solid color-mix(in srgb,var(--rule) 60%,transparent);
-  box-shadow:0 26px 70px -34px rgba(22,18,15,.4);
-  padding:clamp(30px,5.4vw,68px) clamp(24px,5vw,62px);font-family:var(--serif);
-}
+.docclose:hover{background:#7B2D26}
+.sheet{max-width:50rem;margin:clamp(22px,5vw,58px) auto;background:#FFFCF7;
+  border:1px solid rgba(200,180,156,.6);box-shadow:0 26px 70px -34px rgba(22,18,15,.42);
+  padding:clamp(28px,5vw,64px) clamp(22px,5vw,58px);
+  font-family:"Palatino Linotype",Palatino,"Book Antiqua","URW Palladio L",Georgia,serif;color:#2A211C}
 .sheet .h{text-align:center}
-.sheet .nm{font-variant:small-caps;font-size:clamp(29px,5vw,43px);line-height:1.1;letter-spacing:.015em}
-.sheet .rl{font-variant:small-caps;font-size:clamp(15px,2vw,20px);color:var(--ox);margin-top:8px;letter-spacing:.05em}
-.sheet .ct{font-size:13px;color:var(--ink-2);margin-top:14px;line-height:1.95}
-.sheet .ct a{border-bottom:1px solid var(--rule)}
-.sheet .ct a:hover{color:var(--ox)}
+.sheet .nm{font-variant:small-caps;font-size:clamp(28px,5vw,42px);line-height:1.1;letter-spacing:.015em}
+.sheet .rl{font-variant:small-caps;font-size:clamp(15px,2vw,20px);color:#7B2D26;margin-top:8px;letter-spacing:.05em}
+.sheet .ct{font-size:13px;color:#6E5C50;margin-top:13px;line-height:1.95}
+.sheet .ct a{border-bottom:1px solid #C8B49C;color:#6E5C50}
 .sheet .bar{opacity:.5;margin:0 6px}
-.sheet h2{font-variant:small-caps;font-weight:700;font-size:clamp(18px,2.1vw,22px);color:var(--ox);
-  margin:30px 0 0;letter-spacing:.02em}
-.sheet hr{height:1px;background:var(--rule);border:0;margin:5px 0 12px}
-.sheet p,.sheet li{font-size:15px;line-height:1.62;color:var(--ink)}
-.sheet .e{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:baseline;margin-top:16px}
+.sheet h2{font-variant:small-caps;font-weight:700;font-size:clamp(18px,2.1vw,22px);color:#7B2D26;
+  margin:28px 0 0;letter-spacing:.02em}
+.sheet hr{height:1px;background:#C8B49C;border:0;margin:5px 0 12px}
+.sheet p,.sheet li{font-size:15px;line-height:1.62;color:#2A211C}
+.sheet .e{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:baseline;margin-top:15px}
 .sheet .e .l{font-weight:700;font-size:15.5px}
-.sheet .e .r{font-size:13.5px;color:var(--ink-2)}
-.sheet .e.s .l{font-weight:400;font-size:14px;color:var(--ox)}
+.sheet .e .r{font-size:13.5px;color:#6E5C50}
+.sheet .e.s .l{font-weight:400;font-size:14px;color:#7B2D26}
 .sheet .e.s .r{font-style:italic}
-.sheet ul{margin:9px 0 0;display:grid;gap:6px}
+.sheet ul{margin:9px 0 0;display:grid;gap:6px;list-style:none;padding:0}
 .sheet ul li{position:relative;padding-left:16px}
-.sheet ul li::before{content:"•";position:absolute;left:2px;color:var(--ox)}
-.sheet .pj{margin-top:14px}
+.sheet ul li::before{content:"•";position:absolute;left:2px;color:#7B2D26}
+.sheet .pj{margin-top:13px}
 .sheet .pj .ph{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:baseline}
 .sheet .pj .ph b{font-size:15.5px}
-.sheet .pj .ph a{font-family:var(--mono);font-size:12.5px;color:var(--ox)}
-.sheet .pj .ph a:hover{text-decoration:underline}
-.sheet .st{font-style:italic;font-size:13.5px;color:var(--ink-2);margin-top:3px}
+.sheet .pj .ph a{font-family:var(--mono);font-size:12px;color:#7B2D26}
+.sheet .st2{font-style:italic;font-size:13.5px;color:#6E5C50;margin-top:3px}
 .sheet .sk{display:grid;gap:9px;margin-top:4px}
 @media(min-width:640px){.sheet .sk > div{display:grid;grid-template-columns:150px minmax(0,1fr);gap:14px}}
-.sheet .sk .k{font-variant:small-caps;font-weight:700;color:var(--ox);font-size:15px}
+.sheet .sk .k{font-variant:small-caps;font-weight:700;color:#7B2D26;font-size:15px}
 .sheet .sk .v{font-size:14.5px;line-height:1.55}
-.docactions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;padding:0 20px 60px}
-.docactions a{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
-  padding:12px 20px;border:1px solid var(--rule);color:var(--ink-2);transition:.3s var(--ease)}
-.docactions a:hover{border-color:var(--ox);color:var(--ox)}
-.docactions a.primary{background:var(--ox);border-color:var(--ox);color:var(--bone-2)}
-.docactions a.primary:hover{background:var(--ink);border-color:var(--ink);color:var(--bone-2)}
+.docactions{display:flex;flex-wrap:wrap;gap:11px;justify-content:center;padding:0 20px 56px}
+.docactions a{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
+  padding:12px 19px;border:1px solid #C8B49C;color:#6E5C50}
+.docactions a:hover{border-color:#7B2D26;color:#7B2D26}
+.docactions a.primary{background:#7B2D26;border-color:#7B2D26;color:#FFFCF7}
 
-/* ══════════════════════════ print → the document, always ══════════════════════════ */
 @media print{
   @page{size:letter;margin:12mm}
   html,body{background:#fff!important;color:#000!important;overflow:visible!important}
-  .stage,.thread,.driver,.topbar,.index,.cue,.grain,.vignette,.docclose,.docactions{display:none!important}
+  .stage,.thread,.driver,.topnav,.tickerbar,.sidedock,.cue,.glow,.mesh,.docclose,.docactions,.progress{display:none!important}
   .doc{position:static;opacity:1!important;visibility:visible!important;overflow:visible;background:#fff}
   .sheet{max-width:none;margin:0;padding:0;border:0;box-shadow:none;background:#fff}
-  .sheet h2{margin-top:16px;page-break-after:avoid}
+  .sheet h2{margin-top:15px;page-break-after:avoid}
   .sheet .e,.sheet .pj,.sheet ul li{page-break-inside:avoid}
   .sheet p,.sheet li{font-size:10pt;line-height:1.4}
   a{color:#000!important}
 }
 @media(prefers-reduced-motion:reduce){
-  .cue i::after{animation:none}
+  .cue i::after,.eyebrow i,.tickerbar .run{animation:none}
 }
 </style>
 </head>
 <body>
-<div class="grain" aria-hidden="true"></div>
-<div class="vignette" aria-hidden="true"></div>
+<a class="sr" href="#prospectus">Skip to the plain-text CV</a>
+<div class="glow" aria-hidden="true"></div>
+<div class="mesh" aria-hidden="true"></div>
 <div class="progress" id="progress" aria-hidden="true"></div>
 
-<header class="topbar">
-  <span class="brand">Fatol.ir</span>
-  <span class="hide-s">Mohammad Reza Fatolahi</span>
+<nav class="topnav">
+  <span class="brand"><i></i>FATOL</span>
+  <span class="links">
+    <a data-go="0">Listing</a><a data-go="1">Trade</a><a data-go="2">Positions</a>
+    <a data-go="3">Depth</a><a data-go="5">Contracts</a><a data-go="7">Contact</a>
+  </span>
   <span class="grow"></span>
-  <span class="hide-s" id="chapter">§00 · Open</span>
-  <a href="#document" id="opendoc">Read as document ↗</a>
-</header>
+  <span class="px mono">FATOL/USDT <b class="up" id="navpx">100.00</b></span>
+  <a class="ghost" href="#prospectus" id="opendoc">Prospectus</a>
+  <a class="cta" href="mailto:fatolahi.cs@gmail.com">Send Email</a>
+</nav>
 
-<nav class="index" id="index" aria-label="Sections"></nav>
+<div class="tickerbar" aria-hidden="true"><div class="run">
+  <span>FATOL/USDT <b class="up">100.00</b> +∞%</span>
+  <span>MARKETS QUOTED <b>~50</b></span>
+  <span>SERVICES OWNED <b>4</b></span>
+  <span>BOOKS HEDGED <b>~25</b></span>
+  <span>UPTIME <b class="up">100.00%</b></span>
+  <span>ORDERS / DAY <b>millions</b></span>
+  <span>WS FEEDS <b>~30</b> ACROSS <b>3</b> VENUES</span>
+  <span>RISK MANAGER <b class="up">+$K IN 5 DAYS</b></span>
+  <span>DELIVERY TIME <b class="up">−60%</b></span>
+  <span>INCIDENTS <b>1</b> · RECURRENCE <b class="up">0</b></span>
+  <span>CIRCULATING SUPPLY <b>1</b></span>
+  <span>LISTED <b>NOV 2025</b></span>
+</div></div>
+
+<nav class="sidedock" id="dock" aria-label="Sections"></nav>
 <div class="cue" id="cue">Scroll <i></i></div>
 
 <main class="stage" id="stage">
-  <svg class="thread" id="thread" aria-hidden="true">
-    <path id="threadGhost" fill="none" stroke="rgba(140,47,38,.16)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
-    <path id="threadPath" fill="none" stroke="#8C2F26" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-    <circle id="threadHead" r="4.5" fill="#8C2F26"/>
-  </svg>
-
+  <svg class="thread" id="thread" aria-hidden="true"></svg>
   <div class="world" id="world">
 
-    <!-- ══ §00 OPEN ══ -->
-    <section class="scene s-open" data-name="Open" aria-labelledby="n-open">
-      <div class="kicker meta"><span>Software Engineer</span><span>Tehran, Iran · MMXXVI</span></div>
-      <h1 class="display" id="n-open"><span class="l1">Mohammad Reza</span><span class="l2">Fatolahi</span></h1>
-      <span class="anchor" data-anchor></span>
-      <div class="foot">
-        <p class="role">Backend engineer on the futures market-making desk at Tabdeal.</p>
-        <div class="links">
-          <a href="mailto:fatolahi.cs@gmail.com">fatolahi.cs@gmail.com</a>
-          <a href="tel:+989182606160">+98 918 260 6160</a>
-          <a href="https://github.com/mrfatolahi1" target="_blank" rel="noopener">github.com/mrfatolahi1</a>
+  <!-- ════════ 00 LISTING ════════ -->
+  <section class="scene" data-name="Listing" data-shape="curve" aria-labelledby="h0">
+    <span class="eyebrow"><i></i>New listing · Nov 2025 · perpetual</span>
+    <h1 class="hero" id="h0"><span class="who">Mohammad Reza Fatolahi — backend engineer</span>FATOL/USDT is <em>now listed.</em></h1>
+    <span class="anchor" data-anchor></span>
+    <p class="lede">Technical owner of all four services behind Tabdeal's futures market-making platform. Built from zero to roughly 50 markets, placing millions of orders a day against multi-million-dollar balances, at effectively 100% uptime.</p>
+    <div class="statbar">
+      <div><b class="up">~50</b><span>Markets quoted<br>from zero</span></div>
+      <div><b class="up">100.00%</b><span>Effective<br>uptime</span></div>
+      <div><b>4</b><span>Services owned<br>end to end</span></div>
+      <div><b>1</b><span>Circulating supply<br>max supply 1</span></div>
+      <div><b class="mono">negotiable</b><span>Market cap<br>make an offer</span></div>
+    </div>
+    <div class="acts">
+      <a class="act buy" href="mailto:fatolahi.cs@gmail.com">▲ Buy / Long — Send Email</a>
+      <a class="act sell" href="MohammadReza_Fatolahi.pdf" download>▼ Sell / Short — Download the CV PDF</a>
+    </div>
+    <p class="fine"><b>Tehran, Iran</b> — on-site &amp; remote · <b>+98 918 260 6160</b> · <b>github.com/mrfatolahi1</b><br>
+      Risk warning: past performance is, in this case, indicative of future results.</p>
+  </section>
+
+  <!-- ════════ 01 TRADE ════════ -->
+  <section class="scene" data-name="Trade" data-shape="calm" aria-labelledby="h1">
+    <h2 class="sr" id="h1">Trading screen</h2>
+    <div class="pairhead">
+      <span class="sym">FATOL/USDT <i>PERP</i></span>
+      <span class="last up" id="bigpx">100.00</span>
+      <span class="st"><b class="up">+∞%</b><span>since listing</span></span>
+      <span class="st"><b>100.00</b><span>24h high</span></span>
+      <span class="st"><b>100.00</b><span>24h low</span></span>
+      <span class="st"><b id="vol24">millions</b><span>24h orders</span></span>
+      <span class="st"><b class="mono" id="funding">08:00:00</b><span>funding in</span></span>
+      <span class="st"><b class="up">0.0000%</b><span>funding rate</span></span>
+    </div>
+    <span class="anchor" data-anchor></span>
+    <div class="trade">
+      <div class="pnl book"><h4><span>Order book</span><em>0.01</em></h4><div class="in">
+        <div class="cols"><span>Price</span><span>Size</span><span>Total</span></div>
+        <div id="asks"></div>
+        <div class="spread"><b id="midpx">100.00</b><span>spread <span id="spread">0.02%</span></span></div>
+        <div id="bids"></div>
+        <div class="feed">
+          <div class="row"><span>hedge engine — 25 books mirrored</span><b>FILLED</b></div>
+          <div class="row"><span>risk manager — armed, +$k in 5d</span><b>FILLED</b></div>
+          <div class="row"><span>price service — 30 sockets</span><b>FILLED</b></div>
+          <div class="row s"><span>manual quoting</span><b>CLOSED</b></div>
+        </div>
+      </div></div>
+
+      <div class="pnl chartpanel">
+        <div class="tf"><a>1m</a><a>15m</a><a>4H</a><a class="on">Since listing</a>
+          <span class="r mono">Nov 2025 → now</span></div>
+        <div class="chartwrap">
+          <div class="chartlabel"><b>Fatolahi</b><span>backend engineer · market maker team, futures</span></div>
+          <svg id="candles" aria-hidden="true"></svg>
         </div>
       </div>
-    </section>
 
-    <!-- ══ §01 THESIS ══ -->
-    <section class="scene" data-name="Thesis" aria-labelledby="n-thesis">
-      <div class="sec"><b>§01</b> Summary</div>
-      <h2 class="sr" id="n-thesis">Summary</h2>
-      <span class="anchor" data-anchor></span>
-      <div class="cols2">
-        <p class="prose dropcap">Backend engineer who owns <em>financially critical systems</em> end to end. Technical owner of all four services behind a crypto exchange's futures market-making platform — built from zero to roughly 50 markets, placing millions of orders a day against multi-million-dollar balances at effectively 100% uptime.</p>
-        <p class="prose">Works AI-first: architecture and planning done in dialogue with LLMs, implementation generated against detailed plans, every line reviewed because the money is real. Computer Science at Sharif, now an MBA in Strategy — comfortable owning the product and business call as well as the technical one.</p>
-      </div>
-      <div class="figures">
-        <div><div class="figure n" data-count="50" data-prefix="~">0</div><div class="k">Futures markets,<br>from zero</div></div>
-        <div><div class="figure n" style="font-size:clamp(24px,3.2vw,46px)">Millions</div><div class="k">Orders placed<br>per day</div></div>
-        <div><div class="figure n" data-count="100" data-dec="2" data-suffix="%">0</div><div class="k">Effective<br>uptime</div></div>
-        <div><div class="figure n" data-count="60" data-prefix="−" data-suffix="%">0</div><div class="k">Delivery time,<br>AI-first workflow</div></div>
-      </div>
-    </section>
-
-    <!-- ══ §02 TABDEAL ══ -->
-    <section class="scene" data-name="Tabdeal" aria-labelledby="n-tabdeal">
-      <div class="sec"><b>§02</b> Experience — current</div>
-      <div class="rolehead">
-        <div class="top">
-          <h2 class="display org" id="n-tabdeal">Tabdeal</h2>
-          <span class="when">Nov 2025 → Present</span>
+      <div class="pnl ticket"><div class="tabs"><a class="on">Limit</a><a>Market</a><a>Stop</a></div>
+        <div class="in">
+          <div class="fld"><small>Price</small><span>100.00 USDT</span></div>
+          <div class="fld"><small>Amount</small><span>1.00 FATOL</span></div>
+          <div class="fld"><small>Total</small><span>one hire</span></div>
+          <div class="slider"><div class="track"><i></i><b></b></div>
+            <div class="sc"><span>Availability</span><span>immediate</span></div></div>
+          <a class="act buy" href="mailto:fatolahi.cs@gmail.com">Buy / Long — Send Email</a>
+          <a class="act sell" href="MohammadReza_Fatolahi.pdf" download>Sell / Short — Download the CV PDF</a>
+          <p class="fine">Available <b>1 FATOL</b> · max supply 1, no further issuance<br>
+            Maker fee <b>0.00%</b> · taker fee: <b>a reply inside a day</b><br>
+            Time in force <b>GTC</b> · reduce-only <b>off</b><br>
+            <b>fatolahi.cs@gmail.com</b> · <b>+98 918 260 6160</b></p>
         </div>
-        <p class="what">Backend Engineer — Market Maker Team, Futures</p>
-        <p class="who">Crypto exchange · ~300 employees · Tehran, Iran</p>
       </div>
-      <span class="anchor" data-anchor></span>
-      <div class="figures">
-        <div><div class="figure n">4</div><div class="k">Services owned<br>end to end</div></div>
-        <div><div class="figure n">~50</div><div class="k">Markets quoted<br>from zero</div></div>
-        <div><div class="figure n">~25</div><div class="k">Books hedged<br>across exchanges</div></div>
-        <div><div class="figure n">5</div><div class="k">Days to first profit,<br>risk manager</div></div>
-      </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ══ §03 THE WORK ══ -->
-    <section class="scene wide" data-name="The work" aria-labelledby="n-work">
-      <div class="sec"><b>§03</b> What that meant</div>
-      <h2 class="sr" id="n-work">Responsibilities at Tabdeal</h2>
-      <span class="anchor" data-anchor></span>
-      <ol class="idx">
-        <li><span class="n">01</span><div><h3>Platform ownership</h3><p>Own all four services behind the exchange's futures market-making platform, taking coverage from zero to ~50 markets at effectively 100% uptime — millions of orders a day against multi-million-dollar balances, where a single error is a direct financial loss.</p></div></li>
-        <li><span class="n">02</span><div><h3>Hedge engine</h3><p>Built and own the engine that mirrors positions across external exchanges for ~25 markets with exact accounting reconciliation, letting the desk market-make those books with no directional risk.</p></div></li>
-        <li><span class="n">03</span><div><h3>Risk manager</h3><p>Proposed running the remaining ~25 markets unhedged under algorithmic risk control instead of hedging every position, then designed and built the service that executes it — several thousand dollars of profit within five days from one of the thinnest markets alone.</p></div></li>
-        <li><span class="n">04</span><div><h3>Price service</h3><p>A sharded streaming service consuming ~30 concurrent WebSocket feeds across three exchanges with REST fallback and per-shard health checks, keeping order-book and mark-price data fresh for every downstream consumer.</p></div></li>
-        <li><span class="n">05</span><div><h3>Order placement</h3><p>Designed the depth and spread algorithms that quote near-zero spreads across all covered markets.</p></div></li>
-        <li><span class="n">06</span><div><h3>Reconciliation</h3><p>Traced recurring account discrepancies through every price-mutation source, then automated the fix with reconciliation jobs, balance-mismatch alerts, and daily reports.</p></div></li>
-        <li><span class="n">07</span><div><h3>Team leadership</h3><p>Deputy to the tech lead — architecture decisions, code review, on-call. Onboarded, mentored, and managed the task flow of two junior engineers.</p></div></li>
-        <li><span class="n">08</span><div><h3>AI-first delivery</h3><p>Drove the team's AI-first workflow: brainstorm architecture with Claude, generate implementations against detailed plans, review every line given the financial stakes — roughly 60% off delivery time. Authored the shared AI guideline files now shipped in every team repository.</p></div></li>
-        <li><span class="n">09</span><div><h3>Product ownership</h3><p>Operates as a technical product manager alongside engineering: sets market-maker strategy and represents the team in board and CX meetings.</p></div></li>
-        <li><span class="n">10</span><div><h3>Incident leadership</h3><p>Led response to the mispricing event overleaf — and shipped the systems that stopped it recurring.</p></div></li>
-      </ol>
-    </section>
-
-    <!-- ══ §04 THE INCIDENT ══ -->
-    <section class="scene s-incident" data-name="Incident" aria-labelledby="n-incident">
-      <div class="sec"><b>§04</b> The one that mattered</div>
-      <h2 class="display h-lg shout" id="n-incident">A mispricing event caused <em>erroneous liquidations.</em></h2>
-      <span class="anchor" data-anchor></span>
-      <div class="after">
-        <p class="prose">Led the response: stabilized the affected markets, then made every affected user whole. Then shipped the things that meant it could not happen twice — a pre-deploy sanity-check service, hardened price validation, and a single source of truth for symbol metadata.</p>
-        <p class="verdict"><span>Since then</span>No recurrence.</p>
+  <!-- ════════ 02 POSITIONS ════════ -->
+  <section class="scene" data-name="Positions" data-shape="tape" aria-labelledby="h2">
+    <div class="pairhead">
+      <span class="sym">Positions <i>4</i></span>
+      <span class="st"><b class="up">all green</b><span>realised</span></span>
+      <span class="st"><b>Sep 2020 →</b><span>holding period</span></span>
+      <span class="st"><b class="up">0.00%</b><span>margin ratio</span></span>
+      <span class="st"><b class="up">−60%</b><span>delivery time, AI-first</span></span>
+    </div>
+    <h2 class="sr" id="h2">Experience</h2>
+    <span class="anchor" data-anchor></span>
+    <div class="pnl"><h4><span>Open &amp; closed positions</span><em>entry · size · realised</em></h4><div class="in">
+      <table>
+        <tr><th>Instrument</th><th>Side</th><th>Entry</th><th>Size</th><th>Realised</th></tr>
+        <tr><td class="nm">TABDEAL · futures MM<small>Crypto exchange, ~300 employees · Tehran</small></td>
+            <td><span class="tag g">LONG · open</span></td><td>Nov 2025</td>
+            <td>4 services<small>~50 markets quoted, ~25 hedged</small></td>
+            <td class="up">100.00% uptime<small>millions of orders/day, multi-million balances</small></td></tr>
+        <tr><td class="nm">MOHAYMEN · Java / Spring<small>Government systems contractor, ~100 employees</small></td>
+            <td><span class="tag">CLOSED</span></td><td>Dec 2022</td>
+            <td>national taxpayer platform<small>records covering the whole country</small></td>
+            <td class="up">PKCS#11 unblocked<small>Kafka event processing · Oracle · Docker</small></td></tr>
+        <tr><td class="nm">SYNAPPS · Python / Django<small>Healthcare &amp; process automation · remote</small></td>
+            <td><span class="tag">CLOSED</span></td><td>Sep 2021</td>
+            <td>pharmacy backend<small>prescriptions, insurance, medications</small></td>
+            <td class="up">REST + PostgreSQL<small>four-engineer team, fully remote</small></td></tr>
+        <tr><td class="nm">SHARIF · CS → MBA<small>Sharif University of Technology</small></td>
+            <td><span class="tag g">LONG · open</span></td><td>Sep 2020</td>
+            <td>BSc 2025 · MBA strategy<small>held through full-time engineering work</small></td>
+            <td class="up">in progress<small>organised camps, led volunteer initiatives</small></td></tr>
+      </table>
+      <div class="owns">
+        <div><b>Price service</b><span>Sharded streaming, ~30 concurrent WebSocket feeds across three exchanges, REST fallback, per-shard health checks.</span></div>
+        <div><b>Order placement</b><span>Depth and spread algorithms quoting near-zero spreads across every covered market.</span></div>
+        <div><b>Hedge engine</b><span>Mirrors positions across external exchanges for ~25 markets with exact accounting reconciliation.</span></div>
+        <div><b>Risk manager</b><span>Proposed running ~25 markets unhedged under algorithmic control, then built it. Several thousand dollars inside five days from one of the thinnest books.</span></div>
       </div>
-    </section>
+    </div></div>
+  </section>
 
-    <!-- ══ §05 PRIOR ══ -->
-    <section class="scene" data-name="Prior" aria-labelledby="n-prior">
-      <div class="sec"><b>§05</b> Before that</div>
-      <h2 class="sr" id="n-prior">Previous roles</h2>
-      <span class="anchor" data-anchor></span>
-      <div class="entry">
-        <div class="top"><span class="name">Mohaymen Group</span><span class="sub">Dec 2022 — Oct 2023</span></div>
-        <p class="prose" style="font-size:15px;font-style:italic">Backend Engineer — Java / Spring · government systems contractor, ~100 employees</p>
-        <ul>
-          <li>Built backend services for Iran's national taxpayer platform, a government system holding detailed records covering essentially the entire population of the country.</li>
-          <li>Implemented PKCS#11-based cryptography for sensitive operations — difficult with the Java tooling available at the time — unblocking a requirement the team had been unable to satisfy.</li>
-        </ul>
-        <p class="stack">Java · Spring · Kafka · Oracle Database · Docker</p>
+  <!-- ════════ 03 DEPTH ════════ -->
+  <section class="scene" data-name="Depth" data-shape="calm" aria-labelledby="h3">
+    <div class="pairhead">
+      <span class="sym">Market depth <i>L2</i></span>
+      <span class="st"><b class="up">deep</b><span>bid side</span></span>
+      <span class="st"><b>0.02%</b><span>spread</span></span>
+      <span class="st"><b>3</b><span>venues consumed</span></span>
+    </div>
+    <h2 class="sr" id="h3">Skills</h2>
+    <span class="anchor" data-anchor></span>
+    <div class="depthgrid">
+      <div class="pnl"><h4><span>Depth chart</span><em>bids — what is on offer · asks — what is wanted</em></h4>
+        <div class="depthwrap"><svg id="depthchart" aria-hidden="true"></svg></div>
+        <div class="dlegend"><span><i style="background:var(--up)"></i>Bid — what I bring</span>
+          <span><i style="background:var(--down)"></i>Ask — what I am looking for</span>
+          <span><i style="background:var(--faint)"></i>Mid — where we meet</span></div>
       </div>
-      <div class="entry">
-        <div class="top"><span class="name">SynApps</span><span class="sub">Sep 2021 — Apr 2022</span></div>
-        <p class="prose" style="font-size:15px;font-style:italic">Backend Engineer — Python / Django · healthcare &amp; process automation, remote</p>
-        <ul>
-          <li>Owned the backend of a pharmacy management system, modeling prescriptions, insurance, medications, and patients along with the administrative rules real Iranian pharmacies operate under.</li>
-          <li>Delivered REST APIs on Django and PostgreSQL within a four-engineer team, working fully remotely.</li>
-        </ul>
-        <p class="stack">Python · Django · DRF · PostgreSQL</p>
-      </div>
-    </section>
+      <div class="pnl"><h4><span>Book detail</span><em>size</em></h4><div class="in">
+        <dl class="skills">
+          <div><dt>Languages</dt><dd>Python · Java · Go · Scala · TypeScript · SQL</dd></div>
+          <div><dt>Backend</dt><dd>Django · DRF · Spring Boot · Gin · REST · Celery · Kafka · WebSockets · microservices</dd></div>
+          <div><dt>Data</dt><dd>PostgreSQL · MySQL · Oracle · Redis · Elasticsearch · MongoDB · Cassandra</dd></div>
+          <div><dt>AI</dt><dd>LLM-driven development with Claude · prompt and context engineering · AI-assisted review · Anthropic, OpenAI-compatible, Ollama</dd></div>
+          <div><dt>Infra</dt><dd>Docker · Compose · Linux · Git · CI · Grafana and Elastic alerting · on-call</dd></div>
+          <div><dt>Product</dt><dd>Technical product management · strategy · board-level communication · mentoring</dd></div>
+          <div><dt>Asks</dt><dd>Ownership of a whole surface · money on the line · a team to deputise for · remote or Tehran on-site</dd></div>
+        </dl>
+      </div></div>
+    </div>
+  </section>
 
-    <!-- ══ §06 PROJECTS ══ -->
-    <section class="scene wide" data-name="Projects" aria-labelledby="n-proj">
-      <div class="sec"><b>§06</b> Built for the love of it</div>
-      <h2 class="sr" id="n-proj">Selected projects</h2>
-      <span class="anchor" data-anchor></span>
-      <div class="entries2">
-      <a class="entry" href="https://github.com/mrfatolahi1/Jasem" target="_blank" rel="noopener">
-        <div class="top"><span class="name">Jasem</span><span class="repo">mrfatolahi1/Jasem ↗</span></div>
-        <p>Plain-text task, time, and expense tracker for the terminal, published on PyPI and used daily. Natural-language capture through a pluggable LLM layer — local Ollama, OpenAI-compatible, or Anthropic — degrading gracefully to regex parsing when no model is reachable. Zero runtime dependencies, human-readable Markdown storage, Jalali calendar, MIT licensed.</p>
-        <p class="stack">Python · LLM APIs · CLI</p>
+  <!-- ════════ 04 INCIDENT ════════ -->
+  <section class="scene" data-name="Incident" data-shape="spike" aria-labelledby="h4">
+    <div class="pairhead">
+      <span class="sym">Event log <i style="background:var(--down);color:#180207">SEV 1</i></span>
+      <span class="st"><b class="down">mark ≠ index</b><span>divergence</span></span>
+      <span class="st"><b class="down">cascade</b><span>forced liquidations</span></span>
+      <span class="st"><b class="up">closed</b><span>status</span></span>
+      <span class="st"><b class="up">0</b><span>recurrences</span></span>
+    </div>
+    <span class="anchor" data-anchor></span>
+    <div class="alert">
+      <h3><span>⚠ Incident · funds at risk · owned end to end</span><span>resolved — no recurrence</span></h3>
+      <div class="in">
+        <p class="big" id="h4">A mispricing event caused <em>erroneous liquidations.</em></p>
+        <ol class="steps">
+          <li><b>01</b><span>Stabilised the affected markets while the book was still moving.</span></li>
+          <li><b>02</b><span>Made every affected user whole — the money was real and so was the loss.</span></li>
+          <li><b>03</b><span>Shipped a pre-deploy sanity-check service so a bad price cannot reach production.</span></li>
+          <li><b>04</b><span>Hardened price validation across every mutation path.</span></li>
+          <li><b>05</b><span>Built a single source of truth for symbol metadata, ending the class of bug.</span></li>
+          <li><b>06</b><span>Traced recurring account discrepancies, then automated reconciliation jobs, balance-mismatch alerts and daily reports.</span></li>
+        </ol>
+        <div class="resolve"><b>No recurrence since.</b><span>the wick, not the trend</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════ 05 CONTRACTS ════════ -->
+  <section class="scene" data-name="Contracts" data-shape="calm" aria-labelledby="h5">
+    <div class="pairhead">
+      <span class="sym">Contracts deployed <i>5</i></span>
+      <span class="st"><b class="up">verified</b><span>source</span></span>
+      <span class="st"><b>MIT</b><span>licence</span></span>
+      <span class="st"><b>PyPI</b><span>one published</span></span>
+    </div>
+    <h2 class="sr" id="h5">Selected projects</h2>
+    <span class="anchor" data-anchor></span>
+    <div class="contracts">
+      <a class="contract" href="https://github.com/mrfatolahi1/Jasem" target="_blank" rel="noopener">
+        <div class="top"><b>Jasem</b><span class="addr">mrfatolahi1/Jasem ↗</span></div>
+        <p>Plain-text task, time and expense tracker for the terminal, on PyPI and used daily. Natural-language capture through a pluggable LLM layer — local Ollama, OpenAI-compatible or Anthropic — degrading gracefully to regex when no model answers.</p>
+        <div class="stk"><span class="tag">Python</span><span class="tag">LLM APIs</span><span class="tag">CLI</span><span class="tag g">zero deps</span></div>
       </a>
-      <a class="entry" href="https://github.com/mrfatolahi1/Crypto-Matching-Engine" target="_blank" rel="noopener">
-        <div class="top"><span class="name">Crypto Matching Engine</span><span class="repo">mrfatolahi1/Crypto-Matching-Engine ↗</span></div>
-        <p>Matching engine microservice with deterministic price–time priority. Matches single-threaded to rule out race conditions and double spending, holds the live book in Redis, and guarantees exact crash recovery by replaying a PostgreSQL event log over periodic snapshots. Ships concurrency and recovery suites, Locust load tests, OpenAPI docs.</p>
-        <p class="stack">Python · Django REST Framework · Redis · Celery · PostgreSQL · Docker Compose</p>
+      <a class="contract" href="https://github.com/mrfatolahi1/Crypto-Matching-Engine" target="_blank" rel="noopener">
+        <div class="top"><b>Crypto Matching Engine</b><span class="addr">mrfatolahi1/Crypto-Matching-Engine ↗</span></div>
+        <p>Deterministic price–time priority. Matches single-threaded to rule out race conditions and double spending, holds the live book in Redis, and guarantees exact crash recovery by replaying a PostgreSQL event log over periodic snapshots.</p>
+        <div class="stk"><span class="tag">Python</span><span class="tag">DRF</span><span class="tag">Redis</span><span class="tag">Celery</span><span class="tag">PostgreSQL</span></div>
       </a>
-      <a class="entry" href="https://github.com/mrfatolahi1/go-auth" target="_blank" rel="noopener">
-        <div class="top"><span class="name">go-auth</span><span class="repo">mrfatolahi1/go-auth ↗</span></div>
+      <a class="contract" href="https://github.com/mrfatolahi1/go-auth" target="_blank" rel="noopener">
+        <div class="top"><b>go-auth</b><span class="addr">mrfatolahi1/go-auth ↗</span></div>
         <p>Authentication service in Go: JWT issuing and validation, bcrypt password handling, Redis-backed sessions, PostgreSQL persistence through GORM.</p>
-        <p class="stack">Go · Gin · GORM · PostgreSQL · Redis · JWT</p>
+        <div class="stk"><span class="tag">Go</span><span class="tag">Gin</span><span class="tag">GORM</span><span class="tag">JWT</span></div>
       </a>
-      <a class="entry" href="https://github.com/mrfatolahi1/Lambda_Server" target="_blank" rel="noopener">
-        <div class="top"><span class="name">Lambda Architecture Pipeline</span><span class="repo">mrfatolahi1/Lambda_Server ↗</span></div>
-        <p>Streaming and batch pipeline implementing the lambda architecture across a Spark cluster — master plus three workers — with Kafka ingestion, a Cassandra serving layer, and Zeppelin notebooks.</p>
-        <p class="stack">Scala · Apache Spark · Kafka · Cassandra · Docker Compose</p>
+      <a class="contract" href="https://github.com/mrfatolahi1/Lambda_Server" target="_blank" rel="noopener">
+        <div class="top"><b>Lambda Pipeline</b><span class="addr">mrfatolahi1/Lambda_Server ↗</span></div>
+        <p>Streaming and batch pipeline implementing the lambda architecture across a Spark cluster — master plus three workers — with Kafka ingestion, a Cassandra serving layer and Zeppelin notebooks.</p>
+        <div class="stk"><span class="tag">Scala</span><span class="tag">Spark</span><span class="tag">Kafka</span><span class="tag">Cassandra</span></div>
       </a>
-      <a class="entry" href="https://github.com/mrfatolahi1/zare_bin" target="_blank" rel="noopener">
-        <div class="top"><span class="name">Event-driven URL Shortener</span><span class="repo">mrfatolahi1/zare_bin ↗</span></div>
+      <a class="contract" href="https://github.com/mrfatolahi1/zare_bin" target="_blank" rel="noopener">
+        <div class="top"><b>Event-driven URL Shortener</b><span class="addr">mrfatolahi1/zare_bin ↗</span></div>
         <p>Two Spring Boot microservices that generate and count short URLs, communicating asynchronously over Kafka.</p>
-        <p class="stack">Java 17 · Spring Boot · Kafka · Docker Compose</p>
+        <div class="stk"><span class="tag">Java 17</span><span class="tag">Spring Boot</span><span class="tag">Kafka</span></div>
       </a>
+      <div class="contract" style="border-style:dashed;background:transparent">
+        <div class="top"><b>Proof of reserves</b><span class="addr">github.com/mrfatolahi1</span></div>
+        <p>Everything above is public and readable. The claims on this page are the kind that survive being checked, which is the only reason to make them.</p>
+        <div class="stk"><span class="tag y">verify anything</span></div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ══ §07 SHARIF ══ -->
-    <section class="scene" data-name="Sharif" aria-labelledby="n-edu">
-      <div class="sec"><b>§07</b> Education</div>
-      <h2 class="display h-md" id="n-edu">Sharif University of Technology</h2>
-      <span class="anchor" data-anchor></span>
-      <div class="entry">
-        <div class="top"><span class="name">M.Sc. Business Administration — Strategy</span><span class="sub">Sep 2025 — Present</span></div>
-        <p>In progress, pursued alongside full-time engineering work.</p>
-      </div>
-      <div class="entry">
-        <div class="top"><span class="name">B.Sc. Computer Science</span><span class="sub">Sep 2020 — Sep 2025</span></div>
-        <p>Data Structures, Algorithms, Operating Systems, Data Engineering, Web Programming, Advanced Programming. Completed while working full-time as a backend engineer; organized university camps and events and led volunteer initiatives.</p>
-      </div>
-    </section>
+  <!-- ════════ 06 FUNDAMENTALS ════════ -->
+  <section class="scene" data-name="Fundamentals" data-shape="curve" aria-labelledby="h6">
+    <div class="pairhead">
+      <span class="sym">Fundamentals <i>audited</i></span>
+      <span class="st"><b>Sep 2020</b><span>genesis</span></span>
+      <span class="st"><b class="up">2</b><span>degrees, one in flight</span></span>
+      <span class="st"><b class="up">2</b><span>engineers mentored</span></span>
+    </div>
+    <h2 class="sr" id="h6">Education and how I work</h2>
+    <span class="anchor" data-anchor></span>
+    <div class="pnl"><h4><span>What backs the token</span><em>verifiable</em></h4><div class="in">
+      <table>
+        <tr><th>Reserve</th><th>Detail</th><th>Period</th></tr>
+        <tr><td class="nm">M.Sc. Business Administration</td>
+            <td>Strategy, Sharif University of Technology<small>In progress, pursued alongside full-time engineering work</small></td>
+            <td><span class="tag g">Sep 2025 →</span></td></tr>
+        <tr><td class="nm">B.Sc. Computer Science</td>
+            <td>Sharif University of Technology<small>Data structures, algorithms, operating systems, data engineering, web programming. Completed while working full-time; organised university camps and led volunteer initiatives.</small></td>
+            <td><span class="tag">2020 – 2025</span></td></tr>
+        <tr><td class="nm">AI-first delivery</td>
+            <td>Architecture and trade-offs brainstormed with Claude, implementations generated against detailed plans, every line reviewed because the money is real<small>Cut delivery time by roughly 60%. Authored the shared AI guideline files now shipped in every team repository.</small></td>
+            <td><span class="tag g">−60% time</span></td></tr>
+        <tr><td class="nm">Team &amp; product</td>
+            <td>Deputy to the tech lead — architecture decisions, code review, on-call. Onboarded and mentored two junior engineers and managed their task flow<small>Operates as a technical product manager alongside engineering: sets market-maker strategy and represents the team in board and CX meetings.</small></td>
+            <td><span class="tag g">ongoing</span></td></tr>
+        <tr><td class="nm">Languages</td><td>Persian — native · English — fluent</td><td><span class="tag">—</span></td></tr>
+      </table>
+    </div></div>
+  </section>
 
-    <!-- ══ §08 STACK ══ -->
-    <section class="scene" data-name="Stack" aria-labelledby="n-skills">
-      <div class="sec"><b>§08</b> Colophon</div>
-      <h2 class="sr" id="n-skills">Skills</h2>
-      <span class="anchor" data-anchor></span>
-      <dl class="colophon">
-        <div><dt>Languages</dt><dd>Python · Java · Go · Scala · TypeScript · SQL</dd></div>
-        <div><dt>Backend</dt><dd>Django · Django REST Framework · Spring Boot · Gin · REST APIs · Celery · Kafka · WebSockets · microservice architecture</dd></div>
-        <div><dt>Data stores</dt><dd>PostgreSQL · MySQL · Oracle · Redis · Elasticsearch; MongoDB and Cassandra in academic and side projects</dd></div>
-        <div><dt>AI engineering</dt><dd>LLM-driven development with Claude · prompt and context engineering · AI-assisted code review · LLM API integration (Anthropic, OpenAI-compatible, Ollama)</dd></div>
-        <div><dt>Infrastructure</dt><dd>Docker · Docker Compose · Linux · Git · CI · Grafana and Elastic monitoring and alerting · on-call operations</dd></div>
-        <div><dt>Product</dt><dd>Technical product management · product and business strategy · stakeholder and board-level communication · mentoring</dd></div>
-        <div><dt>Spoken</dt><dd>Persian (native) · English (fluent)</dd></div>
-      </dl>
-    </section>
-
-    <!-- ══ §09 CLOSE ══ -->
-    <section class="scene s-close" data-name="Close" aria-labelledby="n-close">
-      <div class="sec"><b>§09</b> Contact</div>
-      <h2 class="display h-lg" id="n-close">The line<br>never broke.</h2>
-      <span class="anchor" data-anchor></span>
-      <div class="contacts">
-        <a href="mailto:fatolahi.cs@gmail.com"><span class="k">Email</span><span class="v">fatolahi.cs@gmail.com</span></a>
-        <a href="tel:+989182606160"><span class="k">Phone</span><span class="v">+98 918 260 6160</span></a>
-        <a href="https://github.com/mrfatolahi1" target="_blank" rel="noopener"><span class="k">GitHub</span><span class="v">mrfatolahi1 ↗</span></a>
-        <a href="MohammadReza_Fatolahi.pdf" download><span class="k">Résumé</span><span class="v">Download PDF ↓</span></a>
+  <!-- ════════ 07 SWAP / CONTACT ════════ -->
+  <section class="scene" data-name="Contact" data-shape="flat" aria-labelledby="h7">
+    <div class="pairhead">
+      <span class="sym">Swap <i>v3</i></span>
+      <span class="st"><b>1 : 1</b><span>rate</span></span>
+      <span class="st"><b class="up">0.00%</b><span>slippage</span></span>
+      <span class="st"><b class="up">deep</b><span>liquidity</span></span>
+      <span class="st"><b>instant</b><span>settlement</span></span>
+    </div>
+    <h2 class="sr" id="h7">Contact</h2>
+    <span class="anchor" data-anchor></span>
+    <div class="swapgrid">
+      <div class="swapbox">
+        <h4><span>Swap</span><span>slippage 0.00%</span></h4>
+        <div class="leg"><div class="l"><small>You pay</small><b>1.00</b></div>
+          <span class="tok"><i class="a"></i>INTERVIEW</span></div>
+        <div class="swaparrow"><i>↓</i></div>
+        <div class="leg"><div class="l"><small>You receive</small><b>1.00</b></div>
+          <span class="tok"><i class="b"></i>FATOL</span></div>
+        <div class="swaprows">
+          <div><span>Rate</span><b>1 interview = 1 engineer</b></div>
+          <div><span>Route</span><b>email → call → offer</b></div>
+          <div><span>Price impact</span><b class="up">−60% delivery time</b></div>
+          <div><span>Network fee</span><b>a reply inside a day</b></div>
+          <div><span>Max supply</span><b>1 · no further issuance</b></div>
+          <div><span>Settlement</span><b>Tehran on-site or remote</b></div>
+        </div>
+        <a class="act buy" style="width:100%;margin-top:14px" href="mailto:fatolahi.cs@gmail.com">Swap — Send Email</a>
       </div>
-    </section>
+      <div>
+        <div class="contacts">
+          <a href="mailto:fatolahi.cs@gmail.com"><span class="k">Email</span><span class="v">fatolahi.cs@gmail.com</span></a>
+          <a href="tel:+989182606160"><span class="k">Phone</span><span class="v">+98 918 260 6160</span></a>
+          <a href="https://github.com/mrfatolahi1" target="_blank" rel="noopener"><span class="k">GitHub</span><span class="v">github.com/mrfatolahi1 ↗</span></a>
+          <a href="MohammadReza_Fatolahi.pdf" download><span class="k">CV</span><span class="v">Download the PDF ↓</span></a>
+        </div>
+        <div class="acts">
+          <a class="act buy" href="mailto:fatolahi.cs@gmail.com">▲ Buy / Long — Send Email</a>
+          <a class="act sell" href="MohammadReza_Fatolahi.pdf" download>▼ Sell / Short — Download the CV PDF</a>
+          <a class="act ghost" href="#prospectus" data-doc-open>Read the prospectus</a>
+        </div>
+        <p class="fine">Tehran, Iran — on-site &amp; remote · order types accepted: <b>full-time</b>, <b>contract</b>, <b>remote</b><br>
+          Time in force <b>GTC</b>. The book stays open.</p>
+      </div>
+    </div>
+  </section>
 
   </div>
 </main>
 <div class="driver" id="driver"></div>
-
-<!-- ══════════════════════════ the document ══════════════════════════ -->
 <button class="docclose" id="docclose" type="button">Close ✕</button>
-<div class="doc" id="document" role="dialog" aria-label="Résumé document">
+<div class="doc" id="prospectus" role="dialog" aria-label="Résumé document">
   <article class="sheet">
     <header class="h">
       <div class="nm">Mohammad Reza Fatolahi</div>
@@ -600,19 +773,19 @@ html[data-doc="open"] .docclose{opacity:1;visibility:visible}
     <h2>Selected Projects</h2><hr>
     <div class="pj" style="margin-top:0"><div class="ph"><b>Jasem</b><a href="https://github.com/mrfatolahi1/Jasem" target="_blank" rel="noopener">github.com/mrfatolahi1/Jasem</a></div>
       <p>Plain-text task, time, and expense tracker for the terminal, published on PyPI and used daily. Natural-language capture through a pluggable LLM layer (local Ollama, OpenAI-compatible, or Anthropic) that degrades gracefully to regex parsing when no model is reachable. Zero runtime dependencies, human-readable Markdown storage, Jalali calendar support, MIT licensed.</p>
-      <div class="st">Python · LLM APIs · CLI</div></div>
+      <div class="st2">Python · LLM APIs · CLI</div></div>
     <div class="pj"><div class="ph"><b>Crypto Matching Engine</b><a href="https://github.com/mrfatolahi1/Crypto-Matching-Engine" target="_blank" rel="noopener">github.com/mrfatolahi1/Crypto-Matching-Engine</a></div>
       <p>Matching engine microservice with deterministic price–time priority. Runs matching single-threaded to rule out race conditions and double spending, holds the live book in Redis, and guarantees exact crash recovery by replaying a PostgreSQL event log over periodic snapshots. Ships concurrency and recovery test suites, Locust load tests, and OpenAPI documentation.</p>
-      <div class="st">Python · Django REST Framework · Redis · Celery · PostgreSQL · Docker Compose</div></div>
+      <div class="st2">Python · Django REST Framework · Redis · Celery · PostgreSQL · Docker Compose</div></div>
     <div class="pj"><div class="ph"><b>go-auth</b><a href="https://github.com/mrfatolahi1/go-auth" target="_blank" rel="noopener">github.com/mrfatolahi1/go-auth</a></div>
       <p>Authentication service in Go: JWT issuing and validation, bcrypt password handling, Redis-backed sessions, and PostgreSQL persistence through GORM.</p>
-      <div class="st">Go · Gin · GORM · PostgreSQL · Redis · JWT</div></div>
+      <div class="st2">Go · Gin · GORM · PostgreSQL · Redis · JWT</div></div>
     <div class="pj"><div class="ph"><b>Lambda Architecture Pipeline</b><a href="https://github.com/mrfatolahi1/Lambda_Server" target="_blank" rel="noopener">github.com/mrfatolahi1/Lambda_Server</a></div>
       <p>Streaming and batch pipeline implementing the lambda architecture across a Spark cluster (master plus three workers), Kafka ingestion, a Cassandra serving layer, and Zeppelin notebooks.</p>
-      <div class="st">Scala · Apache Spark · Kafka · Cassandra · Docker Compose</div></div>
+      <div class="st2">Scala · Apache Spark · Kafka · Cassandra · Docker Compose</div></div>
     <div class="pj"><div class="ph"><b>Event-driven URL Shortener</b><a href="https://github.com/mrfatolahi1/zare_bin" target="_blank" rel="noopener">github.com/mrfatolahi1/zare_bin</a></div>
       <p>Two Spring Boot microservices that generate and count short URLs, communicating asynchronously over Kafka.</p>
-      <div class="st">Java 17 · Spring Boot · Kafka · Docker Compose</div></div>
+      <div class="st2">Java 17 · Spring Boot · Kafka · Docker Compose</div></div>
 
     <h2>Education</h2><hr>
     <div class="e"><span class="l">M.Sc. in Business Administration (MBA), Strategy</span><span class="r">Sep 2025 – Present</span></div>
@@ -638,10 +811,11 @@ html[data-doc="open"] .docclose{opacity:1;visibility:visible}
   </article>
   <div class="docactions">
     <a class="primary" href="MohammadReza_Fatolahi.pdf" download>Download PDF</a>
-    <a href="#" data-close>Back to the site</a>
+    <a href="#" data-doc-close>Back to the exchange</a>
     <a href="mailto:fatolahi.cs@gmail.com">Email me</a>
   </div>
 </div>
+
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Person","name":"Mohammad Reza Fatolahi","url":"https://fatol.ir/","email":"mailto:fatolahi.cs@gmail.com","telephone":"+989182606160","jobTitle":"Software Engineer","address":{"@type":"PostalAddress","addressLocality":"Tehran","addressCountry":"IR"},"sameAs":["https://github.com/mrfatolahi1"],"worksFor":{"@type":"Organization","name":"Tabdeal"},"alumniOf":{"@type":"CollegeOrUniversity","name":"Sharif University of Technology"},"knowsLanguage":["fa","en"],"knowsAbout":["Backend engineering","Market making","Python","Java","Go","Kafka","PostgreSQL","Redis","Distributed systems"]}
@@ -650,205 +824,277 @@ html[data-doc="open"] .docclose{opacity:1;visibility:visible}
 <script>
 (function(){
 "use strict";
-var html=document.documentElement;
-var reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+var html=document.documentElement,reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
 var world=document.getElementById('world'),driver=document.getElementById('driver');
 var scenes=[].slice.call(world.querySelectorAll('.scene'));
-var svg=document.getElementById('thread'),path=document.getElementById('threadPath'),
-    ghost=document.getElementById('threadGhost'),head=document.getElementById('threadHead');
-var progressEl=document.getElementById('progress'),chapterEl=document.getElementById('chapter'),
-    indexEl=document.getElementById('index'),cue=document.getElementById('cue');
+var svg=document.getElementById('thread'),dock=document.getElementById('dock'),
+    cue=document.getElementById('cue'),prog=document.getElementById('progress');
 var N=scenes.length,W=0,H=0,camera=false,maxScroll=0,anchorOff=[],fit=[],curP=0,tgtP=0,lastIdx=-1;
 
-/* ── the camera path: x,y in viewport units, s = scale ── */
-var KEY=[
-  {x:0.00, y: 0.00, s:1.00, g:'flat'},
-  {x:1.32, y: 0.30, s:0.98, g:'curve'},
-  {x:2.72, y:-0.12, s:1.05, g:'tape'},
-  {x:4.18, y: 0.44, s:0.95, g:'calm'},
-  {x:5.62, y: 1.08, s:1.07, g:'spike'},
-  {x:7.02, y: 0.56, s:0.98, g:'steps'},
-  {x:8.46, y: 0.06, s:0.95, g:'flat'},
-  {x:9.88, y:-0.36, s:1.00, g:'flat'},
-  {x:11.22,y: 0.12, s:0.98, g:'calm'},
-  {x:12.62,y: 0.64, s:1.02, g:'flat'}
-];
+var KX=[0,1.50,3.00,4.50,6.00,7.50,9.00,10.45],
+    KY=[0,0.34,-0.18,0.42,1.00,0.50,-0.05,0.55],
+    KS=[1,1.02,0.98,1.02,1.06,0.98,1.00,1.02];
 
-/* ── shape generators: u in [0,1] across the viewport, returns px offset ── */
-var noise=[];(function(){var s=20260824;for(var i=0;i<220;i++){s=(s*1664525+1013904223)%4294967296;noise.push(s/4294967296-0.5)}})();
-function nz(u,f){var t=u*f,i=Math.floor(t),k=t-i,a=noise[i%noise.length],b=noise[(i+1)%noise.length];
+/* ── deterministic noise for the shapes ── */
+var nse=[];(function(){var s=20260825;for(var i=0;i<260;i++){s=(s*1664525+1013904223)%4294967296;nse.push(s/4294967296-0.5)}})();
+function nz(u,f){var t=u*f,i=Math.floor(t),k=t-i,a=nse[i%nse.length],b=nse[(i+1)%nse.length];
   return a+(b-a)*(k*k*(3-2*k));}
 var GEN={
   flat:function(){return 0},
-  curve:function(u){var e=u*u*(3-2*u);return -H*0.115*e},
-  tape:function(u){return (nz(u,34)*1.5+nz(u,11)*0.7)*H*0.055},
+  curve:function(u){var e=u*u*(3-2*u);return -H*0.10*e},
   calm:function(u){return (nz(u,17)*1.1+nz(u,6)*0.5)*H*0.022},
-  steps:function(u){
-    var a=1/(1+Math.exp(-(u-0.34)*26)),b=1/(1+Math.exp(-(u-0.68)*26));
-    return (a*0.5+b*0.5)*H*0.16;
-  },
-  spike:function(u){
-    var d=(u-0.50)/0.045, crash=Math.exp(-d*d)*H*0.42;
-    var r=(u-0.63)/0.13, rec=-Math.exp(-r*r)*H*0.09;
-    return crash+rec+nz(u,60)*H*0.012;
-  }
+  tape:function(u){return (nz(u,34)*1.5+nz(u,11)*0.7)*H*0.05},
+  spike:function(u){var d=(u-0.50)/0.045,c=Math.exp(-d*d)*H*0.40;
+    var r=(u-0.63)/0.13;return c-Math.exp(-r*r)*H*0.085+nz(u,60)*H*0.012;}
 };
-function shape(name,u){return (GEN[name]||GEN.flat)(u)}
-
-/* ── easing: dwell at each scene, then move like a camera ── */
+function shape(n,u){return (GEN[n]||GEN.flat)(u)}
 function smoother(t){return t*t*t*(t*(t*6-15)+10)}
+function clamp(v,a,b){return v<a?a:v>b?b:v}
+function lerp(a,b,t){return a+(b-a)*t}
 
 /* ── layout ── */
 function measure(){
   W=innerWidth;H=innerHeight;
-  camera = W>=980 && H>=560 && !reduced;
+  camera=W>=1000&&H>=580&&!reduced;
   html.setAttribute('data-mode',camera?'camera':'flat');
   svg.setAttribute('width',W);svg.setAttribute('height',H);
+  drawCandles();drawDepth();
   if(!camera){
     driver.style.height='0px';world.style.transform='';
-    scenes.forEach(function(s){s.style.left=s.style.top=s.style.opacity=s.style.transform='';s._d=s._o=undefined;});
+    scenes.forEach(function(s){s.style.left=s.style.top=s.style.opacity=s.style.transform='';s._d=s._o=undefined});
     maxScroll=0;return;
   }
   anchorOff=[];fit=[];
   scenes.forEach(function(s,i){
-    s.style.left=(KEY[i].x*W)+'px';
-    s.style.top=(KEY[i].y*H)+'px';
+    s.style.left=(KX[i]*W)+'px';s.style.top=(KY[i]*H)+'px';
     s.style.transform='translate(-50%,-50%)';
-    var h=s.offsetHeight, f=Math.min(1,(H-104)/Math.max(h,1));
-    if(f>0.999)f=1;
+    var h=s.offsetHeight,f=Math.min(1,(H-96)/Math.max(h,1));if(f>0.999)f=1;
     fit.push(f);
     var a=s.querySelector('[data-anchor]');
     anchorOff.push((a?(a.offsetTop+a.offsetHeight/2-h/2):0)*f);
   });
   maxScroll=Math.round((N-1)*H*2.15);
   driver.style.height=(maxScroll+H)+'px';
-  curP=tgtP=clamp(scrollY/maxScroll,0,1);
-  render(true);
+  curP=tgtP=clamp(scrollY/maxScroll,0,1);render();
 }
-function clamp(v,a,b){return v<a?a:v>b?b:v}
-function lerp(a,b,t){return a+(b-a)*t}
-
-/* ── the frame ── */
 function render(){
-  var f=curP*(N-1), i=clamp(Math.floor(f),0,N-2), t=smoother(clamp(f-i,0,1));
-  var a=KEY[i],b=KEY[i+1];
-  var camX=lerp(a.x,b.x,t)*W, camY=lerp(a.y,b.y,t)*H, s=lerp(a.s,b.s,t);
-
+  var f=curP*(N-1),i=clamp(Math.floor(f),0,N-2),t=smoother(clamp(f-i,0,1));
+  var camX=lerp(KX[i],KX[i+1],t)*W,camY=lerp(KY[i],KY[i+1],t)*H,s=lerp(KS[i],KS[i+1],t);
   world.style.transform='translate('+(W/2)+'px,'+(H/2)+'px) scale('+s.toFixed(4)+') translate('+(-camX)+'px,'+(-camY)+'px)';
-
-  /* scenes: fade + a touch of parallax drift */
   for(var k=0;k<N;k++){
-    var d=Math.abs(f-k);
-    var o=d>=0.78?0:(d<=0.30?1:1-(d-0.30)/0.48);
-    var sc=scenes[k];
+    var d=Math.abs(f-k),o=d>=0.76?0:(d<=0.30?1:1-(d-0.30)/0.46),sc=scenes[k];
     if(sc._o!==o){sc.style.opacity=o.toFixed(3);sc.style.pointerEvents=o<0.06?'none':'';sc._o=o}
-    var drift=Math.round((f-k)*-34);
-    if(sc._d!==drift){
-      sc.style.transform='translate(-50%,-50%) translate('+drift+'px,0)'+(fit[k]<1?' scale('+fit[k].toFixed(4)+')':'');
-      sc._d=drift;
-    }
+    var dr=Math.round((f-k)*-30);
+    if(sc._d!==dr){sc.style.transform='translate(-50%,-50%) translate('+dr+'px,0)'+(fit[k]<1?' scale('+fit[k].toFixed(4)+')':'');sc._d=dr}
   }
-
-  /* the thread: blend the two adjacent shapes, hung off the anchors */
-  var yA=H/2+(KEY[i].y*H+anchorOff[i]-camY)*s;
-  var yB=H/2+(KEY[i+1].y*H+anchorOff[i+1]-camY)*s;
-  var baseY=lerp(yA,yB,t);
-  var d='',SEG=88;
-  for(var q=0;q<=SEG;q++){
-    var u=q/SEG, x=u*W;
-    var y=baseY+lerp(shape(a.g,u),shape(b.g,u),t)*s;
-    d+=(q?'L':'M')+x.toFixed(1)+' '+y.toFixed(1);
-  }
-  path.setAttribute('d',d);ghost.setAttribute('d',d);
-
-  var hu=0.06+0.83*curP, hx=hu*W;
-  var hy=baseY+lerp(shape(a.g,hu),shape(b.g,hu),t)*s;
-  head.setAttribute('cx',hx.toFixed(1));head.setAttribute('cy',hy.toFixed(1));
-
-  progressEl.style.width=(curP*100).toFixed(2)+'%';
-
+  var gA=scenes[i].dataset.shape||'flat',gB=scenes[i+1].dataset.shape||'flat';
+  var yA=H/2+(KY[i]*H+anchorOff[i]-camY)*s,yB=H/2+(KY[i+1]*H+anchorOff[i+1]-camY)*s;
+  var baseY=lerp(yA,yB,t),pts=[],SEG=112,q;
+  for(q=0;q<=SEG;q++){var u=q/SEG;pts.push({x:u*W,y:baseY+lerp(shape(gA,u),shape(gB,u),t)*s});}
+  svg.innerHTML=ink(pts);
+  prog.style.width=(curP*100).toFixed(2)+'%';
   var idx=Math.round(f);
   if(idx!==lastIdx){
     lastIdx=idx;
-    var name=scenes[idx].dataset.name;
-    if(chapterEl)chapterEl.textContent='§'+String(idx).padStart(2,'0')+' · '+name;
-    [].forEach.call(indexEl.children,function(btn,n){btn.setAttribute('aria-current',n===idx?'true':'false')});
-    runCounters(scenes[idx]);
+    [].forEach.call(dock.children,function(b,n){b.setAttribute('aria-current',n===idx?'true':'false')});
   }
-  if(cue)cue.classList.toggle('gone',curP>0.02);
+  if(cue)cue.classList.toggle('gone',curP>0.015);
 }
-
+function pathOf(p){var s='',i;for(i=0;i<p.length;i++)s+=(i?'L':'M')+p[i].x.toFixed(1)+' '+p[i].y.toFixed(1);return s}
+function ink(pts){
+  var d=pathOf(pts),i,back='';
+  for(i=pts.length-1;i>=0;i--)back+='L'+pts[i].x.toFixed(1)+' '+(pts[i].y+130).toFixed(1);
+  var e=pts[pts.length-1];
+  return '<defs><linearGradient id="tg" x1="0" y1="0" x2="0" y2="1">'+
+    '<stop offset="0" stop-color="#0ECB81" stop-opacity=".13"/>'+
+    '<stop offset="1" stop-color="#0ECB81" stop-opacity="0"/></linearGradient></defs>'+
+    '<path d="'+d+back+'Z" fill="url(#tg)"/>'+
+    '<path d="'+d+'" fill="none" stroke="#0ECB81" stroke-width="7" opacity=".1"/>'+
+    '<path d="'+d+'" fill="none" stroke="#0ECB81" stroke-width="1.8"/>'+
+    '<line x1="0" y1="'+e.y.toFixed(1)+'" x2="'+W+'" y2="'+e.y.toFixed(1)+
+      '" stroke="#0ECB81" stroke-width="1" stroke-dasharray="4 5" opacity=".42"/>'+
+    '<rect x="'+(W-72)+'" y="'+(e.y-10)+'" width="64" height="20" rx="3" fill="#0ECB81"/>'+
+    '<text x="'+(W-40)+'" y="'+(e.y+4.6)+'" font-family="ui-monospace,monospace" font-size="11.5" '+
+      'font-weight="700" fill="#04150D" text-anchor="middle">100.00</text>';
+}
 function loop(){
   if(camera){
     tgtP=clamp(scrollY/maxScroll,0,1);
-    var dd=tgtP-curP;
-    if(Math.abs(dd)>0.00008){curP+=dd*0.062;render()}
+    var d=tgtP-curP;
+    if(Math.abs(d)>0.00008){curP+=d*0.062;render()}
     else if(curP!==tgtP){curP=tgtP;render()}
   }
   requestAnimationFrame(loop);
 }
 
-/* ── counters ── */
-function runCounters(scope){
-  (scope||document).querySelectorAll('[data-count]').forEach(function(el){
-    if(el.dataset.done)return;el.dataset.done='1';
-    var end=parseFloat(el.dataset.count),dec=parseInt(el.dataset.dec||'0',10);
-    var pre=el.dataset.prefix||'',suf=el.dataset.suffix||'';
-    if(reduced){el.textContent=pre+end.toFixed(dec)+suf;return}
-    var t0=performance.now();
-    (function step(now){
-      var k=clamp((now-t0)/1000,0,1),e=1-Math.pow(1-k,3);
-      el.textContent=pre+(end*e).toFixed(dec)+suf;
-      if(k<1)requestAnimationFrame(step);
-    })(t0);
-  });
+/* ── candlestick chart ── */
+function drawCandles(){
+  var el=document.getElementById('candles');if(!el)return;
+  var w=el.clientWidth||el.parentNode.clientWidth,h=el.clientHeight||el.parentNode.clientHeight;
+  if(!w||!h)return;
+  el.setAttribute('viewBox','0 0 '+w+' '+h);
+  var n=Math.max(26,Math.floor(w/17)),s=777,i,o=[],px=52;
+  function r(){s=(s*1103515245+12345)%2147483648;return s/2147483648}
+  for(i=0;i<n;i++){
+    var op=px,drift=1.9-(i<n*0.18?0.4:0),cl=op+(r()-0.42)*4.4+drift*0.55;
+    if(i===Math.floor(n*0.62)){cl=op-7.5}            /* the incident wick */
+    var hi=Math.max(op,cl)+r()*2.6,lo=Math.min(op,cl)-r()*2.6;
+    o.push({o:op,c:cl,h:hi,l:lo,v:0.3+r()*0.7});px=cl;
+  }
+  var lo=Math.min.apply(null,o.map(function(c){return c.l})),
+      hi=Math.max.apply(null,o.map(function(c){return c.h})),rg=(hi-lo)||1;
+  var padT=34,padB=h*0.26,padR=54,plot=h-padT-padB,bw=Math.max(3,(w-padR)/n*0.58);
+  function Y(v){return padT+(1-(v-lo)/rg)*plot}
+  var out='',mid='';
+  for(i=0;i<n;i++){
+    var c=o[i],x=(i+0.5)*(w-padR)/n,up=c.c>=c.o,col=up?'#0ECB81':'#F6465D';
+    out+='<line x1="'+x.toFixed(1)+'" y1="'+Y(c.h).toFixed(1)+'" x2="'+x.toFixed(1)+'" y2="'+Y(c.l).toFixed(1)+
+         '" stroke="'+col+'" stroke-width="1.1" opacity=".85"/>';
+    out+='<rect x="'+(x-bw/2).toFixed(1)+'" y="'+Y(Math.max(c.o,c.c)).toFixed(1)+'" width="'+bw.toFixed(1)+
+         '" height="'+Math.max(1.6,Math.abs(Y(c.o)-Y(c.c))).toFixed(1)+'" fill="'+col+'" opacity=".92"/>';
+    out+='<rect x="'+(x-bw/2).toFixed(1)+'" y="'+(h-padB*0.72*c.v).toFixed(1)+'" width="'+bw.toFixed(1)+
+         '" height="'+(padB*0.72*c.v).toFixed(1)+'" fill="'+col+'" opacity=".16"/>';
+    mid+=(i?'L':'M')+x.toFixed(1)+' '+Y((c.o+c.c)/2).toFixed(1);
+  }
+  var grid='';
+  for(i=0;i<=3;i++){var gy=padT+plot*i/3;
+    grid+='<line x1="0" y1="'+gy.toFixed(1)+'" x2="'+(w-padR)+'" y2="'+gy.toFixed(1)+'" stroke="#232C36" stroke-width="1"/>';
+    grid+='<text x="'+(w-padR+8)+'" y="'+(gy+3.6).toFixed(1)+'" font-family="ui-monospace,monospace" font-size="9.5" fill="#5B6672">'+
+          (hi-rg*i/3).toFixed(2)+'</text>';
+  }
+  var last=o[n-1],ly=Y(last.c);
+  out+='<path d="'+mid+'" fill="none" stroke="#F0B90B" stroke-width="1.2" opacity=".65"/>';
+  out+='<line x1="0" y1="'+ly.toFixed(1)+'" x2="'+(w-padR)+'" y2="'+ly.toFixed(1)+
+       '" stroke="#0ECB81" stroke-width="1" stroke-dasharray="3 4" opacity=".8"/>';
+  out+='<rect x="'+(w-padR+2)+'" y="'+(ly-9)+'" width="50" height="18" rx="2.5" fill="#0ECB81"/>';
+  out+='<text x="'+(w-padR+27)+'" y="'+(ly+4)+'" font-family="ui-monospace,monospace" font-size="10.5" font-weight="700" fill="#04150D" text-anchor="middle">100.00</text>';
+  el.innerHTML=grid+out;
 }
 
-/* ── index nav ── */
+/* ── depth chart ── */
+function drawDepth(){
+  var el=document.getElementById('depthchart');if(!el)return;
+  var w=el.clientWidth||el.parentNode.clientWidth,h=el.clientHeight||el.parentNode.clientHeight;
+  if(!w||!h)return;
+  el.setAttribute('viewBox','0 0 '+w+' '+h);
+  var mid=w/2,pad=26,steps=42,i,bid='M'+mid+' '+(h-pad),ask='M'+mid+' '+(h-pad);
+  for(i=0;i<=steps;i++){
+    var t=i/steps,x=mid-t*(mid-pad),y=(h-pad)-Math.pow(t,0.72)*(h-pad*2);
+    bid+='L'+x.toFixed(1)+' '+y.toFixed(1);
+  }
+  bid+='L'+pad+' '+(h-pad)+'Z';
+  for(i=0;i<=steps;i++){
+    var t2=i/steps,x2=mid+t2*(mid-pad),y2=(h-pad)-Math.pow(t2,0.85)*(h-pad*2)*0.82;
+    ask+='L'+x2.toFixed(1)+' '+y2.toFixed(1);
+  }
+  ask+='L'+(w-pad)+' '+(h-pad)+'Z';
+  el.innerHTML=
+    '<defs><linearGradient id="bg1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0ECB81" stop-opacity=".38"/><stop offset="1" stop-color="#0ECB81" stop-opacity=".02"/></linearGradient>'+
+    '<linearGradient id="ag1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6465D" stop-opacity=".34"/><stop offset="1" stop-color="#F6465D" stop-opacity=".02"/></linearGradient></defs>'+
+    '<path d="'+bid+'" fill="url(#bg1)" stroke="#0ECB81" stroke-width="1.6"/>'+
+    '<path d="'+ask+'" fill="url(#ag1)" stroke="#F6465D" stroke-width="1.6"/>'+
+    '<line x1="'+mid+'" y1="'+pad*0.5+'" x2="'+mid+'" y2="'+(h-pad)+'" stroke="#5B6672" stroke-width="1" stroke-dasharray="3 5"/>'+
+    '<text x="'+mid+'" y="'+(pad*0.5-4)+'" font-family="ui-monospace,monospace" font-size="10" fill="#8B97A5" text-anchor="middle">100.00 mid</text>'+
+    '<text x="'+pad+'" y="'+(h-6)+'" font-family="ui-monospace,monospace" font-size="9.5" fill="#0ECB81">bids — what I bring</text>'+
+    '<text x="'+(w-pad)+'" y="'+(h-6)+'" font-family="ui-monospace,monospace" font-size="9.5" fill="#F6465D" text-anchor="end">asks — what I want</text>';
+}
+
+/* ── live-ish order book ── */
+var asksEl=document.getElementById('asks'),bidsEl=document.getElementById('bids'),
+    midEl=document.getElementById('midpx'),navpx=document.getElementById('navpx'),
+    bigpx=document.getElementById('bigpx');
+var seed=424242;
+function rnd(){seed=(seed*1664525+1013904223)%4294967296;return seed/4294967296}
+function book(){
+  if(!asksEl)return;
+  var i,sizes=[],tot=0,A='',B='';
+  for(i=0;i<6;i++)sizes.push(600+Math.floor(rnd()*4200));
+  var max=sizes.reduce(function(a,b){return a+b},0);
+  for(i=5;i>=0;i--){
+    tot+=sizes[i];
+    A+='<div class="lvl ask"><i style="width:'+(tot/max*100).toFixed(0)+'%"></i><span>'+
+       (100+0.01*(i+1)).toFixed(2)+'</span><span>'+sizes[i].toLocaleString('en-US')+'</span><span>'+
+       tot.toLocaleString('en-US')+'</span></div>';
+  }
+  tot=0;
+  for(i=0;i<6;i++){
+    var sz=600+Math.floor(rnd()*4200);tot+=sz;
+    B+='<div class="lvl bid"><i style="width:'+(tot/max*100).toFixed(0)+'%"></i><span>'+
+       (100-0.01*(i+1)).toFixed(2)+'</span><span>'+sz.toLocaleString('en-US')+'</span><span>'+
+       tot.toLocaleString('en-US')+'</span></div>';
+  }
+  asksEl.innerHTML=A;bidsEl.innerHTML=B;
+}
+book();
+if(!reduced)setInterval(function(){if(!document.hidden&&html.getAttribute('data-doc')!=='open')book()},1400);
+
+/* ── funding countdown: the desk never actually stops ── */
+var fund=document.getElementById('funding');
+if(fund){
+  var left=8*3600;
+  setInterval(function(){
+    left=(left-1+28800)%28800;
+    var h2=String(Math.floor(left/3600)).padStart(2,'0'),
+        m=String(Math.floor(left%3600/60)).padStart(2,'0'),
+        s2=String(left%60).padStart(2,'0');
+    fund.textContent=h2+':'+m+':'+s2;
+  },1000);
+}
+
+/* ── section dock ── */
 scenes.forEach(function(s,i){
   var b=document.createElement('button');
   b.type='button';b.innerHTML='<i></i>'+s.dataset.name;
   b.setAttribute('aria-label','Go to '+s.dataset.name);
-  b.addEventListener('click',function(){
-    if(camera)scrollTo({top:(i/(N-1))*maxScroll,behavior:reduced?'auto':'smooth'});
-    else s.scrollIntoView({behavior:reduced?'auto':'smooth',block:'start'});
-  });
-  indexEl.appendChild(b);
+  b.addEventListener('click',function(){goTo(i)});
+  dock.appendChild(b);
+});
+function goTo(i){
+  if(camera)scrollTo({top:(i/(N-1))*maxScroll,behavior:reduced?'auto':'smooth'});
+  else scenes[i].scrollIntoView({behavior:reduced?'auto':'smooth',block:'start'});
+}
+document.addEventListener('click',function(e){
+  var g=e.target.closest&&e.target.closest('[data-go]');
+  if(g){e.preventDefault();goTo(+g.getAttribute('data-go'))}
 });
 
-/* ── the document overlay ── */
+/* ── prospectus ── */
 function doc(open){
   html.setAttribute('data-doc',open?'open':'closed');
-  if(history.replaceState)history.replaceState(null,'',open?'#document':location.pathname);
-  if(open)document.getElementById('document').scrollTop=0;
+  if(history.replaceState)history.replaceState(null,'',open?'#prospectus':location.pathname);
+  if(open){var d=document.getElementById('prospectus');if(d)d.scrollTop=0}
 }
-document.getElementById('opendoc').addEventListener('click',function(e){e.preventDefault();doc(true)});
-document.getElementById('docclose').addEventListener('click',function(){doc(false)});
+var od=document.getElementById('opendoc');
+if(od)od.addEventListener('click',function(e){e.preventDefault();doc(true)});
+var dc=document.getElementById('docclose');
+if(dc)dc.addEventListener('click',function(){doc(false)});
 document.addEventListener('click',function(e){
-  var c=e.target.closest&&e.target.closest('[data-close]');
+  var o=e.target.closest&&e.target.closest('[data-doc-open]');
+  if(o){e.preventDefault();doc(true);return}
+  var c=e.target.closest&&e.target.closest('[data-doc-close]');
   if(c){e.preventDefault();doc(false)}
 });
-if(location.hash==='#document')doc(true);
+if(location.hash==='#prospectus')doc(true);
 
 addEventListener('keydown',function(e){
   if(e.metaKey||e.ctrlKey||e.altKey)return;
   var t=e.target.tagName;if(t==='INPUT'||t==='TEXTAREA')return;
   var open=html.getAttribute('data-doc')==='open';
   if(e.key==='Escape'&&open){doc(false);return}
-  if(e.key==='d'||e.key==='D'){e.preventDefault();doc(!open);return}
+  if(e.key==='p'||e.key==='P'){e.preventDefault();doc(!open);return}
   if(open||!camera)return;
   if(e.key==='Home'){e.preventDefault();scrollTo({top:0,behavior:'smooth'})}
   else if(e.key==='End'){e.preventDefault();scrollTo({top:maxScroll,behavior:'smooth'})}
+  else if(e.key==='ArrowRight'||e.key==='ArrowDown'){e.preventDefault();goTo(clamp(lastIdx+1,0,N-1))}
+  else if(e.key==='ArrowLeft'||e.key==='ArrowUp'){e.preventDefault();goTo(clamp(lastIdx-1,0,N-1))}
 });
 
 /* ── boot ── */
 var rt=0;
-addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(measure,140)},{passive:true});
-addEventListener('orientationchange',function(){setTimeout(measure,240)});
-measure();
-if(!camera)runCounters(document);
-requestAnimationFrame(loop);
-addEventListener('load',function(){measure();if(!camera)runCounters(document)});
+addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(measure,150)},{passive:true});
+addEventListener('orientationchange',function(){setTimeout(measure,250)});
+measure();requestAnimationFrame(loop);
+addEventListener('load',function(){measure()});
 })();
 </script>
 </body>
