@@ -75,16 +75,6 @@ a{color:inherit;text-decoration:none}
 @keyframes marq{to{transform:translateX(-100%)}}
 html[data-mode="flat"] .tickerbar{position:sticky;top:46px}
 
-.sidedock{position:fixed;right:clamp(10px,1.6vw,20px);top:50%;transform:translateY(-50%);z-index:50;
-  display:none;flex-direction:column;gap:2px;padding:10px;border-radius:8px;
-  background:rgba(11,14,17,.72);border:1px solid var(--line);backdrop-filter:blur(8px)}
-@media(min-width:1160px){.sidedock{display:flex}}
-.sidedock button{background:none;border:0;cursor:pointer;padding:7px 12px 7px 10px;border-radius:5px;
-  display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:10px;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--faint);transition:.24s var(--ease);white-space:nowrap}
-.sidedock button i{width:5px;height:5px;border-radius:50%;background:currentColor;flex:none}
-.sidedock button:hover{color:var(--dim);background:var(--panel)}
-.sidedock button[aria-current="true"]{color:var(--up);background:rgba(14,203,129,.09)}
 .progress{position:fixed;left:0;top:0;height:2px;width:0;background:var(--up);z-index:70;
   box-shadow:0 0 12px rgba(14,203,129,.7)}
 .cue{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:50;font-family:var(--mono);
@@ -97,15 +87,15 @@ html[data-mode="flat"] .tickerbar{position:sticky;top:46px}
 
 /* ═══════════════════════ stage ═══════════════════════ */
 .stage{position:fixed;inset:0;z-index:1;overflow:hidden}
-.world{position:absolute;top:0;left:0;width:0;height:0;transform-origin:0 0;will-change:transform}
+.world{position:absolute;top:0;left:0;width:0;height:0;will-change:transform;backface-visibility:hidden}
 .thread{position:fixed;inset:0;z-index:2;pointer-events:none;width:100%;height:100%}
 .driver{height:100vh}
 .scene{position:absolute;transform:translate(-50%,-50%);width:94vw;
-  max-width:min(1400px,calc(100vw - 360px));opacity:0}
-html[data-mode="camera"] .scene{transition:none;will-change:opacity,transform}
+  max-width:min(1520px,calc(100vw - 96px));opacity:0}
+html[data-mode="camera"] .scene{transition:none;will-change:opacity;backface-visibility:hidden}
 .scene > *{position:relative;z-index:3}
 .anchor{display:block;width:100%;height:1px}
-html[data-mode="camera"] .anchor{height:clamp(30px,5vh,64px)}
+html[data-mode="camera"] .anchor{height:clamp(22px,3.4vh,44px)}
 
 /* ═══════════════════════ shared UI furniture ═══════════════════════ */
 .eyebrow{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--line2);border-radius:99px;
@@ -114,8 +104,8 @@ html[data-mode="camera"] .anchor{height:clamp(30px,5vh,64px)}
 .eyebrow i{width:6px;height:6px;border-radius:50%;background:var(--up);
   box-shadow:0 0 0 0 rgba(14,203,129,.6);animation:pulse 2.4s infinite}
 @keyframes pulse{70%{box-shadow:0 0 0 7px transparent}100%{box-shadow:0 0 0 0 transparent}}
-.pairhead{display:flex;align-items:center;gap:clamp(14px,2vw,30px);flex-wrap:wrap;
-  border-bottom:1px solid var(--line);padding-bottom:13px;margin-bottom:14px}
+.pairhead{display:flex;align-items:center;gap:clamp(12px,1.5vw,24px);flex-wrap:wrap;
+  border-bottom:1px solid var(--line);padding:14px 0 12px;margin-bottom:0}
 .pairhead .sym{font-size:17px;font-weight:700;display:flex;align-items:center;gap:9px}
 .pairhead .sym i{font-style:normal;background:var(--gold);color:#1A1403;font-size:9.5px;font-weight:700;
   padding:3px 7px;border-radius:3px;letter-spacing:.07em}
@@ -152,14 +142,36 @@ td small{display:block;font-family:var(--sans);color:var(--faint);font-size:11px
 .tag.r{color:var(--down);border-color:rgba(246,70,93,.4);background:rgba(246,70,93,.08)}
 .tag.y{color:var(--gold);border-color:rgba(240,185,11,.4);background:rgba(240,185,11,.08)}
 
-/* ═══════ scene 0 — listing ═══════ */
-.hero{font-size:clamp(36px,7.4vw,124px);font-weight:700;letter-spacing:-.05em;line-height:.9;
-  margin:22px 0 0;max-width:15ch}
+/* ═══════ scene 0 — listing + trade ═══════ */
+.listbanner{display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(14,203,129,.42);
+  border-radius:5px;padding:7px 14px;font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--up);background:rgba(14,203,129,.07)}
+.listbanner i{width:6px;height:6px;border-radius:50%;background:var(--up);
+  box-shadow:0 0 0 0 rgba(14,203,129,.6);animation:pulse 2.4s infinite}
+.grp{display:flex;gap:2px}
+.grp a{padding:2px 7px;border-radius:3px;cursor:pointer;font-family:var(--mono);font-size:9.5px;color:var(--faint)}
+.grp a.on{background:var(--panel3);color:var(--txt)}
+.ratio{display:flex;height:4px;border-radius:2px;overflow:hidden;margin-top:11px;background:var(--line)}
+.ratio i.b{background:var(--up)} .ratio i.a{background:var(--down)}
+.ratiolab{display:flex;justify-content:space-between;font-family:var(--mono);font-size:9.5px;
+  color:var(--faint);margin-top:6px;letter-spacing:.08em}
+.sales{display:flex;align-items:center;gap:0;border-top:1px solid var(--line);
+  font-family:var(--mono);font-size:10px;overflow:hidden}
+.sales .hd{padding:8px 12px;color:var(--faint);letter-spacing:.15em;text-transform:uppercase;
+  border-right:1px solid var(--line);white-space:nowrap;font-size:9px}
+.sales .t{display:flex;align-items:baseline;gap:8px;padding:8px 14px;border-right:1px solid var(--line);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1;min-width:0}
+.sales .t em{font-style:normal;color:var(--dim);overflow:hidden;text-overflow:ellipsis}
+.sales .t b{color:var(--up);font-size:9px;letter-spacing:.1em;margin-left:auto}
+.sales .t.s b{color:var(--down)}
+
+.hero{font-size:clamp(26px,3.9vw,62px);font-weight:700;letter-spacing:-.045em;line-height:1;
+  margin:13px 0 0}
 .hero em{font-style:normal;background:linear-gradient(94deg,var(--up),var(--up2) 45%,var(--gold));
   -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 .hero .who{display:block;font-size:.21em;font-weight:500;letter-spacing:.02em;color:var(--dim);
   margin-bottom:.7em;-webkit-text-fill-color:var(--dim)}
-.lede{margin-top:22px;font-size:clamp(14.5px,1.4vw,19px);color:var(--dim);max-width:56ch;line-height:1.6}
+.lede{margin-top:10px;font-size:clamp(12.5px,.95vw,15px);color:var(--dim);max-width:none;line-height:1.5}
 .statbar{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);
   border:1px solid var(--line);border-radius:7px;overflow:hidden;margin-top:4px}
 @media(min-width:860px){.statbar{grid-template-columns:repeat(5,1fr)}}
@@ -169,20 +181,22 @@ td small{display:block;font-family:var(--sans);color:var(--faint);font-size:11px
 .statbar span{font-size:8.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--faint);line-height:1.65}
 
 /* ═══════ scene 1 — trading screen ═══════ */
-.trade{display:grid;gap:11px;grid-template-columns:236px minmax(0,1fr) 262px;align-items:stretch}
+.trade{display:grid;gap:11px;grid-template-columns:252px minmax(0,1fr) 268px;align-items:stretch;margin-top:11px}
 .book .cols{display:grid;grid-template-columns:1fr .78fr .78fr;font-size:8.5px;letter-spacing:.1em;
   text-transform:uppercase;color:var(--faint);padding-bottom:6px}
 .book .cols span:not(:first-child){text-align:right}
-.lvl{position:relative;display:grid;grid-template-columns:1fr .78fr .78fr;font-family:var(--mono);
-  font-size:11px;padding:2.5px 0;isolation:isolate}
+.lvl{position:relative;display:grid;grid-template-columns:1fr .82fr .82fr;font-family:var(--mono);
+  font-size:10.5px;padding:1.8px 0;isolation:isolate}
 .lvl span{position:relative;z-index:1;text-align:right;color:var(--dim)}
 .lvl span:first-child{text-align:left}
 .lvl i{position:absolute;right:0;top:1px;bottom:1px;z-index:0;opacity:.13;border-radius:2px;
   transition:width .5s var(--ease)}
 .lvl.ask span:first-child{color:var(--down)} .lvl.ask i{background:var(--down)}
 .lvl.bid span:first-child{color:var(--up)}  .lvl.bid i{background:var(--up)}
-.spread{display:flex;align-items:baseline;justify-content:space-between;padding:8px 0;margin:5px 0;
+.spread{display:flex;align-items:baseline;justify-content:space-between;gap:8px;padding:7px 0;margin:4px 0;
   border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-family:var(--mono)}
+.spread em{font-style:normal;color:var(--dim)}
+.spread .mk{color:var(--faint)}
 .spread b{font-size:15.5px;color:var(--up)}
 .spread span{font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
 .chartpanel{display:flex;flex-direction:column;min-height:412px}
@@ -238,6 +252,18 @@ td small{display:block;font-family:var(--sans);color:var(--faint);font-size:11px
   border-bottom:1px solid var(--line);align-items:baseline}
 .skills dt{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--up)}
 .skills dd{margin:0;font-size:12.5px;color:var(--dim);line-height:1.55}
+
+/* depth ladder */
+.ladder{display:grid;gap:0}
+.ladder .row{display:grid;grid-template-columns:16px 108px 62px minmax(0,1fr);gap:11px;align-items:baseline;
+  padding:8px 0;border-bottom:1px solid var(--line)}
+.ladder .row:last-child{border-bottom:0}
+.ladder .sw{width:9px;height:9px;border-radius:2px;align-self:center}
+.ladder .k{font-family:var(--mono);font-size:10px;letter-spacing:.11em;text-transform:uppercase}
+.ladder .n{font-family:var(--mono);font-size:10.5px;color:var(--faint);text-align:right}
+.ladder .d{font-size:11.5px;color:var(--dim);line-height:1.5}
+.ladder .hdr{grid-template-columns:1fr;padding:10px 0 6px;border-bottom:1px solid var(--line2)}
+.ladder .hdr b{font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase}
 
 /* ═══════ scene 4 — incident ═══════ */
 .alert{border:1px solid rgba(246,70,93,.55);border-radius:8px;overflow:hidden;
@@ -309,7 +335,7 @@ html[data-mode="flat"] .world{position:static;width:auto;height:auto;transform:n
 html[data-mode="flat"] .scene{position:static;transform:none!important;opacity:1;width:auto;max-width:none;
   padding:clamp(38px,7vw,62px) clamp(16px,4vw,32px);border-top:1px solid var(--line)}
 html[data-mode="flat"] .scene:first-child{border-top:0;padding-top:clamp(96px,20vw,130px)}
-html[data-mode="flat"] .thread,html[data-mode="flat"] .driver,html[data-mode="flat"] .sidedock,
+html[data-mode="flat"] .thread,html[data-mode="flat"] .driver,
 html[data-mode="flat"] .cue,html[data-mode="flat"] .anchor,html[data-mode="flat"] .mesh{display:none}
 html[data-mode="flat"] .trade,html[data-mode="flat"] .depthgrid{grid-template-columns:minmax(0,1fr)}
 html[data-mode="flat"] .chartpanel{min-height:300px}
@@ -323,7 +349,7 @@ html[data-mode="flat"] #candles{position:relative;flex:1;min-height:200px}
   opacity:0;visibility:hidden;transition:opacity .35s var(--ease),visibility .35s;-webkit-overflow-scrolling:touch}
 html[data-doc="open"] .doc{opacity:1;visibility:visible}
 html[data-doc="open"]{overflow:hidden}
-html[data-doc="open"] .topnav,html[data-doc="open"] .tickerbar,html[data-doc="open"] .sidedock,
+html[data-doc="open"] .topnav,html[data-doc="open"] .tickerbar,
 html[data-doc="open"] .cue{opacity:0;pointer-events:none}
 .docclose{position:fixed;top:16px;right:clamp(14px,3vw,34px);z-index:95;background:#16130F;color:#EFE9DE;
   border:0;border-radius:99px;padding:11px 18px;cursor:pointer;font-family:var(--mono);font-size:10px;
@@ -370,7 +396,7 @@ html[data-doc="open"] .docclose{opacity:1;visibility:visible}
 @media print{
   @page{size:letter;margin:12mm}
   html,body{background:#fff!important;color:#000!important;overflow:visible!important}
-  .stage,.thread,.driver,.topnav,.tickerbar,.sidedock,.cue,.glow,.mesh,.docclose,.docactions,.progress{display:none!important}
+  .stage,.thread,.driver,.topnav,.tickerbar,.cue,.glow,.mesh,.docclose,.docactions,.progress{display:none!important}
   .doc{position:static;opacity:1!important;visibility:visible!important;overflow:visible;background:#fff}
   .sheet{max-width:none;margin:0;padding:0;border:0;box-shadow:none;background:#fff}
   .sheet h2{margin-top:15px;page-break-after:avoid}
@@ -392,8 +418,8 @@ html[data-doc="open"] .docclose{opacity:1;visibility:visible}
 <nav class="topnav">
   <span class="brand"><i></i>FATOL</span>
   <span class="links">
-    <a data-go="0">Listing</a><a data-go="1">Trade</a><a data-go="2">Positions</a>
-    <a data-go="3">Depth</a><a data-go="5">Contracts</a><a data-go="7">Contact</a>
+    <a data-go="0">Trade</a><a data-go="1">Positions</a><a data-go="2">Depth</a>
+    <a data-go="3">Incident</a><a data-go="4">Contracts</a><a data-go="6">Contact</a>
   </span>
   <span class="grow"></span>
   <span class="px mono">FATOL/USDT <b class="up" id="navpx">100.00</b></span>
@@ -413,71 +439,65 @@ html[data-doc="open"] .docclose{opacity:1;visibility:visible}
   <span>DELIVERY TIME <b class="up">−60%</b></span>
   <span>INCIDENTS <b>1</b> · RECURRENCE <b class="up">0</b></span>
   <span>CIRCULATING SUPPLY <b>1</b></span>
-  <span>LISTED <b>NOV 2025</b></span>
+  <span>LISTED <b>AUG 2026</b></span>
 </div></div>
 
-<nav class="sidedock" id="dock" aria-label="Sections"></nav>
 <div class="cue" id="cue">Scroll <i></i></div>
 
 <main class="stage" id="stage">
   <svg class="thread" id="thread" aria-hidden="true"></svg>
   <div class="world" id="world">
 
-  <!-- ════════ 00 LISTING ════════ -->
-  <section class="scene" data-name="Listing" data-shape="curve" aria-labelledby="h0">
-    <span class="eyebrow"><i></i>New listing · Nov 2025 · perpetual</span>
-    <h1 class="hero" id="h0"><span class="who">Mohammad Reza Fatolahi — backend engineer</span>FATOL/USDT is <em>now listed.</em></h1>
-    <span class="anchor" data-anchor></span>
-    <p class="lede">Technical owner of all four services behind Tabdeal's futures market-making platform. Built from zero to roughly 50 markets, placing millions of orders a day against multi-million-dollar balances, at effectively 100% uptime.</p>
-    <div class="statbar">
-      <div><b class="up">~50</b><span>Markets quoted<br>from zero</span></div>
-      <div><b class="up">100.00%</b><span>Effective<br>uptime</span></div>
-      <div><b>4</b><span>Services owned<br>end to end</span></div>
-      <div><b>1</b><span>Circulating supply<br>max supply 1</span></div>
-      <div><b class="mono">negotiable</b><span>Market cap<br>make an offer</span></div>
-    </div>
-    <div class="acts">
-      <a class="act buy" href="mailto:fatolahi.cs@gmail.com">▲ Buy / Long — Send Email</a>
-      <a class="act sell" href="MohammadReza_Fatolahi.pdf" download>▼ Sell / Short — Download the CV PDF</a>
-    </div>
-    <p class="fine"><b>Tehran, Iran</b> — on-site &amp; remote · <b>+98 918 260 6160</b> · <b>github.com/mrfatolahi1</b><br>
-      Risk warning: past performance is, in this case, indicative of future results.</p>
-  </section>
-
-  <!-- ════════ 01 TRADE ════════ -->
-  <section class="scene" data-name="Trade" data-shape="calm" aria-labelledby="h1">
-    <h2 class="sr" id="h1">Trading screen</h2>
+  <!-- ════════ 00 LISTING + TRADE ════════ -->
+  <section class="scene" data-name="Listing" data-shape="calm" aria-labelledby="h0">
+    <div class="listbanner"><i></i>New listing · August 2026 · perpetual — FATOL/USDT is now trading</div>
+    <h1 class="hero" id="h0">FATOL/USDT is <em>now listed.</em></h1>
+    <p class="lede">Mohammad Reza Fatolahi — backend engineer on the futures market-making desk at Tabdeal. Technical owner of all four services behind the platform: zero to ~50 markets, millions of orders a day, effectively 100% uptime.</p>
     <div class="pairhead">
       <span class="sym">FATOL/USDT <i>PERP</i></span>
       <span class="last up" id="bigpx">100.00</span>
       <span class="st"><b class="up">+∞%</b><span>since listing</span></span>
       <span class="st"><b>100.00</b><span>24h high</span></span>
       <span class="st"><b>100.00</b><span>24h low</span></span>
-      <span class="st"><b id="vol24">millions</b><span>24h orders</span></span>
+      <span class="st"><b>millions</b><span>24h orders</span></span>
+      <span class="st"><b class="up">~50</b><span>markets quoted</span></span>
+      <span class="st"><b>4</b><span>services owned</span></span>
+      <span class="st"><b>~25</b><span>books hedged</span></span>
+      <span class="st"><b>1</b><span>circulating supply</span></span>
       <span class="st"><b class="mono" id="funding">08:00:00</b><span>funding in</span></span>
       <span class="st"><b class="up">0.0000%</b><span>funding rate</span></span>
     </div>
     <span class="anchor" data-anchor></span>
     <div class="trade">
-      <div class="pnl book"><h4><span>Order book</span><em>0.01</em></h4><div class="in">
-        <div class="cols"><span>Price</span><span>Size</span><span>Total</span></div>
-        <div id="asks"></div>
-        <div class="spread"><b id="midpx">100.00</b><span>spread <span id="spread">0.02%</span></span></div>
-        <div id="bids"></div>
-        <div class="feed">
-          <div class="row"><span>hedge engine — 25 books mirrored</span><b>FILLED</b></div>
-          <div class="row"><span>risk manager — armed, +$k in 5d</span><b>FILLED</b></div>
-          <div class="row"><span>price service — 30 sockets</span><b>FILLED</b></div>
-          <div class="row s"><span>manual quoting</span><b>CLOSED</b></div>
+      <div class="pnl book">
+        <h4><span>Order book</span><em class="grp"><a class="on">0.01</a><a>0.1</a><a>1</a></em></h4>
+        <div class="in">
+          <div class="cols"><span>Price · USDT</span><span>Size · FATOL</span><span>Total</span></div>
+          <div id="asks"></div>
+          <div class="spread">
+            <b id="midpx">100.00</b>
+            <span>spread <em id="spread">0.02%</em></span>
+            <span class="mk">mark 100.00</span>
+          </div>
+          <div id="bids"></div>
+          <div class="ratio"><i class="b" id="rb"></i><i class="a" id="ra"></i></div>
+          <div class="ratiolab"><span><b class="up" id="bpct">—</b> buy</span><span>sell <b class="down" id="apct">—</b></span></div>
         </div>
-      </div></div>
+      </div>
 
       <div class="pnl chartpanel">
-        <div class="tf"><a>1m</a><a>15m</a><a>4H</a><a class="on">Since listing</a>
-          <span class="r mono">Nov 2025 → now</span></div>
+        <div class="tf"><a>1m</a><a>15m</a><a>4H</a><a class="on">All</a>
+          <span class="r mono">Sep 2020 → Aug 2026</span></div>
         <div class="chartwrap">
           <div class="chartlabel"><b>Fatolahi</b><span>backend engineer · market maker team, futures</span></div>
           <svg id="candles" aria-hidden="true"></svg>
+        </div>
+        <div class="sales">
+          <span class="hd">Time &amp; sales</span>
+          <span class="t"><em>hedge engine — 25 books mirrored</em><b>FILLED</b></span>
+          <span class="t"><em>risk manager — armed, +$k in 5d</em><b>FILLED</b></span>
+          <span class="t"><em>price service — 30 sockets, 3 venues</em><b>FILLED</b></span>
+          <span class="t s"><em>manual quoting</em><b>CLOSED</b></span>
         </div>
       </div>
 
@@ -493,7 +513,8 @@ html[data-doc="open"] .docclose{opacity:1;visibility:visible}
           <p class="fine">Available <b>1 FATOL</b> · max supply 1, no further issuance<br>
             Maker fee <b>0.00%</b> · taker fee: <b>a reply inside a day</b><br>
             Time in force <b>GTC</b> · reduce-only <b>off</b><br>
-            <b>fatolahi.cs@gmail.com</b> · <b>+98 918 260 6160</b></p>
+            <b>fatolahi.cs@gmail.com</b> · <b>+98 918 260 6160</b><br>
+            Tehran, Iran — on-site &amp; remote · <b>github.com/mrfatolahi1</b></p>
         </div>
       </div>
     </div>
@@ -543,29 +564,19 @@ html[data-doc="open"] .docclose{opacity:1;visibility:visible}
   <section class="scene" data-name="Depth" data-shape="calm" aria-labelledby="h3">
     <div class="pairhead">
       <span class="sym">Market depth <i>L2</i></span>
-      <span class="st"><b class="up">deep</b><span>bid side</span></span>
+      <span class="st"><b class="up" id="bidsum">—</b><span>total bid size</span></span>
+      <span class="st"><b class="down" id="asksum">—</b><span>total ask size</span></span>
       <span class="st"><b>0.02%</b><span>spread</span></span>
       <span class="st"><b>3</b><span>venues consumed</span></span>
     </div>
     <h2 class="sr" id="h3">Skills</h2>
     <span class="anchor" data-anchor></span>
     <div class="depthgrid">
-      <div class="pnl"><h4><span>Depth chart</span><em>bids — what is on offer · asks — what is wanted</em></h4>
+      <div class="pnl"><h4><span>Depth chart</span><em>cumulative size, drawn from the book below</em></h4>
         <div class="depthwrap"><svg id="depthchart" aria-hidden="true"></svg></div>
-        <div class="dlegend"><span><i style="background:var(--up)"></i>Bid — what I bring</span>
-          <span><i style="background:var(--down)"></i>Ask — what I am looking for</span>
-          <span><i style="background:var(--faint)"></i>Mid — where we meet</span></div>
       </div>
-      <div class="pnl"><h4><span>Book detail</span><em>size</em></h4><div class="in">
-        <dl class="skills">
-          <div><dt>Languages</dt><dd>Python · Java · Go · Scala · TypeScript · SQL</dd></div>
-          <div><dt>Backend</dt><dd>Django · DRF · Spring Boot · Gin · REST · Celery · Kafka · WebSockets · microservices</dd></div>
-          <div><dt>Data</dt><dd>PostgreSQL · MySQL · Oracle · Redis · Elasticsearch · MongoDB · Cassandra</dd></div>
-          <div><dt>AI</dt><dd>LLM-driven development with Claude · prompt and context engineering · AI-assisted review · Anthropic, OpenAI-compatible, Ollama</dd></div>
-          <div><dt>Infra</dt><dd>Docker · Compose · Linux · Git · CI · Grafana and Elastic alerting · on-call</dd></div>
-          <div><dt>Product</dt><dd>Technical product management · strategy · board-level communication · mentoring</dd></div>
-          <div><dt>Asks</dt><dd>Ownership of a whole surface · money on the line · a team to deputise for · remote or Tehran on-site</dd></div>
-        </dl>
+      <div class="pnl"><h4><span>The book</span><em>size · level</em></h4><div class="in">
+        <div class="ladder" id="ladder"></div>
       </div></div>
     </div>
   </section>
@@ -827,13 +838,13 @@ html[data-doc="open"] .docclose{opacity:1;visibility:visible}
 var html=document.documentElement,reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
 var world=document.getElementById('world'),driver=document.getElementById('driver');
 var scenes=[].slice.call(world.querySelectorAll('.scene'));
-var svg=document.getElementById('thread'),dock=document.getElementById('dock'),
+var svg=document.getElementById('thread'),
     cue=document.getElementById('cue'),prog=document.getElementById('progress');
-var N=scenes.length,W=0,H=0,camera=false,maxScroll=0,anchorOff=[],fit=[],curP=0,tgtP=0,lastIdx=-1;
+var N=scenes.length,W=0,H=0,camera=false,maxScroll=0,anchorOff=[],curP=0,tgtP=0,lastIdx=-1;
 
-var KX=[0,1.50,3.00,4.50,6.00,7.50,9.00,10.45],
-    KY=[0,0.34,-0.18,0.42,1.00,0.50,-0.05,0.55],
-    KS=[1,1.02,0.98,1.02,1.06,0.98,1.00,1.02];
+/* seven scenes; scale is pinned at 1 so type is never resampled */
+var KX=[0,1.50,3.00,4.50,6.00,7.50,8.95],
+    KY=[0,0.36,-0.16,0.46,0.02,-0.34,0.40];
 
 /* ── deterministic noise for the shapes ── */
 var nse=[];(function(){var s=20260825;for(var i=0;i<260;i++){s=(s*1664525+1013904223)%4294967296;nse.push(s/4294967296-0.5)}})();
@@ -864,14 +875,13 @@ function measure(){
     scenes.forEach(function(s){s.style.left=s.style.top=s.style.opacity=s.style.transform='';s._d=s._o=undefined});
     maxScroll=0;return;
   }
-  anchorOff=[];fit=[];
+  anchorOff=[];
   scenes.forEach(function(s,i){
     s.style.left=(KX[i]*W)+'px';s.style.top=(KY[i]*H)+'px';
     s.style.transform='translate(-50%,-50%)';
-    var h=s.offsetHeight,f=Math.min(1,(H-96)/Math.max(h,1));if(f>0.999)f=1;
-    fit.push(f);
+    var h=s.offsetHeight;
     var a=s.querySelector('[data-anchor]');
-    anchorOff.push((a?(a.offsetTop+a.offsetHeight/2-h/2):0)*f);
+    anchorOff.push(a?(a.offsetTop+a.offsetHeight/2-h/2):0);
   });
   maxScroll=Math.round((N-1)*H*2.15);
   driver.style.height=(maxScroll+H)+'px';
@@ -879,16 +889,17 @@ function measure(){
 }
 function render(){
   var f=curP*(N-1),i=clamp(Math.floor(f),0,N-2),t=smoother(clamp(f-i,0,1));
-  var camX=lerp(KX[i],KX[i+1],t)*W,camY=lerp(KY[i],KY[i+1],t)*H,s=lerp(KS[i],KS[i+1],t);
-  world.style.transform='translate('+(W/2)+'px,'+(H/2)+'px) scale('+s.toFixed(4)+') translate('+(-camX)+'px,'+(-camY)+'px)';
+  var camX=lerp(KX[i],KX[i+1],t)*W,camY=lerp(KY[i],KY[i+1],t)*H,s=1;
+  /* integer offsets keep glyphs on the pixel grid — no subpixel smear */
+  world.style.transform='translate('+Math.round(W/2-camX)+'px,'+Math.round(H/2-camY+26)+'px)';
   for(var k=0;k<N;k++){
     var d=Math.abs(f-k),o=d>=0.76?0:(d<=0.30?1:1-(d-0.30)/0.46),sc=scenes[k];
     if(sc._o!==o){sc.style.opacity=o.toFixed(3);sc.style.pointerEvents=o<0.06?'none':'';sc._o=o}
     var dr=Math.round((f-k)*-30);
-    if(sc._d!==dr){sc.style.transform='translate(-50%,-50%) translate('+dr+'px,0)'+(fit[k]<1?' scale('+fit[k].toFixed(4)+')':'');sc._d=dr}
+    if(sc._d!==dr){sc.style.transform='translate(-50%,-50%) translate('+dr+'px,0)';sc._d=dr}
   }
   var gA=scenes[i].dataset.shape||'flat',gB=scenes[i+1].dataset.shape||'flat';
-  var yA=H/2+(KY[i]*H+anchorOff[i]-camY)*s,yB=H/2+(KY[i+1]*H+anchorOff[i+1]-camY)*s;
+  var yA=H/2+26+(KY[i]*H+anchorOff[i]-camY)*s,yB=H/2+26+(KY[i+1]*H+anchorOff[i+1]-camY)*s;
   var baseY=lerp(yA,yB,t),pts=[],SEG=112,q;
   for(q=0;q<=SEG;q++){var u=q/SEG;pts.push({x:u*W,y:baseY+lerp(shape(gA,u),shape(gB,u),t)*s});}
   svg.innerHTML=ink(pts);
@@ -896,7 +907,9 @@ function render(){
   var idx=Math.round(f);
   if(idx!==lastIdx){
     lastIdx=idx;
-    [].forEach.call(dock.children,function(b,n){b.setAttribute('aria-current',n===idx?'true':'false')});
+    [].forEach.call(document.querySelectorAll('.topnav .links a'),function(a){
+      a.style.color=(+a.getAttribute('data-go')===idx)?'var(--up)':'';
+    });
   }
   if(cue)cue.classList.toggle('gone',curP>0.015);
 }
@@ -971,62 +984,110 @@ function drawCandles(){
   el.innerHTML=grid+out;
 }
 
-/* ── depth chart ── */
+/* ── depth: the chart and the ladder are the same data ── */
+var BIDS=[
+ {k:'Backend',f:'Backend systems',n:9,d:'Django · DRF · Spring Boot · Gin · REST · Celery · Kafka · WebSockets · microservices'},
+ {k:'Infra',f:'Infrastructure',n:8,d:'Docker · Compose · Linux · Git · CI · Grafana and Elastic alerting · on-call'},
+ {k:'Data',f:'Data stores',n:7,d:'PostgreSQL · MySQL · Oracle · Redis · Elasticsearch · MongoDB · Cassandra'},
+ {k:'Lang',f:'Languages',n:6,d:'Python · Java · Go · Scala · TypeScript · SQL'},
+ {k:'AI',f:'AI engineering',n:6,d:'LLM-driven development with Claude · prompt and context engineering · AI-assisted review · Anthropic, OpenAI-compatible, Ollama'},
+ {k:'Product',f:'Product',n:4,d:'Technical product management · strategy · board-level communication · mentoring'}
+];
+var ASKS=[
+ {k:'Surface',f:'A whole surface to own',n:9,d:'Every service behind one product, not a slice of someone else’s'},
+ {k:'Money',f:'Money on the line',n:8,d:'Systems where an error is a direct financial loss, and the review reflects that'},
+ {k:'Team',f:'A team to deputise for',n:6,d:'Architecture calls, code review, on-call, and juniors to bring up'},
+ {k:'Seat',f:'A product seat',n:5,d:'Strategy and the business call, alongside the technical one'},
+ {k:'Place',f:'Remote or Tehran',n:4,d:'On-site in Tehran or fully remote — both proven'}
+];
 function drawDepth(){
   var el=document.getElementById('depthchart');if(!el)return;
   var w=el.clientWidth||el.parentNode.clientWidth,h=el.clientHeight||el.parentNode.clientHeight;
   if(!w||!h)return;
   el.setAttribute('viewBox','0 0 '+w+' '+h);
-  var mid=w/2,pad=26,steps=42,i,bid='M'+mid+' '+(h-pad),ask='M'+mid+' '+(h-pad);
-  for(i=0;i<=steps;i++){
-    var t=i/steps,x=mid-t*(mid-pad),y=(h-pad)-Math.pow(t,0.72)*(h-pad*2);
-    bid+='L'+x.toFixed(1)+' '+y.toFixed(1);
+  var mid=w/2,padX=16,padT=30,padB=30,base=h-padB,plot=base-padT;
+  var bc=[],ac=[],t=0,i;
+  for(i=0;i<BIDS.length;i++){t+=BIDS[i].n;bc.push(t)}
+  var bTot=t;t=0;
+  for(i=0;i<ASKS.length;i++){t+=ASKS[i].n;ac.push(t)}
+  var aTot=t,max=Math.max(bTot,aTot);
+  function Y(v){return base-(v/max)*plot}
+  var bw=(mid-padX)/BIDS.length,aw=(mid-padX)/ASKS.length,o='',lab='';
+  var bp='M'+mid+' '+base+'L'+mid+' '+Y(bc[0]);
+  for(i=0;i<BIDS.length;i++){
+    var x0=mid-i*bw,x1=mid-(i+1)*bw;
+    bp+='L'+x1.toFixed(1)+' '+Y(bc[i]).toFixed(1);
+    if(i<BIDS.length-1)bp+='L'+x1.toFixed(1)+' '+Y(bc[i+1]).toFixed(1);
+    lab+='<text x="'+((x0+x1)/2).toFixed(1)+'" y="'+(Y(bc[i])-7).toFixed(1)+'" font-family="ui-monospace,monospace" font-size="9" fill="#0ECB81" text-anchor="middle">'+BIDS[i].k+'</text>';
+    lab+='<text x="'+((x0+x1)/2).toFixed(1)+'" y="'+(base-6).toFixed(1)+'" font-family="ui-monospace,monospace" font-size="9" fill="#5B6672" text-anchor="middle">'+BIDS[i].n+'</text>';
   }
-  bid+='L'+pad+' '+(h-pad)+'Z';
-  for(i=0;i<=steps;i++){
-    var t2=i/steps,x2=mid+t2*(mid-pad),y2=(h-pad)-Math.pow(t2,0.85)*(h-pad*2)*0.82;
-    ask+='L'+x2.toFixed(1)+' '+y2.toFixed(1);
+  bp+='L'+padX+' '+base+'Z';
+  var ap='M'+mid+' '+base+'L'+mid+' '+Y(ac[0]);
+  for(i=0;i<ASKS.length;i++){
+    var X0=mid+i*aw,X1=mid+(i+1)*aw;
+    ap+='L'+X1.toFixed(1)+' '+Y(ac[i]).toFixed(1);
+    if(i<ASKS.length-1)ap+='L'+X1.toFixed(1)+' '+Y(ac[i+1]).toFixed(1);
+    lab+='<text x="'+((X0+X1)/2).toFixed(1)+'" y="'+(Y(ac[i])-7).toFixed(1)+'" font-family="ui-monospace,monospace" font-size="9" fill="#F6465D" text-anchor="middle">'+ASKS[i].k+'</text>';
+    lab+='<text x="'+((X0+X1)/2).toFixed(1)+'" y="'+(base-6).toFixed(1)+'" font-family="ui-monospace,monospace" font-size="9" fill="#5B6672" text-anchor="middle">'+ASKS[i].n+'</text>';
   }
-  ask+='L'+(w-pad)+' '+(h-pad)+'Z';
-  el.innerHTML=
-    '<defs><linearGradient id="bg1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0ECB81" stop-opacity=".38"/><stop offset="1" stop-color="#0ECB81" stop-opacity=".02"/></linearGradient>'+
-    '<linearGradient id="ag1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6465D" stop-opacity=".34"/><stop offset="1" stop-color="#F6465D" stop-opacity=".02"/></linearGradient></defs>'+
-    '<path d="'+bid+'" fill="url(#bg1)" stroke="#0ECB81" stroke-width="1.6"/>'+
-    '<path d="'+ask+'" fill="url(#ag1)" stroke="#F6465D" stroke-width="1.6"/>'+
-    '<line x1="'+mid+'" y1="'+pad*0.5+'" x2="'+mid+'" y2="'+(h-pad)+'" stroke="#5B6672" stroke-width="1" stroke-dasharray="3 5"/>'+
-    '<text x="'+mid+'" y="'+(pad*0.5-4)+'" font-family="ui-monospace,monospace" font-size="10" fill="#8B97A5" text-anchor="middle">100.00 mid</text>'+
-    '<text x="'+pad+'" y="'+(h-6)+'" font-family="ui-monospace,monospace" font-size="9.5" fill="#0ECB81">bids — what I bring</text>'+
-    '<text x="'+(w-pad)+'" y="'+(h-6)+'" font-family="ui-monospace,monospace" font-size="9.5" fill="#F6465D" text-anchor="end">asks — what I want</text>';
+  ap+='L'+(w-padX)+' '+base+'Z';
+  o+='<defs><linearGradient id="bg1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0ECB81" stop-opacity=".34"/><stop offset="1" stop-color="#0ECB81" stop-opacity=".02"/></linearGradient>'+
+     '<linearGradient id="ag1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6465D" stop-opacity=".3"/><stop offset="1" stop-color="#F6465D" stop-opacity=".02"/></linearGradient></defs>';
+  o+='<path d="'+bp+'" fill="url(#bg1)" stroke="#0ECB81" stroke-width="1.5"/>';
+  o+='<path d="'+ap+'" fill="url(#ag1)" stroke="#F6465D" stroke-width="1.5"/>';
+  o+='<line x1="'+mid+'" y1="'+(padT-14)+'" x2="'+mid+'" y2="'+base+'" stroke="#5B6672" stroke-width="1" stroke-dasharray="3 5"/>';
+  o+='<line x1="'+padX+'" y1="'+base+'" x2="'+(w-padX)+'" y2="'+base+'" stroke="#232C36" stroke-width="1"/>';
+  o+='<text x="'+mid+'" y="'+(padT-18)+'" font-family="ui-monospace,monospace" font-size="9.5" fill="#8B97A5" text-anchor="middle">100.00 mid</text>';
+  o+='<text x="'+padX+'" y="'+(padT-18)+'" font-family="ui-monospace,monospace" font-size="9.5" fill="#0ECB81">bids — what I bring ('+bTot+')</text>';
+  o+='<text x="'+(w-padX)+'" y="'+(padT-18)+'" font-family="ui-monospace,monospace" font-size="9.5" fill="#F6465D" text-anchor="end">('+aTot+') asks — what I want</text>';
+  el.innerHTML=o+lab;
+  var bs=document.getElementById('bidsum'),as2=document.getElementById('asksum');
+  if(bs){bs.textContent=bTot;as2.textContent=aTot}
+  var lad=document.getElementById('ladder');
+  if(lad&&!lad.dataset.built){
+    lad.dataset.built='1';
+    var html2='<div class="row hdr"><b class="up">Bids — what I bring</b></div>';
+    BIDS.forEach(function(r){html2+='<div class="row"><span class="sw" style="background:#0ECB81"></span>'+
+      '<span class="k up">'+r.f+'</span><span class="n">'+r.n+'</span><span class="d">'+r.d+'</span></div>'});
+    html2+='<div class="row hdr"><b class="down">Asks — what I want</b></div>';
+    ASKS.forEach(function(r){html2+='<div class="row"><span class="sw" style="background:#F6465D"></span>'+
+      '<span class="k down">'+r.f+'</span><span class="n">'+r.n+'</span><span class="d">'+r.d+'</span></div>'});
+    lad.innerHTML=html2;
+  }
 }
 
-/* ── live-ish order book ── */
+/* ── order book: ten levels a side, cumulative totals, buy/sell ratio ── */
 var asksEl=document.getElementById('asks'),bidsEl=document.getElementById('bids'),
-    midEl=document.getElementById('midpx'),navpx=document.getElementById('navpx'),
-    bigpx=document.getElementById('bigpx');
+    midEl=document.getElementById('midpx');
 var seed=424242;
 function rnd(){seed=(seed*1664525+1013904223)%4294967296;return seed/4294967296}
+function fmt(n){return n.toLocaleString('en-US')}
 function book(){
   if(!asksEl)return;
-  var i,sizes=[],tot=0,A='',B='';
-  for(i=0;i<6;i++)sizes.push(600+Math.floor(rnd()*4200));
-  var max=sizes.reduce(function(a,b){return a+b},0);
-  for(i=5;i>=0;i--){
-    tot+=sizes[i];
-    A+='<div class="lvl ask"><i style="width:'+(tot/max*100).toFixed(0)+'%"></i><span>'+
-       (100+0.01*(i+1)).toFixed(2)+'</span><span>'+sizes[i].toLocaleString('en-US')+'</span><span>'+
-       tot.toLocaleString('en-US')+'</span></div>';
+  var L=10,i,aS=[],bS=[],aTot=0,bTot=0,A='',B='';
+  for(i=0;i<L;i++){aS.push(220+Math.floor(rnd()*2600));bS.push(320+Math.floor(rnd()*3600));}
+  var aSum=aS.reduce(function(x,y){return x+y},0),bSum=bS.reduce(function(x,y){return x+y},0),
+      max=Math.max(aSum,bSum);
+  for(i=L-1;i>=0;i--){
+    aTot=0;for(var k=i;k<L;k++)aTot+=aS[k];
+    A+='<div class="lvl ask"><i style="width:'+(aTot/max*100).toFixed(0)+'%"></i><span>'+
+       (100+0.01*(i+1)).toFixed(2)+'</span><span>'+fmt(aS[i])+'</span><span>'+fmt(aTot)+'</span></div>';
   }
-  tot=0;
-  for(i=0;i<6;i++){
-    var sz=600+Math.floor(rnd()*4200);tot+=sz;
-    B+='<div class="lvl bid"><i style="width:'+(tot/max*100).toFixed(0)+'%"></i><span>'+
-       (100-0.01*(i+1)).toFixed(2)+'</span><span>'+sz.toLocaleString('en-US')+'</span><span>'+
-       tot.toLocaleString('en-US')+'</span></div>';
+  bTot=0;
+  for(i=0;i<L;i++){
+    bTot+=bS[i];
+    B+='<div class="lvl bid"><i style="width:'+(bTot/max*100).toFixed(0)+'%"></i><span>'+
+       (100-0.01*(i+1)).toFixed(2)+'</span><span>'+fmt(bS[i])+'</span><span>'+fmt(bTot)+'</span></div>';
   }
   asksEl.innerHTML=A;bidsEl.innerHTML=B;
+  var bp=Math.round(bSum/(bSum+aSum)*100);
+  var rb=document.getElementById('rb'),ra=document.getElementById('ra'),
+      bp2=document.getElementById('bpct'),ap2=document.getElementById('apct');
+  if(rb){rb.style.width=bp+'%';ra.style.width=(100-bp)+'%';
+         bp2.textContent=bp+'%';ap2.textContent=(100-bp)+'%';}
 }
 book();
-if(!reduced)setInterval(function(){if(!document.hidden&&html.getAttribute('data-doc')!=='open')book()},1400);
+if(!reduced)setInterval(function(){if(!document.hidden&&html.getAttribute('data-doc')!=='open')book()},1500);
 
 /* ── funding countdown: the desk never actually stops ── */
 var fund=document.getElementById('funding');
@@ -1042,13 +1103,6 @@ if(fund){
 }
 
 /* ── section dock ── */
-scenes.forEach(function(s,i){
-  var b=document.createElement('button');
-  b.type='button';b.innerHTML='<i></i>'+s.dataset.name;
-  b.setAttribute('aria-label','Go to '+s.dataset.name);
-  b.addEventListener('click',function(){goTo(i)});
-  dock.appendChild(b);
-});
 function goTo(i){
   if(camera)scrollTo({top:(i/(N-1))*maxScroll,behavior:reduced?'auto':'smooth'});
   else scenes[i].scrollIntoView({behavior:reduced?'auto':'smooth',block:'start'});
