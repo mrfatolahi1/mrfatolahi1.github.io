@@ -720,7 +720,7 @@ function measure(){
     var a=s.querySelector('[data-anchor]');
     anchorOff.push((a?(a.offsetTop+a.offsetHeight/2-h/2):0)*f);
   });
-  maxScroll=Math.round((N-1)*H*1.18);
+  maxScroll=Math.round((N-1)*H*2.15);
   driver.style.height=(maxScroll+H)+'px';
   curP=tgtP=clamp(scrollY/maxScroll,0,1);
   render(true);
@@ -782,7 +782,7 @@ function loop(){
   if(camera){
     tgtP=clamp(scrollY/maxScroll,0,1);
     var dd=tgtP-curP;
-    if(Math.abs(dd)>0.00012){curP+=dd*0.085;render()}
+    if(Math.abs(dd)>0.00008){curP+=dd*0.062;render()}
     else if(curP!==tgtP){curP=tgtP;render()}
   }
   requestAnimationFrame(loop);
