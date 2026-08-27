@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>FATOL/USDT — Mohammad Reza Fatolahi</title>
-<meta name="description" content="Backend engineer on the futures market-making desk at Tabdeal. Technical owner of all four services behind the platform — zero to ~50 markets, millions of orders a day, effectively 100% uptime.">
+<meta name="description" content="Backend engineer on the futures market-making desk at Tabdeal. Technical owner of all four services behind the platform — zero to ~50 markets, millions of orders a day, 99.9% uptime.">
 <meta name="author" content="Mohammad Reza Fatolahi">
 <meta name="theme-color" content="#0B0E11">
 <link rel="canonical" href="https://fatol.ir/">
 <meta property="og:type" content="profile">
 <meta property="og:url" content="https://fatol.ir/">
 <meta property="og:title" content="FATOL/USDT is now listed — Mohammad Reza Fatolahi">
-<meta property="og:description" content="Backend engineer, futures market-making desk at Tabdeal. ~50 markets from zero, millions of orders a day, 100.00% uptime.">
+<meta property="og:description" content="Backend engineer, futures market-making desk at Tabdeal. ~50 markets from zero, millions of orders a day, 99.9% uptime.">
 <meta name="twitter:card" content="summary">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230B0E11'/%3E%3Crect x='7' y='12' width='5' height='12' fill='%230ECB81'/%3E%3Crect x='9' y='7' width='1.4' height='20' fill='%230ECB81'/%3E%3Crect x='19' y='9' width='5' height='9' fill='%23F6465D'/%3E%3Crect x='21' y='5' width='1.4' height='18' fill='%23F6465D'/%3E%3C/svg%3E">
 <style>
@@ -207,8 +207,8 @@ td small{display:block;font-family:var(--sans);color:var(--faint);font-size:11px
 .tf .r{margin-left:auto;color:var(--dim)}
 .chartwrap{flex:1;position:relative;min-height:0}
 #candles{position:absolute;inset:0;width:100%;height:100%}
-.chartlabel{position:absolute;left:16px;top:14px;z-index:2;pointer-events:none}
-.chartlabel b{display:block;font-size:clamp(20px,2.4vw,34px);font-weight:700;letter-spacing:-.03em}
+.chartlabel{position:absolute;left:18px;top:78px;z-index:2;pointer-events:none}
+.chartlabel b{display:block;font-size:clamp(18px,1.9vw,29px);font-weight:700;letter-spacing:-.03em}
 .chartlabel span{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.16em;
   text-transform:uppercase;color:var(--faint);margin-top:6px}
 .ticket .tabs{display:flex;border-bottom:1px solid var(--line);font-size:11.5px;font-weight:600}
@@ -239,6 +239,22 @@ td small{display:block;font-family:var(--sans);color:var(--faint);font-size:11px
   display:flex;flex-direction:column;gap:8px}
 .owns b{font-size:12.5px;font-weight:700}
 .owns span{font-size:11px;color:var(--faint);line-height:1.55}
+
+/* position detail */
+.postable td{vertical-align:top}
+.detailbtn{background:var(--panel2);border:1px solid var(--line2);color:var(--dim);cursor:pointer;
+  font-family:var(--mono);font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;
+  padding:7px 11px;border-radius:4px;white-space:nowrap;transition:.2s var(--ease)}
+.detailbtn:hover{color:var(--txt);border-color:var(--dim)}
+.detailbtn[aria-expanded="true"]{background:var(--up);border-color:var(--up);color:#04150D}
+.detailbtn em{font-style:normal;display:inline-block;transition:transform .2s var(--ease)}
+.detailbtn[aria-expanded="true"] em{transform:rotate(180deg)}
+.posdetail td{padding:0;border-bottom:1px solid var(--line)}
+.dlist{display:grid;gap:9px;padding:14px 0 18px;max-height:236px;overflow-y:auto}
+@media(min-width:1100px){.dlist{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:30px}}
+.dlist li{display:grid;grid-template-columns:150px minmax(0,1fr);gap:12px;align-items:baseline}
+.dlist b{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--up)}
+.dlist span{font-family:var(--sans);font-size:12.5px;line-height:1.55;color:var(--dim)}
 
 /* ═══════ scene 3 — depth ═══════ */
 .depthgrid{display:grid;gap:11px;grid-template-columns:minmax(0,1fr);align-items:start}
@@ -418,21 +434,21 @@ html[data-doc="open"] .docclose{opacity:1;visibility:visible}
 <nav class="topnav">
   <span class="brand"><i></i>FATOL</span>
   <span class="links">
-    <a data-go="0">Trade</a><a data-go="1">Positions</a><a data-go="2">Depth</a>
-    <a data-go="3">Incident</a><a data-go="4">Contracts</a><a data-go="6">Contact</a>
+    <a data-go="0">Trade</a><a data-go="1">Positions</a><a data-go="2">Incident</a>
+    <a data-go="3">Depth</a><a data-go="4">Contracts</a><a data-go="6">Contact</a>
   </span>
   <span class="grow"></span>
-  <span class="px mono">FATOL/USDT <b class="up" id="navpx">100.00</b></span>
+  <span class="px mono">FATOL/USDT <b class="up" id="navpx">100,000</b></span>
   <a class="ghost" href="#prospectus" id="opendoc">Prospectus</a>
   <a class="cta" href="mailto:fatolahi.cs@gmail.com">Send Email</a>
 </nav>
 
 <div class="tickerbar" aria-hidden="true"><div class="run">
-  <span>FATOL/USDT <b class="up">100.00</b> +∞%</span>
+  <span>FATOL/USDT <b class="up">100,000</b> +∞%</span>
   <span>MARKETS QUOTED <b>~50</b></span>
   <span>SERVICES OWNED <b>4</b></span>
   <span>BOOKS HEDGED <b>~25</b></span>
-  <span>UPTIME <b class="up">100.00%</b></span>
+  <span>UPTIME <b class="up">99.9%</b></span>
   <span>ORDERS / DAY <b>millions</b></span>
   <span>WS FEEDS <b>~30</b> ACROSS <b>3</b> VENUES</span>
   <span>RISK MANAGER <b class="up">+$K IN 5 DAYS</b></span>
@@ -452,13 +468,13 @@ html[data-doc="open"] .docclose{opacity:1;visibility:visible}
   <section class="scene" data-name="Listing" data-shape="calm" aria-labelledby="h0">
     <div class="listbanner"><i></i>New listing · August 2026 · perpetual — FATOL/USDT is now trading</div>
     <h1 class="hero" id="h0">FATOL/USDT is <em>now listed.</em></h1>
-    <p class="lede">Mohammad Reza Fatolahi — backend engineer on the futures market-making desk at Tabdeal. Technical owner of all four services behind the platform: zero to ~50 markets, millions of orders a day, effectively 100% uptime.</p>
+    <p class="lede">Mohammad Reza Fatolahi — backend engineer on the futures market-making desk at Tabdeal. Technical owner of all four services behind the platform: zero to ~50 markets, millions of orders a day, 99.9% uptime.</p>
     <div class="pairhead">
       <span class="sym">FATOL/USDT <i>PERP</i></span>
-      <span class="last up" id="bigpx">100.00</span>
+      <span class="last up" id="bigpx">100,000</span>
       <span class="st"><b class="up">+∞%</b><span>since listing</span></span>
-      <span class="st"><b>100.00</b><span>24h high</span></span>
-      <span class="st"><b>100.00</b><span>24h low</span></span>
+      <span class="st"><b>100,000</b><span>24h high</span></span>
+      <span class="st"><b>100,000</b><span>24h low</span></span>
       <span class="st"><b>millions</b><span>24h orders</span></span>
       <span class="st"><b class="up">~50</b><span>markets quoted</span></span>
       <span class="st"><b>4</b><span>services owned</span></span>
@@ -470,14 +486,14 @@ html[data-doc="open"] .docclose{opacity:1;visibility:visible}
     <span class="anchor" data-anchor></span>
     <div class="trade">
       <div class="pnl book">
-        <h4><span>Order book</span><em class="grp"><a class="on">0.01</a><a>0.1</a><a>1</a></em></h4>
+        <h4><span>Order book</span><em class="grp"><a class="on">1</a><a>10</a><a>100</a></em></h4>
         <div class="in">
           <div class="cols"><span>Price · USDT</span><span>Size · FATOL</span><span>Total</span></div>
           <div id="asks"></div>
           <div class="spread">
-            <b id="midpx">100.00</b>
+            <b id="midpx">100,000</b>
             <span>spread <em id="spread">0.02%</em></span>
-            <span class="mk">mark 100.00</span>
+            <span class="mk">mark 100,000</span>
           </div>
           <div id="bids"></div>
           <div class="ratio"><i class="b" id="rb"></i><i class="a" id="ra"></i></div>
@@ -489,7 +505,7 @@ html[data-doc="open"] .docclose{opacity:1;visibility:visible}
         <div class="tf"><a>1m</a><a>15m</a><a>4H</a><a class="on">All</a>
           <span class="r mono">Sep 2020 → Aug 2026</span></div>
         <div class="chartwrap">
-          <div class="chartlabel"><b>Fatolahi</b><span>backend engineer · market maker team, futures</span></div>
+          <div class="chartlabel"><b>Mohammad Reza Fatolahi</b><span>backend engineer · market maker team, futures</span></div>
           <svg id="candles" aria-hidden="true"></svg>
         </div>
         <div class="sales">
@@ -503,7 +519,7 @@ html[data-doc="open"] .docclose{opacity:1;visibility:visible}
 
       <div class="pnl ticket"><div class="tabs"><a class="on">Limit</a><a>Market</a><a>Stop</a></div>
         <div class="in">
-          <div class="fld"><small>Price</small><span>100.00 USDT</span></div>
+          <div class="fld"><small>Price</small><span>100,000 USDT</span></div>
           <div class="fld"><small>Amount</small><span>1.00 FATOL</span></div>
           <div class="fld"><small>Total</small><span>one hire</span></div>
           <div class="slider"><div class="track"><i></i><b></b></div>
@@ -531,25 +547,41 @@ html[data-doc="open"] .docclose{opacity:1;visibility:visible}
     </div>
     <h2 class="sr" id="h2">Experience</h2>
     <span class="anchor" data-anchor></span>
-    <div class="pnl"><h4><span>Open &amp; closed positions</span><em>entry · size · realised</em></h4><div class="in">
-      <table>
-        <tr><th>Instrument</th><th>Side</th><th>Entry</th><th>Size</th><th>Realised</th></tr>
-        <tr><td class="nm">TABDEAL · futures MM<small>Crypto exchange, ~300 employees · Tehran</small></td>
-            <td><span class="tag g">LONG · open</span></td><td>Nov 2025</td>
-            <td>4 services<small>~50 markets quoted, ~25 hedged</small></td>
-            <td class="up">100.00% uptime<small>millions of orders/day, multi-million balances</small></td></tr>
-        <tr><td class="nm">MOHAYMEN · Java / Spring<small>Government systems contractor, ~100 employees</small></td>
-            <td><span class="tag">CLOSED</span></td><td>Dec 2022</td>
-            <td>national taxpayer platform<small>records covering the whole country</small></td>
-            <td class="up">PKCS#11 unblocked<small>Kafka event processing · Oracle · Docker</small></td></tr>
-        <tr><td class="nm">SYNAPPS · Python / Django<small>Healthcare &amp; process automation · remote</small></td>
-            <td><span class="tag">CLOSED</span></td><td>Sep 2021</td>
-            <td>pharmacy backend<small>prescriptions, insurance, medications</small></td>
-            <td class="up">REST + PostgreSQL<small>four-engineer team, fully remote</small></td></tr>
-        <tr><td class="nm">SHARIF · CS → MBA<small>Sharif University of Technology</small></td>
-            <td><span class="tag g">LONG · open</span></td><td>Sep 2020</td>
-            <td>BSc 2025 · MBA strategy<small>held through full-time engineering work</small></td>
-            <td class="up">in progress<small>organised camps, led volunteer initiatives</small></td></tr>
+    <div class="pnl"><h4><span>Open &amp; closed positions</span><em>expand any row for the full detail</em></h4><div class="in">
+      <table class="postable">
+        <tr><th>Instrument</th><th>Side</th><th>Entry</th><th>Size</th><th>Realised</th><th></th></tr>
+        <tr class="posrow">
+          <td class="nm">TABDEAL · futures MM<small>Crypto exchange, ~300 employees · Tehran, Iran</small></td>
+          <td><span class="tag g">LONG · open</span></td><td>Nov 2025</td>
+          <td>4 services<small>~50 markets quoted, ~25 hedged</small></td>
+          <td class="up">99.9% uptime<small>millions of orders/day, multi-million balances</small></td>
+          <td><button class="detailbtn" type="button" data-pos="tabdeal">Position detail <em>▾</em></button></td>
+        </tr>
+        <tr class="posdetail" id="d-tabdeal" hidden><td colspan="6"><ul class="dlist"><li><b>Platform ownership</b><span>Own all four services behind the exchange's futures market-making platform, taking coverage from zero to ~50 markets at 99.9% uptime. Millions of orders per day against multi-million-dollar balances, where a single error is a direct financial loss.</span></li><li><b>Hedge engine</b><span>Built and own the engine that mirrors positions across external exchanges for ~25 markets with exact accounting reconciliation, letting the desk market-make those books with no directional risk.</span></li><li><b>Risk manager</b><span>Proposed running the remaining ~25 markets unhedged under algorithmic risk control instead of hedging every position, then designed and built the service that executes it — several thousand dollars of profit within five days from one of the platform's thinnest markets alone.</span></li><li><b>Price service</b><span>A sharded streaming service consuming ~30 concurrent WebSocket feeds across three exchanges with REST fallback and per-shard health checks, keeping order-book and mark-price data fresh for every downstream consumer.</span></li><li><b>Order placement</b><span>Designed the depth and spread algorithms that quote near-zero spreads across all covered markets.</span></li><li><b>Incident leadership</b><span>Led response to a mispricing event that caused erroneous liquidations: stabilised the markets, made every affected user whole, then shipped the systems that stopped it recurring.</span></li><li><b>Reconciliation</b><span>Traced recurring account discrepancies through every price-mutation source, then automated the fix with reconciliation jobs, balance-mismatch alerts and daily reports.</span></li><li><b>Team leadership</b><span>Deputy to the tech lead — architecture decisions, code review and on-call. Onboarded, mentored and managed the task flow of two junior engineers.</span></li><li><b>AI-first delivery</b><span>Drove the team's AI-first workflow: brainstorm architecture with Claude, generate implementations against detailed plans, review every line given the financial stakes — roughly 60% off delivery time. Authored the shared AI guideline files now shipped in every team repository.</span></li><li><b>Product ownership</b><span>Operates as a technical product manager alongside engineering: sets market-maker strategy and represents the team in board and CX meetings.</span></li></ul></td></tr>
+        <tr class="posrow">
+          <td class="nm">MOHAYMEN · Java / Spring<small>Government systems contractor, ~100 employees · Tehran</small></td>
+          <td><span class="tag">CLOSED</span></td><td>Dec 2022</td>
+          <td>national taxpayer platform<small>records covering the whole country</small></td>
+          <td class="up">PKCS#11 unblocked<small>Kafka event processing · Oracle · Docker</small></td>
+          <td><button class="detailbtn" type="button" data-pos="mohaymen">Position detail <em>▾</em></button></td>
+        </tr>
+        <tr class="posdetail" id="d-mohaymen" hidden><td colspan="6"><ul class="dlist"><li><b>National scale</b><span>Built backend services for Iran's national taxpayer platform, a government system holding detailed records covering essentially the entire population of the country.</span></li><li><b>Cryptography</b><span>Implemented PKCS#11-based cryptography for sensitive operations — difficult to achieve with the Java tooling available at the time — unblocking a requirement the team had been unable to satisfy.</span></li><li><b>Stack</b><span>Java, Spring, Kafka event processing, Oracle Database and Docker.</span></li></ul></td></tr>
+        <tr class="posrow">
+          <td class="nm">SYNAPPS · Python / Django<small>Healthcare &amp; administrative process automation · remote</small></td>
+          <td><span class="tag">CLOSED</span></td><td>Sep 2021</td>
+          <td>pharmacy backend<small>prescriptions, insurance, medications</small></td>
+          <td class="up">REST + PostgreSQL<small>four-engineer team, fully remote</small></td>
+          <td><button class="detailbtn" type="button" data-pos="synapps">Position detail <em>▾</em></button></td>
+        </tr>
+        <tr class="posdetail" id="d-synapps" hidden><td colspan="6"><ul class="dlist"><li><b>Ownership</b><span>Owned the backend of a pharmacy management system, modelling prescriptions, insurance, medications and patients along with the administrative rules real Iranian pharmacies operate under.</span></li><li><b>Delivery</b><span>Delivered REST APIs on Django and PostgreSQL within a four-engineer team, working fully remotely.</span></li></ul></td></tr>
+        <tr class="posrow">
+          <td class="nm">SHARIF · CS → MBA<small>Sharif University of Technology · Tehran</small></td>
+          <td><span class="tag g">LONG · open</span></td><td>Sep 2020</td>
+          <td>BSc 2025 · MBA strategy<small>held through full-time engineering work</small></td>
+          <td class="up">in progress<small>organised camps, led volunteer initiatives</small></td>
+          <td><button class="detailbtn" type="button" data-pos="sharif">Position detail <em>▾</em></button></td>
+        </tr>
+        <tr class="posdetail" id="d-sharif" hidden><td colspan="6"><ul class="dlist"><li><b>M.Sc. Business Administration</b><span>Strategy, Sharif University of Technology — in progress, pursued alongside full-time engineering work.</span></li><li><b>B.Sc. Computer Science</b><span>Sharif University of Technology, 2020–2025. Data structures, algorithms, operating systems, data engineering, web programming, advanced programming.</span></li><li><b>Alongside</b><span>Completed the degree while working full-time as a backend engineer; organised university camps and events and led volunteer initiatives.</span></li></ul></td></tr>
       </table>
       <div class="owns">
         <div><b>Price service</b><span>Sharded streaming, ~30 concurrent WebSocket feeds across three exchanges, REST fallback, per-shard health checks.</span></div>
@@ -560,28 +592,7 @@ html[data-doc="open"] .docclose{opacity:1;visibility:visible}
     </div></div>
   </section>
 
-  <!-- ════════ 03 DEPTH ════════ -->
-  <section class="scene" data-name="Depth" data-shape="calm" aria-labelledby="h3">
-    <div class="pairhead">
-      <span class="sym">Market depth <i>L2</i></span>
-      <span class="st"><b class="up" id="bidsum">—</b><span>total bid size</span></span>
-      <span class="st"><b class="down" id="asksum">—</b><span>total ask size</span></span>
-      <span class="st"><b>0.02%</b><span>spread</span></span>
-      <span class="st"><b>3</b><span>venues consumed</span></span>
-    </div>
-    <h2 class="sr" id="h3">Skills</h2>
-    <span class="anchor" data-anchor></span>
-    <div class="depthgrid">
-      <div class="pnl"><h4><span>Depth chart</span><em>cumulative size, drawn from the book below</em></h4>
-        <div class="depthwrap"><svg id="depthchart" aria-hidden="true"></svg></div>
-      </div>
-      <div class="pnl"><h4><span>The book</span><em>size · level</em></h4><div class="in">
-        <div class="ladder" id="ladder"></div>
-      </div></div>
-    </div>
-  </section>
-
-  <!-- ════════ 04 INCIDENT ════════ -->
+  <!-- ════════ 03 INCIDENT ════════ -->
   <section class="scene" data-name="Incident" data-shape="spike" aria-labelledby="h4">
     <div class="pairhead">
       <span class="sym">Event log <i style="background:var(--down);color:#180207">SEV 1</i></span>
@@ -608,10 +619,31 @@ html[data-doc="open"] .docclose{opacity:1;visibility:visible}
     </div>
   </section>
 
+  <!-- ════════ 04 DEPTH ════════ -->
+  <section class="scene" data-name="Depth" data-shape="calm" aria-labelledby="h3">
+    <div class="pairhead">
+      <span class="sym">Market depth <i>L2</i></span>
+      <span class="st"><b class="up" id="bidsum">—</b><span>total bid size</span></span>
+      <span class="st"><b class="down" id="asksum">—</b><span>total ask size</span></span>
+      <span class="st"><b>0.02%</b><span>spread</span></span>
+      <span class="st"><b>3</b><span>venues consumed</span></span>
+    </div>
+    <h2 class="sr" id="h3">Skills</h2>
+    <span class="anchor" data-anchor></span>
+    <div class="depthgrid">
+      <div class="pnl"><h4><span>Depth chart</span><em>cumulative size, drawn from the book below</em></h4>
+        <div class="depthwrap"><svg id="depthchart" aria-hidden="true"></svg></div>
+      </div>
+      <div class="pnl"><h4><span>The book</span><em>size · level</em></h4><div class="in">
+        <div class="ladder" id="ladder"></div>
+      </div></div>
+    </div>
+  </section>
+
   <!-- ════════ 05 CONTRACTS ════════ -->
   <section class="scene" data-name="Contracts" data-shape="calm" aria-labelledby="h5">
     <div class="pairhead">
-      <span class="sym">Contracts deployed <i>5</i></span>
+      <span class="sym">Contracts deployed <i>6</i></span>
       <span class="st"><b class="up">verified</b><span>source</span></span>
       <span class="st"><b>MIT</b><span>licence</span></span>
       <span class="st"><b>PyPI</b><span>one published</span></span>
@@ -623,6 +655,11 @@ html[data-doc="open"] .docclose{opacity:1;visibility:visible}
         <div class="top"><b>Jasem</b><span class="addr">mrfatolahi1/Jasem ↗</span></div>
         <p>Plain-text task, time and expense tracker for the terminal, on PyPI and used daily. Natural-language capture through a pluggable LLM layer — local Ollama, OpenAI-compatible or Anthropic — degrading gracefully to regex when no model answers.</p>
         <div class="stk"><span class="tag">Python</span><span class="tag">LLM APIs</span><span class="tag">CLI</span><span class="tag g">zero deps</span></div>
+      </a>
+      <a class="contract" href="https://github.com/mrfatolahi1/yadakchi" target="_blank" rel="noopener">
+        <div class="top"><b>Yadakchi</b><span class="addr">mrfatolahi1/yadakchi ↗</span></div>
+        <p>A vertical price-comparison engine for automotive spare parts in Iran. Search a part and see it across many sellers side by side, with the two answers no generic comparison site gives: does it fit your car, and is it genuine, OEM, aftermarket, used or refurbished. Ten independent microservices — crawler, enricher, fitment, matcher, catalog, search, ai, billing, ops, web — talking asynchronously over Kafka, each with its own database and strict separation at the infrastructure level.</p>
+        <div class="stk"><span class="tag">Django 5</span><span class="tag">Django Ninja</span><span class="tag">Kafka</span><span class="tag">PostgreSQL</span><span class="tag">Redis</span><span class="tag">Typesense</span><span class="tag">MinIO</span><span class="tag">Prometheus</span><span class="tag g">10 services</span></div>
       </a>
       <a class="contract" href="https://github.com/mrfatolahi1/Crypto-Matching-Engine" target="_blank" rel="noopener">
         <div class="top"><b>Crypto Matching Engine</b><span class="addr">mrfatolahi1/Crypto-Matching-Engine ↗</span></div>
@@ -748,13 +785,13 @@ html[data-doc="open"] .docclose{opacity:1;visibility:visible}
     </header>
 
     <h2>Summary</h2><hr>
-    <p>Backend engineer who owns financially critical systems end to end. Technical owner of all four services behind a crypto exchange's futures market-making platform — built from zero to roughly 50 markets, placing millions of orders a day against multi-million-dollar balances at effectively 100% uptime. Works AI-first: architecture and planning done in dialogue with LLMs, implementation generated against detailed plans, every line reviewed because the money is real. Computer Science at Sharif, now an MBA in Strategy — comfortable owning the product and business call as well as the technical one.</p>
+    <p>Backend engineer who owns financially critical systems end to end. Technical owner of all four services behind a crypto exchange's futures market-making platform — built from zero to roughly 50 markets, placing millions of orders a day against multi-million-dollar balances at 99.9% uptime. Works AI-first: architecture and planning done in dialogue with LLMs, implementation generated against detailed plans, every line reviewed because the money is real. Computer Science at Sharif, now an MBA in Strategy — comfortable owning the product and business call as well as the technical one.</p>
 
     <h2>Experience</h2><hr>
     <div class="e"><span class="l">Backend Engineer — Market Maker Team, Futures</span><span class="r">Nov 2025 – Present</span></div>
     <div class="e s" style="margin-top:2px"><span class="l">Tabdeal — crypto exchange, ~300 employees</span><span class="r">Tehran, Iran</span></div>
     <ul>
-      <li><b>Platform ownership</b> — Own all four services behind the exchange's futures market-making platform, taking coverage from zero to ~50 markets at effectively 100% uptime. The system places millions of orders per day against multi-million-dollar balances, where a single error is a direct financial loss.</li>
+      <li><b>Platform ownership</b> — Own all four services behind the exchange's futures market-making platform, taking coverage from zero to ~50 markets at 99.9% uptime. The system places millions of orders per day against multi-million-dollar balances, where a single error is a direct financial loss.</li>
       <li><b>Hedge engine</b> — Built and own the hedging engine that mirrors positions across external exchanges for ~25 markets with exact accounting reconciliation, letting the desk market-make those books with no directional risk.</li>
       <li><b>Risk manager</b> — Proposed running the remaining ~25 markets unhedged under algorithmic risk control instead of hedging every position, then designed and built the service that executes it — generating several thousand dollars of profit within five days from one of the platform's thinnest markets alone.</li>
       <li><b>Price service</b> — Engineered a sharded streaming service consuming ~30 concurrent WebSocket feeds across three exchanges with REST fallback and per-shard health checks, keeping order-book and mark-price data fresh for every downstream consumer.</li>
@@ -926,9 +963,9 @@ function ink(pts){
     '<path d="'+d+'" fill="none" stroke="#0ECB81" stroke-width="1.8"/>'+
     '<line x1="0" y1="'+e.y.toFixed(1)+'" x2="'+W+'" y2="'+e.y.toFixed(1)+
       '" stroke="#0ECB81" stroke-width="1" stroke-dasharray="4 5" opacity=".42"/>'+
-    '<rect x="'+(W-72)+'" y="'+(e.y-10)+'" width="64" height="20" rx="3" fill="#0ECB81"/>'+
-    '<text x="'+(W-40)+'" y="'+(e.y+4.6)+'" font-family="ui-monospace,monospace" font-size="11.5" '+
-      'font-weight="700" fill="#04150D" text-anchor="middle">100.00</text>';
+    '<rect x="'+(W-84)+'" y="'+(e.y-10)+'" width="76" height="20" rx="3" fill="#0ECB81"/>'+
+    '<text x="'+(W-46)+'" y="'+(e.y+4.6)+'" font-family="ui-monospace,monospace" font-size="11" '+
+      'font-weight="700" fill="#04150D" text-anchor="middle">100,000</text>';
 }
 function loop(){
   if(camera){
@@ -973,14 +1010,14 @@ function drawCandles(){
   for(i=0;i<=3;i++){var gy=padT+plot*i/3;
     grid+='<line x1="0" y1="'+gy.toFixed(1)+'" x2="'+(w-padR)+'" y2="'+gy.toFixed(1)+'" stroke="#232C36" stroke-width="1"/>';
     grid+='<text x="'+(w-padR+8)+'" y="'+(gy+3.6).toFixed(1)+'" font-family="ui-monospace,monospace" font-size="9.5" fill="#5B6672">'+
-          (hi-rg*i/3).toFixed(2)+'</text>';
+          Math.round((hi-rg*i/3)*1000).toLocaleString('en-US')+'</text>';
   }
   var last=o[n-1],ly=Y(last.c);
   out+='<path d="'+mid+'" fill="none" stroke="#F0B90B" stroke-width="1.2" opacity=".65"/>';
   out+='<line x1="0" y1="'+ly.toFixed(1)+'" x2="'+(w-padR)+'" y2="'+ly.toFixed(1)+
        '" stroke="#0ECB81" stroke-width="1" stroke-dasharray="3 4" opacity=".8"/>';
   out+='<rect x="'+(w-padR+2)+'" y="'+(ly-9)+'" width="50" height="18" rx="2.5" fill="#0ECB81"/>';
-  out+='<text x="'+(w-padR+27)+'" y="'+(ly+4)+'" font-family="ui-monospace,monospace" font-size="10.5" font-weight="700" fill="#04150D" text-anchor="middle">100.00</text>';
+  out+='<text x="'+(w-padR+27)+'" y="'+(ly+4)+'" font-family="ui-monospace,monospace" font-size="9.5" font-weight="700" fill="#04150D" text-anchor="middle">100,000</text>';
   el.innerHTML=grid+out;
 }
 
@@ -1037,7 +1074,7 @@ function drawDepth(){
   o+='<path d="'+ap+'" fill="url(#ag1)" stroke="#F6465D" stroke-width="1.5"/>';
   o+='<line x1="'+mid+'" y1="'+(padT-14)+'" x2="'+mid+'" y2="'+base+'" stroke="#5B6672" stroke-width="1" stroke-dasharray="3 5"/>';
   o+='<line x1="'+padX+'" y1="'+base+'" x2="'+(w-padX)+'" y2="'+base+'" stroke="#232C36" stroke-width="1"/>';
-  o+='<text x="'+mid+'" y="'+(padT-18)+'" font-family="ui-monospace,monospace" font-size="9.5" fill="#8B97A5" text-anchor="middle">100.00 mid</text>';
+  o+='<text x="'+mid+'" y="'+(padT-18)+'" font-family="ui-monospace,monospace" font-size="9.5" fill="#8B97A5" text-anchor="middle">100,000 mid</text>';
   o+='<text x="'+padX+'" y="'+(padT-18)+'" font-family="ui-monospace,monospace" font-size="9.5" fill="#0ECB81">bids — what I bring ('+bTot+')</text>';
   o+='<text x="'+(w-padX)+'" y="'+(padT-18)+'" font-family="ui-monospace,monospace" font-size="9.5" fill="#F6465D" text-anchor="end">('+aTot+') asks — what I want</text>';
   el.innerHTML=o+lab;
@@ -1061,23 +1098,25 @@ var asksEl=document.getElementById('asks'),bidsEl=document.getElementById('bids'
     midEl=document.getElementById('midpx');
 var seed=424242;
 function rnd(){seed=(seed*1664525+1013904223)%4294967296;return seed/4294967296}
-function fmt(n){return n.toLocaleString('en-US')}
+function fmt(n){return n.toFixed(4)}
+function px(n){return n.toLocaleString('en-US')}
 function book(){
   if(!asksEl)return;
   var L=10,i,aS=[],bS=[],aTot=0,bTot=0,A='',B='';
-  for(i=0;i<L;i++){aS.push(220+Math.floor(rnd()*2600));bS.push(320+Math.floor(rnd()*3600));}
+  /* max supply is 1, so the book only ever trades fractions of it */
+  for(i=0;i<L;i++){aS.push(0.0004+rnd()*0.0180);bS.push(0.0006+rnd()*0.0240);}
   var aSum=aS.reduce(function(x,y){return x+y},0),bSum=bS.reduce(function(x,y){return x+y},0),
       max=Math.max(aSum,bSum);
   for(i=L-1;i>=0;i--){
     aTot=0;for(var k=i;k<L;k++)aTot+=aS[k];
     A+='<div class="lvl ask"><i style="width:'+(aTot/max*100).toFixed(0)+'%"></i><span>'+
-       (100+0.01*(i+1)).toFixed(2)+'</span><span>'+fmt(aS[i])+'</span><span>'+fmt(aTot)+'</span></div>';
+       px(100000+(i+1))+'</span><span>'+fmt(aS[i])+'</span><span>'+fmt(aTot)+'</span></div>';
   }
   bTot=0;
   for(i=0;i<L;i++){
     bTot+=bS[i];
     B+='<div class="lvl bid"><i style="width:'+(bTot/max*100).toFixed(0)+'%"></i><span>'+
-       (100-0.01*(i+1)).toFixed(2)+'</span><span>'+fmt(bS[i])+'</span><span>'+fmt(bTot)+'</span></div>';
+       px(100000-(i+1))+'</span><span>'+fmt(bS[i])+'</span><span>'+fmt(bTot)+'</span></div>';
   }
   asksEl.innerHTML=A;bidsEl.innerHTML=B;
   var bp=Math.round(bSum/(bSum+aSum)*100);
@@ -1111,6 +1150,18 @@ document.addEventListener('click',function(e){
   var g=e.target.closest&&e.target.closest('[data-go]');
   if(g){e.preventDefault();goTo(+g.getAttribute('data-go'))}
 });
+
+/* ── position detail expanders ── */
+document.addEventListener('click',function(e){
+  var b=e.target.closest&&e.target.closest('.detailbtn');if(!b)return;
+  var row=document.getElementById('d-'+b.getAttribute('data-pos'));if(!row)return;
+  var open=row.hasAttribute('hidden');
+  document.querySelectorAll('.posdetail').forEach(function(r){r.setAttribute('hidden','')});
+  document.querySelectorAll('.detailbtn').forEach(function(x){x.setAttribute('aria-expanded','false')});
+  if(open){row.removeAttribute('hidden');b.setAttribute('aria-expanded','true')}
+  requestAnimationFrame(measure);
+});
+document.querySelectorAll('.detailbtn').forEach(function(b){b.setAttribute('aria-expanded','false')});
 
 /* ── prospectus ── */
 function doc(open){
