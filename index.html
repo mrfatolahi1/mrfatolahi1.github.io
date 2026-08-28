@@ -24,8 +24,9 @@
   --mono:ui-monospace,"SF Mono","DejaVu Sans Mono","Liberation Mono",Menlo,Consolas,monospace;
   --ease:cubic-bezier(.22,.61,.36,1);
   --nav:46px; --tick:30px;
-  --gutter:clamp(20px,4.6vw,44px);
-  --measure:1740px;
+  --gutx:clamp(28px,4.9vw,150px);   /* camera: side margin at scale 1 */
+  --gutter:clamp(26px,5.4vw,72px);  /* flat: side margin */
+  --measure:1600px;
 }
 @media(max-width:600px){:root{--nav:44px; --tick:28px}}
 *,*::before,*::after{box-sizing:border-box}
@@ -105,8 +106,8 @@ html[data-mode="flat"] .tickerbar{position:sticky;top:var(--nav)}
 .world{position:absolute;top:0;left:0;width:0;height:0;will-change:transform;backface-visibility:hidden}
 .thread{position:fixed;inset:0;z-index:2;pointer-events:none;width:100%;height:100%}
 .driver{height:100vh}
-.scene{position:absolute;transform:translate(-50%,-50%);width:93vw;
-  max-width:min(var(--measure),calc(100vw - 76px));opacity:0}
+.scene{position:absolute;transform:translate(-50%,-50%);
+  width:calc(100vw - var(--gutx)*2);max-width:var(--measure);opacity:0}
 html[data-mode="camera"] .scene{transition:none;will-change:opacity;backface-visibility:hidden}
 .scene > *{position:relative;z-index:3}
 .anchor{display:block;width:100%;height:1px}
@@ -119,7 +120,7 @@ html[data-mode="camera"] .anchor{height:clamp(22px,3.4vh,44px)}
 .eyebrow i{width:6px;height:6px;border-radius:50%;background:var(--up);
   box-shadow:0 0 0 0 rgba(14,203,129,.6);animation:pulse 2.4s infinite}
 @keyframes pulse{70%{box-shadow:0 0 0 7px transparent}100%{box-shadow:0 0 0 0 transparent}}
-.pairhead{display:flex;align-items:center;gap:clamp(12px,1.5vw,24px);flex-wrap:wrap;
+.pairhead{display:flex;align-items:center;gap:clamp(9px,1.15vw,24px) clamp(11px,1.3vw,26px);flex-wrap:wrap;
   border-bottom:1px solid var(--line);margin-bottom:0;
   padding:clamp(9px,1.6vh,14px) 0 clamp(8px,1.4vh,12px)}
 .pairhead .sym{font-size:19px;font-weight:700;display:flex;align-items:center;gap:9px}
@@ -404,7 +405,7 @@ html[data-modal="open"] .modal .box{transform:none}
 html[data-mode="flat"] .stage{position:static;overflow:visible;height:auto}
 html[data-mode="flat"] .world{position:static;width:auto;height:auto;transform:none!important}
 html[data-mode="flat"] .scene{position:static;transform:none!important;opacity:1;width:auto;max-width:none;
-  padding-block:clamp(38px,7vw,62px);
+  padding-block:clamp(46px,7.5vw,86px);scroll-margin-top:calc(var(--nav) + var(--tick));
   padding-left:max(var(--gutter),env(safe-area-inset-left),calc((100% - var(--measure))/2));
   padding-right:max(var(--gutter),env(safe-area-inset-right),calc((100% - var(--measure))/2));
   border-top:1px solid var(--line)}
@@ -1003,7 +1004,7 @@ var svg=document.getElementById('thread'),
 var N=scenes.length,W=0,H=0,camera=false,maxScroll=0,anchorOff=[],curP=0,tgtP=0,lastIdx=-1;
 /* one scale for every scene, so a 1440 laptop and a 4K monitor both get the
    whole scene on screen at the size it was drawn for */
-var SC=1,CHROME=76,CUE=38,FLOOR=0.85,CEIL=1.16;
+var SC=1,CHROME=76,CUE=38,FLOOR=0.82,CEIL=1.10;
 
 /* seven scenes; scale is pinned at 1 so type is never resampled */
 var KX=[0,1.50,3.00,4.50,6.00,7.50,8.95],
@@ -1031,11 +1032,32 @@ function flatten(){
   camera=false;SC=1;html.setAttribute('data-mode','flat');
   driver.style.height='0px';world.style.transform='';
   scenes.forEach(function(s){s.style.left=s.style.top=s.style.opacity=s.style.transform='';s._d=s._o=undefined});
-  maxScroll=0;drawCandles();drawDepth();
+  maxScroll=0;lastIdx=-1;drawCandles();drawDepth();flatScroll();
 }
+function mark(idx){
+  if(idx===lastIdx)return;
+  lastIdx=idx;
+  [].forEach.call(document.querySelectorAll('.topnav .links a'),function(a){
+    a.style.color=(+a.getAttribute('data-go')===idx)?'var(--up)':'';
+  });
+}
+/* scrolling the flat page still says how far through you are and where */
+var flatRAF=0;
+function flatScroll(){
+  if(camera)return;
+  var max=document.documentElement.scrollHeight-innerHeight;
+  prog.style.width=(max>0?clamp(scrollY/max,0,1)*100:0).toFixed(2)+'%';
+  var mid=scrollY+innerHeight*0.34,idx=0;
+  for(var k=0;k<N;k++){if(scenes[k].offsetTop<=mid)idx=k}
+  mark(idx);
+}
+addEventListener('scroll',function(){
+  if(camera||flatRAF)return;
+  flatRAF=requestAnimationFrame(function(){flatRAF=0;flatScroll()});
+},{passive:true});
 function measure(){
   W=innerWidth;H=innerHeight;SC=1;
-  camera=W>=1180&&H>=740&&!reduced;
+  camera=W>=1280&&H>=700&&!reduced;
   html.setAttribute('data-mode',camera?'camera':'flat');
   svg.setAttribute('width',W);svg.setAttribute('height',H);
   if(!camera){flatten();return;}
@@ -1051,7 +1073,8 @@ function measure(){
     var a=s.querySelector('[data-anchor]');
     anchorOff.push(a?(a.offsetTop+a.offsetHeight/2-h/2):0);
   });
-  SC=Math.min((H-CHROME-CUE)/tall,(W-28)/wide,CEIL);
+  var gut=parseFloat(getComputedStyle(html).getPropertyValue('--gutx'))||28;
+  SC=Math.min((H-CHROME-CUE)/tall,(W-gut*2)/wide,CEIL);
   /* below the floor the type would be too small to read — scroll it instead */
   if(SC<FLOOR){flatten();return;}
   drawCandles();drawDepth();
@@ -1080,13 +1103,7 @@ function render(){
   for(q=0;q<=SEG;q++){var u=q/SEG;pts.push({x:u*W,y:baseY+lerp(shape(gA,u),shape(gB,u),t)*s});}
   svg.innerHTML=ink(pts);
   prog.style.width=(curP*100).toFixed(2)+'%';
-  var idx=Math.round(f);
-  if(idx!==lastIdx){
-    lastIdx=idx;
-    [].forEach.call(document.querySelectorAll('.topnav .links a'),function(a){
-      a.style.color=(+a.getAttribute('data-go')===idx)?'var(--up)':'';
-    });
-  }
+  mark(Math.round(f));
   if(cue)cue.classList.toggle('gone',curP>0.015);
 }
 function pathOf(p){var s='',i;for(i=0;i<p.length;i++)s+=(i?'L':'M')+p[i].x.toFixed(1)+' '+p[i].y.toFixed(1);return s}
