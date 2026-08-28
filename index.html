@@ -24,8 +24,8 @@
   --mono:ui-monospace,"SF Mono","DejaVu Sans Mono","Liberation Mono",Menlo,Consolas,monospace;
   --ease:cubic-bezier(.22,.61,.36,1);
   --nav:46px; --tick:30px;
-  --gutx:clamp(28px,4.9vw,150px);   /* camera: side margin at scale 1 */
-  --gutter:clamp(26px,5.4vw,72px);  /* flat: side margin */
+  --gutx:clamp(32px,5.3vw,170px);   /* camera: side margin at scale 1 */
+  --gutter:clamp(30px,6vw,88px);    /* flat: side margin */
   --measure:1600px;
 }
 @media(max-width:600px){:root{--nav:44px; --tick:28px}}
@@ -1004,7 +1004,7 @@ var svg=document.getElementById('thread'),
 var N=scenes.length,W=0,H=0,camera=false,maxScroll=0,anchorOff=[],curP=0,tgtP=0,lastIdx=-1;
 /* one scale for every scene, so a 1440 laptop and a 4K monitor both get the
    whole scene on screen at the size it was drawn for */
-var SC=1,CHROME=76,CUE=38,FLOOR=0.82,CEIL=1.10;
+var SC=1,CHROME=76,CUE=38,FLOOR=0.80,CEIL=1.03;
 
 /* seven scenes; scale is pinned at 1 so type is never resampled */
 var KX=[0,1.50,3.00,4.50,6.00,7.50,8.95],
