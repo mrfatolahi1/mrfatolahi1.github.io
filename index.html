@@ -772,9 +772,9 @@ html[data-doc="open"] .docclose{opacity:1;visibility:visible}
         <p>Plain-text task, time and expense tracker for the terminal, on PyPI and used daily. Natural-language capture through a pluggable LLM layer — local Ollama, OpenAI-compatible or Anthropic — degrading gracefully to regex when no model answers.</p>
         <div class="stk"><span class="tag">Python</span><span class="tag">LLM APIs</span><span class="tag">CLI</span><span class="tag g">zero deps</span></div>
       </a>
-      <a class="contract" href="https://github.com/mrfatolahi1/yadakchi" target="_blank" rel="noopener">
-        <div class="top"><b>Yadakchi</b><span class="addr">mrfatolahi1/yadakchi ↗</span></div>
-        <p>A vertical price-comparison engine for automotive spare parts in Iran. Search a part and see it across many sellers side by side, with the two answers no generic comparison site gives: does it fit your car, and is it genuine, OEM, aftermarket, used or refurbished. Ten independent microservices — crawler, enricher, fitment, matcher, catalog, search, ai, billing, ops, web — talking asynchronously over Kafka, each with its own database and strict separation at the infrastructure level.</p>
+      <a class="contract" href="https://github.com/mrfatolahi1/Yadakchi" target="_blank" rel="noopener">
+        <div class="top"><b>Yadakchi</b><span class="addr">mrfatolahi1/Yadakchi ↗</span></div>
+        <p>A vertical price-comparison engine for automotive spare parts in Iran. Search a part and see it across many sellers side by side, with the two answers no generic comparison site gives: does it fit your car, and is it genuine, OEM, aftermarket, used or refurbished. Ten independent microservices — crawler, enricher, fitment, matcher, catalog, search, ai, billing, ops, web — talking asynchronously over Kafka, each with its own database and strict separation at the infrastructure level. Architected so ten AI agents could build them in parallel without reading each other's code; isolation is enforced, not trusted — all 56 forbidden cross-service database connections are proven refused by an automated check.</p>
         <div class="stk"><span class="tag">Django 5</span><span class="tag">Django Ninja</span><span class="tag">Kafka</span><span class="tag">PostgreSQL</span><span class="tag">Redis</span><span class="tag">Typesense</span><span class="tag">MinIO</span><span class="tag">Prometheus</span><span class="tag g">10 services</span></div>
       </a>
       <a class="contract" href="https://github.com/mrfatolahi1/Crypto-Matching-Engine" target="_blank" rel="noopener">
@@ -914,13 +914,14 @@ html[data-doc="open"] .docclose{opacity:1;visibility:visible}
     <h2>Experience</h2><hr>
     <div class="e"><span class="l">Backend Engineer — Market Maker Team, Futures</span><span class="r">Nov 2025 – Present</span></div>
     <div class="e s" style="margin-top:2px"><span class="l">Tabdeal — crypto exchange, ~300 employees</span><span class="r">Tehran, Iran</span></div>
+    <p class="st2" style="margin-top:9px">Market making means continuously quoting a buy and a sell price so traders always have a counterparty; the gap between the quotes is the spread, and the inventory left behind is either offset on another exchange (hedged) or held under algorithmic risk limits. The team builds and runs the automated system that does this across the exchange's futures markets.</p>
     <ul>
       <li><b>Platform ownership</b> — Own all four services behind the exchange's futures market-making platform, taking coverage from zero to ~50 markets at 99.9% uptime. The system places millions of orders per day against multi-million-dollar balances, where a single error is a direct financial loss.</li>
       <li><b>Hedge engine</b> — Built and own the hedging engine that mirrors positions across external exchanges for ~25 markets with exact accounting reconciliation, letting the desk market-make those books with no directional risk.</li>
       <li><b>Risk manager</b> — Proposed running the remaining ~25 markets unhedged under algorithmic risk control instead of hedging every position, then designed and built the service that executes it — generating several thousand dollars of profit within five days from one of the platform's thinnest markets alone.</li>
       <li><b>Price service</b> — Engineered a sharded streaming service consuming ~30 concurrent WebSocket feeds across three exchanges with REST fallback and per-shard health checks, keeping order-book and mark-price data fresh for every downstream consumer.</li>
       <li><b>Order placement</b> — Designed the depth and spread algorithms that quote near-zero spreads across all covered markets.</li>
-      <li><b>Incident leadership</b> — Led response to a mispricing event that caused erroneous liquidations: stabilized the affected markets, made every affected user whole, then shipped a pre-deploy sanity-check service, hardened price validation, and a single source of truth for symbol metadata — with no recurrence since.</li>
+      <li><b>Incident leadership</b> — Led response to a mispricing event that caused erroneous liquidations: stabilized the markets, made every affected user whole, then shipped a pre-deploy sanity-check service, hardened price validation, and a single source of truth for symbol metadata — with no recurrence since.</li>
       <li><b>Reconciliation</b> — Traced recurring account discrepancies through every price-mutation source, then automated the fix with reconciliation jobs, balance-mismatch alerts, and daily reports.</li>
       <li><b>Team leadership</b> — Serve as deputy to the tech lead, owning architecture decisions, code review, and on-call; onboarded, mentored, and managed the task flow of two junior engineers.</li>
       <li><b>AI-first delivery</b> — Drove the team's AI-first workflow: brainstorm architecture and trade-offs with Claude, generate implementations against detailed plans, and review every line given the financial stakes — cutting delivery time by roughly 60%. Authored the shared AI guideline files (prompts and code style) now shipped in every team repository.</li>
@@ -943,11 +944,14 @@ html[data-doc="open"] .docclose{opacity:1;visibility:visible}
     </ul>
 
     <h2>Selected Projects</h2><hr>
-    <div class="pj" style="margin-top:0"><div class="ph"><b>Jasem</b><a href="https://github.com/mrfatolahi1/Jasem" target="_blank" rel="noopener">github.com/mrfatolahi1/Jasem</a></div>
-      <p>Plain-text task, time, and expense tracker for the terminal, published on PyPI and used daily. Natural-language capture through a pluggable LLM layer (local Ollama, OpenAI-compatible, or Anthropic) that degrades gracefully to regex parsing when no model is reachable. Zero runtime dependencies, human-readable Markdown storage, Jalali calendar support, MIT licensed.</p>
+    <div class="pj" style="margin-top:0"><div class="ph"><b>Yadakchi</b><a href="https://github.com/mrfatolahi1/Yadakchi" target="_blank" rel="noopener">github.com/mrfatolahi1/Yadakchi</a></div>
+      <p>Price-comparison engine for automotive spare parts that answers what generic comparison sites cannot: whether a part fits the buyer's car, and whether it is genuine, OEM, aftermarket, used, or refurbished. Ten fully independent services — each with its own database, Dockerfile, and tests — communicate only through Kafka events carrying full payloads, so any service can replay history and rebuild its own state. Architected so ten AI agents could build them in parallel without reading each other's code: every event schema has one owning service, specs distribute from a single source of truth, and CI blocks on drift guards. Isolation is enforced, not trusted: all 56 forbidden cross-service database connections are proven refused by an automated check.</p>
+      <div class="st2">Python 3.12 · Django 5 · Django Ninja · Kafka · PostgreSQL · Redis · MinIO · Typesense · Prometheus · Grafana · GitHub Actions</div></div>
+    <div class="pj"><div class="ph"><b>Jasem</b><a href="https://github.com/mrfatolahi1/Jasem" target="_blank" rel="noopener">github.com/mrfatolahi1/Jasem</a></div>
+      <p>Plain-text task, time, and expense tracker for the terminal, published on PyPI and used daily. Natural-language capture through a pluggable LLM layer (local Ollama, OpenAI-compatible, or Anthropic) that degrades gracefully to regex parsing when no model is reachable. Zero runtime dependencies, Markdown storage, Jalali calendar support, MIT licensed.</p>
       <div class="st2">Python · LLM APIs · CLI</div></div>
     <div class="pj"><div class="ph"><b>Crypto Matching Engine</b><a href="https://github.com/mrfatolahi1/Crypto-Matching-Engine" target="_blank" rel="noopener">github.com/mrfatolahi1/Crypto-Matching-Engine</a></div>
-      <p>Matching engine microservice with deterministic price–time priority. Runs matching single-threaded to rule out race conditions and double spending, holds the live book in Redis, and guarantees exact crash recovery by replaying a PostgreSQL event log over periodic snapshots. Ships concurrency and recovery test suites, Locust load tests, and OpenAPI documentation.</p>
+      <p>Matching engine microservice with deterministic price–time priority. Runs matching single-threaded to rule out race conditions and double spending, holds the live book in Redis, and guarantees exact crash recovery by replaying a PostgreSQL event log over periodic snapshots. Ships concurrency and recovery tests, Locust load tests, and OpenAPI docs.</p>
       <div class="st2">Python · Django REST Framework · Redis · Celery · PostgreSQL · Docker Compose</div></div>
     <div class="pj"><div class="ph"><b>go-auth</b><a href="https://github.com/mrfatolahi1/go-auth" target="_blank" rel="noopener">github.com/mrfatolahi1/go-auth</a></div>
       <p>Authentication service in Go: JWT issuing and validation, bcrypt password handling, Redis-backed sessions, and PostgreSQL persistence through GORM.</p>
@@ -955,9 +959,6 @@ html[data-doc="open"] .docclose{opacity:1;visibility:visible}
     <div class="pj"><div class="ph"><b>Lambda Architecture Pipeline</b><a href="https://github.com/mrfatolahi1/Lambda_Server" target="_blank" rel="noopener">github.com/mrfatolahi1/Lambda_Server</a></div>
       <p>Streaming and batch pipeline implementing the lambda architecture across a Spark cluster (master plus three workers), Kafka ingestion, a Cassandra serving layer, and Zeppelin notebooks.</p>
       <div class="st2">Scala · Apache Spark · Kafka · Cassandra · Docker Compose</div></div>
-    <div class="pj"><div class="ph"><b>Event-driven URL Shortener</b><a href="https://github.com/mrfatolahi1/zare_bin" target="_blank" rel="noopener">github.com/mrfatolahi1/zare_bin</a></div>
-      <p>Two Spring Boot microservices that generate and count short URLs, communicating asynchronously over Kafka.</p>
-      <div class="st2">Java 17 · Spring Boot · Kafka · Docker Compose</div></div>
 
     <h2>Education</h2><hr>
     <div class="e"><span class="l">M.Sc. in Business Administration (MBA), Strategy</span><span class="r">Sep 2025 – Present</span></div>
@@ -972,12 +973,12 @@ html[data-doc="open"] .docclose{opacity:1;visibility:visible}
 
     <h2>Skills</h2><hr>
     <div class="sk">
-      <div><div class="k">Languages</div><div class="v">Python, Java, Go, Scala, TypeScript, SQL</div></div>
-      <div><div class="k">Backend</div><div class="v">Django, Django REST Framework, Spring Boot, Gin, REST APIs, Celery, Kafka, WebSockets, microservice architecture</div></div>
-      <div><div class="k">Data Stores</div><div class="v">PostgreSQL, MySQL, Oracle, Redis, Elasticsearch; MongoDB and Cassandra (academic and side projects)</div></div>
-      <div><div class="k">AI Engineering</div><div class="v">LLM-driven development with Claude, prompt and context engineering, AI-assisted code review, LLM API integration (Anthropic, OpenAI-compatible, Ollama)</div></div>
-      <div><div class="k">Infrastructure</div><div class="v">Docker, Docker Compose, Linux, Git, CI, Grafana and Elastic monitoring and alerting, on-call operations</div></div>
-      <div><div class="k">Product</div><div class="v">Technical product management, product and business strategy, stakeholder and board-level communication, mentoring</div></div>
+      <div><div class="k">Languages</div><div class="v">Python, Java <i>(familiar: Go, Scala, TypeScript, SQL)</i></div></div>
+      <div><div class="k">Backend</div><div class="v">Django, Django REST Framework, Spring Boot, REST APIs, Celery, Kafka, WebSockets, microservice architecture <i>(familiar: Gin, Django Ninja)</i></div></div>
+      <div><div class="k">Data Stores</div><div class="v">PostgreSQL, MySQL, Oracle, Redis, Elasticsearch <i>(familiar: MongoDB, Cassandra)</i></div></div>
+      <div><div class="k">AI Engineering</div><div class="v">LLM-driven development with Claude, prompt and context engineering, AI-assisted code review, LLM API integration</div></div>
+      <div><div class="k">Infrastructure</div><div class="v">Docker, Docker Compose, Linux, Git, CI, Grafana and Elastic monitoring and alerting, on-call operations <i>(familiar: Prometheus, Locust)</i></div></div>
+      <div><div class="k">Product</div><div class="v">Technical product management, product and business strategy, board-level communication, mentoring</div></div>
       <div><div class="k">Spoken</div><div class="v">Persian (native), English (fluent)</div></div>
     </div>
   </article>
